@@ -17,3 +17,11 @@ hs_err_pid*
 
 bin/
 node_modules/
+
+# PHP
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
