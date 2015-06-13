@@ -1,4 +1,5 @@
 <div>
+	<h3>DEVELOPER MODE ACTIVE</h3>
 	<p>The page you are looking at is being generated dynamically by
 		CodeIgniter.</p>
 
