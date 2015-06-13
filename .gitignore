@@ -27,4 +27,7 @@ node_modules/
 !*/cache/.htaccess
 
 deploy.sh
-
+.buildpath
+.buildpath/*
+.settings/
+.settings/*

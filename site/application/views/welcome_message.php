@@ -1,99 +1,55 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
+<?php
+/*
+ * This should be the first "require" because it contains the charset,
+ * which should come directly after the <head> tag.
+ */
+require_once 'head_common.php';
+?>
 
-<title>CompSoc :: Index</title>
-
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<style>
-body {
-	padding-top: 70px;
-	/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
-</style>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+<title>CompSoc :: Home</title>
 
 </head>
 
 <body>
-	<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-
-				<a class="navbar-brand" href="#">CompSoc</a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Bits</a></li>
-					<li><a href="#">Projects</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container -->
-	</nav>
+	<?php
+	require_once 'navbar.php';
+	?>
 
 	<!-- Page Content -->
 	<div class="container">
 
+		<div class="row text-center">
+			<h1>CompSoc @ University of Leicester</h1>
+		</div>
+
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h1>CompSoc @ University of Leicester</h1>
-	<div>
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="http://www.codeigniter.com/user_guide/">User Guide</a>.
-</p>
-
-<p>Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+				<?php
+				require_once 'welcome/welcome.php';
+				
+				if (ENVIRONMENT === 'development') {
+					require_once 'welcome/devwelcome.php';
+				}
+				
+				?>
+			
 			</div>
+			<!-- /.row -->
+
 		</div>
-		<!-- /.row -->
-
-	</div>
-	<!-- /.container -->
-
-	<!-- jQuery Version 1.11.1 -->
-	<script src="js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+		<!-- /.container -->
+		
+		<?php
+		require_once 'bootstrapjs.php';
+		?>
 
 </body>
 </html>
