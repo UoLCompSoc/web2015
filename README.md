@@ -23,6 +23,6 @@ There is scope to do more, but the above are the core requirements.
 Contact
 =======
 
-Project Lead - [Ashley Davis : SgtCoDFish](https://github.com/SgtCoDFish)
+Project Lead - [Ashley Davis : SgtCoDFish](https://github.com/SgtCoDFish)   
 Backup Lead + Technical Assistant - [Alex Spiers](https://github.com/alexspiers)
 
