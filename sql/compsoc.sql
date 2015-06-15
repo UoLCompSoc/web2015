@@ -28,7 +28,7 @@ CREATE TABLE users (
 	salt VARCHAR(255) NOT NULL,
 	
 	githubID VARCHAR(40),
-	linkedinID VARCHAR(255),
+	linkedinURL VARCHAR(255),
 	steamID VARCHAR(50),
 	
 	PRIMARY KEY (userid)
