@@ -1,16 +1,21 @@
 <?php
 class User_model extends CI_Model {
 	// core details
+	var $id = -1;
+	var $email = '';
 	var $username = '';
 	var $fullname = '';
-	var $email = '';
 	var $datejoined = '';
-	var $permissions = 0;
+	var $permissions = 0x00;
+	
+	// password salt
+	var $salt = '';
 	
 	// social details
 	var $githubID = '';
-	var $linkedinID = '';
+	var $linkedinURL = '';
 	var $steamID = '';
+	
 	
 	public function __construct()
 	{
