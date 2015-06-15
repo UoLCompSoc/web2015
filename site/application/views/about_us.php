@@ -32,15 +32,17 @@ require_once 'include/head_common.php';
 
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<?php
-				require_once 'welcome/welcome.php';
-				
-				if (ENVIRONMENT === 'development') {
-					require_once 'welcome/devwelcome.php';
-				}
-				
-				?>
-			
+				<p>
+					CompSoc is <em>your</em> academic society at the University of
+					Leicester if you do any kind of programming!
+				</p>
+				<p>We run regular academic sessions from extracurricular group
+					projects to lectures to help you get the most from your time at the
+					University of Leicester, and ideally get everyone good jobs after
+					they graduate!</p>
+				<p>But of course, we recognise that it's not all about work, and we
+					have regular scheduled social events both by ourselves and also
+					mixed with other great societies at Leicester!</p>
 			</div>
 			<!-- /.row -->
 
@@ -50,6 +52,8 @@ require_once 'include/head_common.php';
 		<?php
 		require_once 'include/bootstrapjs.php';
 		?>
+
+
 
 </body>
 </html>
