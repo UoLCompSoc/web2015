@@ -14,7 +14,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 require_once 'include/head_common.php';
 ?>
 
-<title>CompSoc :: Home</title>
+<title>CompSoc :: About</title>
 
 </head>
 
@@ -42,7 +42,7 @@ require_once 'include/head_common.php';
 					they graduate!</p>
 				<p>But of course, we recognise that it's not all about work, and we
 					have regular scheduled social events both by ourselves and also
-					mixed with other great societies at Leicester!</p>
+					mixed with other great societies at Leicester, meaning there's always a way for you to get involved.</p>
 			</div>
 			<!-- /.row -->
 
