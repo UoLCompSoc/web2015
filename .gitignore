@@ -27,6 +27,7 @@ node_modules/
 !*/cache/.htaccess
 
 site/application/config/dbdetails.php
+site/application/config/encryptiondetails.php
 
 deploy.sh
 .buildpath

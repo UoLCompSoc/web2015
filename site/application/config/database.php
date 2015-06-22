@@ -62,10 +62,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-require('dbdetails.php');
+require_once('dbdetails.php');
 
 if(!is_db_details_valid()) {
-	die("Your database details in applications/config/dbdetails.php are invalid; you should edit the values to fix this.");
+	die("Your database details in site/application/config/dbdetails.php are invalid; you should edit the values to fix this.");
 }
 
 $db['default'] = array(

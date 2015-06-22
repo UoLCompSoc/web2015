@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 abstract class CompSocDB {
-	const DB_USERNAME = "";
-	const DB_PASSWORD = "";
-	const DB_NAME = "";
+	const DB_USERNAME = '';
+	const DB_PASSWORD = '';
+	const DB_NAME = '';
 }
 
 // Returns true if the database details above have been filled out, false otherwise.

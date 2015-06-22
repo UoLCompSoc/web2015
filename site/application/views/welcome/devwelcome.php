@@ -1,13 +1,9 @@
 <div>
 	<h3>DEVELOPER MODE ACTIVE</h3>
+	<h5>Congratulations!</h5>
+	<p>You're successfully up and running with editing the CompSoc site!</p>
 	<p>The page you are looking at is being generated dynamically by
 		CodeIgniter.</p>
-
-	<p>If you would like to edit this page you'll find it located at:</p>
-	<code>application/views/welcome_message.php</code>
-
-	<p>The corresponding controller for this page is found at:</p>
-	<code>application/controllers/Welcome.php</code>
 
 	<p>
 		If you are exploring CodeIgniter for the very first time, you should
@@ -16,5 +12,6 @@
 	</p>
 
 	<p>
-		Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+		Page rendered in <strong>{elapsed_time}</strong> seconds. <br>
+		<?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
