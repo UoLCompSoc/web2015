@@ -26,6 +26,8 @@ node_modules/
 !*/cache/index.html
 !*/cache/.htaccess
 
+site/application/config/dbdetails.php
+
 deploy.sh
 .buildpath
 .buildpath/*
