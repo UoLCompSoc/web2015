@@ -22,6 +22,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li><a href="/index.php/about">About Us</a></li>
 				<li><a href="#">Bits</a></li>
 				<li><a href="#">Projects</a></li>
+				<li><a href="/index.php/login">Login</a>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
