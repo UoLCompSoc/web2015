@@ -8,6 +8,8 @@ Requirements
 
 A webserver, with a recent version of PHP5 installed, MySQL installed, and the php/MySQL driver installed. Installation varies between systems, but shouldn't be too hard to setup.
 
+The site currently expects to be able to find the `site/application/` and `site/system` folders in /var/www/compsoc. If you want to put them in a different location (or you're on another OS) you'll need to change the 2 obvious variable in `site/index.php` on your local machine. Please don't commit these changes.
+
 Step-by-Step
 ------------
 
