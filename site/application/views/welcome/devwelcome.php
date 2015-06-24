@@ -1,4 +1,4 @@
-<div>
+<div class="alert alert-warning">
 	<h3>DEVELOPER MODE ACTIVE</h3>
 	<h5>Congratulations!</h5>
 	<p>You're successfully up and running with editing the CompSoc site!</p>

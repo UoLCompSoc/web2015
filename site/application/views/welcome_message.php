@@ -36,12 +36,12 @@ require_once 'include/head_common.php';
 
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<?php
-				require_once 'welcome/welcome.php';
-				
+				<?php				
 				if (ENVIRONMENT === 'development') {
 					require_once 'welcome/devwelcome.php';
 				}
+				
+				require_once 'welcome/welcome.php';
 				
 				?>
 			
