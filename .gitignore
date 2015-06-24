@@ -34,3 +34,6 @@ deploy.sh
 .buildpath/*
 .settings/
 .settings/*
+
+.swp
+

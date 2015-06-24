@@ -24,26 +24,15 @@ CREATE TABLE users (
 	fullname VARCHAR(50) NOT NULL,
 	datejoined DATE NOT NULL,
 	permissions INT NOT NULL,
-	
-	salt VARCHAR(255) NOT NULL,
-	
+
+    passwordhash VARCHAR(255) NOT NULL,
+		
 	githubID VARCHAR(40),
 	linkedinURL VARCHAR(255),
 	steamID VARCHAR(50),
 	
 	PRIMARY KEY (userid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
-
-CREATE TABLE passwords (
-	userid INT NOT NULL UNIQUE,
-	hash VARCHAR(255) NOT NULL,
-	
-	PRIMARY KEY(userid),
-	FOREIGN KEY (userid)
-		REFERENCES users(userid)
-		ON DELETE CASCADE
-		ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE transactions (
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,

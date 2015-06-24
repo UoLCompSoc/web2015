@@ -25,6 +25,10 @@ require_once 'include/head_common.php';
 
 	<!-- Page Content -->
 	<div class="container">
+	
+	<?php 
+	require_once 'include/notification_message.php';
+	?>
 
 		<div class="row text-center">
 			<h1>CompSoc @ University of Leicester</h1>
