@@ -39,7 +39,7 @@ class Login extends CI_Controller {
 			if($this->user_model->login_verify($userdata)) {
 				// logged in successfully
 				$this->set_login_session($userdata['email']);
-				$this->load->view('welcome_message.php');
+				$this->load->view('welcome_message.php', array('notification_message' => 'Login successful; welcome back!'));
 			} else {
 				$this->load->view('login.php', array('message' => "Login failed; did you enter the correct e-mail and password?"));
 			}
