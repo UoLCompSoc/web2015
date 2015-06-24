@@ -91,10 +91,10 @@ class Login extends CI_Controller {
 			$result = $this->user_model->insert($userdata);
 			
 			if($result === TRUE) {
-				$this->load->view('welcome_message.php');
+				$this->set_login_session($userdata['email']);
+				$this->load->view('welcome_message.php', array('notification_message' => 'Account created successfully! Welcome to CompSoc!'));
 			} else {
 				$userdata['message'] = "Account could not be created at this time. Please try again later.";
-				$this->set_login_session($userdata['email']);
 				$this->load->view('login.php', $userdata);
 			}
 		}

@@ -59,9 +59,6 @@ require_once 'include/head_common.php';
 			<div class="col-lg-12 text-center">
 				<h4>Register</h4><br>
 				<?php echo form_open('login/register_process'); ?>
-				<label for="reg_email" class="sr-only">E-Mail Address</label>
-				<input type="text" name="reg_email" id="reg_email" class="form-control" placeholder="E-Mail Address"
-					value="<?php echo set_value('reg_email'); ?>"><br>
 					
 				<label for="reg_fname" class="sr-only">First Name</label>
 				<input type="text" name="reg_fname" id="reg_fname" class="form-control" placeholder="First Name"
@@ -70,6 +67,10 @@ require_once 'include/head_common.php';
 				<label for="reg_lname" class="sr-only">Last Name</label>
 				<input type="text" name="reg_lname" id="reg_lname" class="form-control" placeholder="Last Name"
 					value="<?php echo set_value('reg_lname'); ?>"><br>
+					
+				<label for="reg_email" class="sr-only">E-Mail Address</label>
+				<input type="text" name="reg_email" id="reg_email" class="form-control" placeholder="E-Mail Address"
+					value="<?php echo set_value('reg_email'); ?>"><br>
 				
 				<label for="reg_password1"  class="sr-only">Password</label>
 				<input type="password" name="reg_password1" id="reg_password1" class="form-control" placeholder="Password"><br>
