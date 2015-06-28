@@ -30,11 +30,15 @@ require_once 'include/head_common.php';
 	<?php 
 	require_once 'include/notification_message.php';
 	?>
+	
+	<?php 
+	require_once 'include/account_confirmation_dialog.php';
+	?>
 
 	<div class="row">
 		<div class="col text-center">
 			<h1>Profile</h1>
-			<p>Logged in as <?php echo get_instance()->session->userdata('username'); ?></p>
+			<p>Logged in as <?php echo get_instance()->session->userdata('email'); ?></p>
 		</div>
 	</div>
 	

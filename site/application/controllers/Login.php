@@ -94,6 +94,7 @@ class Login extends CI_Controller {
 			
 			if($result === TRUE) {
 				$this->set_login_session($userdata['email'], 0x00);
+				$this->send_confirmation_email();
 				$this->load->view('profile.php', array('notification_message' => 'Account created successfully! Welcome to CompSoc!'));
 			} else {
 				$userdata['message'] = "Account could not be created at this time. Please try again later.";
@@ -124,5 +125,43 @@ class Login extends CI_Controller {
 		log_message('debug', 'User ' . $sessdata['username'] . ' logged in with permissions ' . $sessdata['permissions'] . '.');
 		
 		$this->session->set_userdata($sessdata);
+	}
+	
+	/**
+	 * Requires that a user is logged in first.
+	 * 
+	 * PROBABLY NOT USED
+	 */
+	private function send_confirmation_email() {
+		// no point sending confirmation mail if already confirmed
+		if(!Permissions::is_authorized(Permissions::USER_CONFIRMED)) {
+			$this->load->library('email');
+			
+			$config = array(
+				'protocol' => 'sendmail',
+				'mailtype' => 'html',
+				'charset' => 'utf-8',
+				'wordwrap' => TRUE
+			);
+			
+			$this->email->initialize($config);
+			
+			$address = $this->session->userdata('email');
+			
+			$this->email->from('admin@ulcompsoc.org.uk', 'CompSoc Committee');
+			$this->email->to($address);
+			$this->email->subject('Verify Your CompSoc Account');
+			$this->email->message('<p>Hi there!</p>
+
+<p>We received a request to verify your CompSoc account. If you didn\'t do this, just ignore this e-mail!</p>
+
+<p>If this was you, however, just click <a href="' . "some link" . '">here</a> to verify before ' . "some date" . ' and you\'ll be good to go!</p>
+<p>Cheers,</p>
+<p>The CompSoc Committee</p>');
+			
+			if(!$this->email->send()) {
+				log_message('error', "Couldn't send confirmation e-mail to " . $address);
+			}
+		}
 	}
 }
