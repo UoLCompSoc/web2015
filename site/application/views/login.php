@@ -27,6 +27,12 @@ require_once 'include/head_common.php';
 			<h1>CompSoc Login</h1>
 		</div>
 		
+		<?php
+		if (ENVIRONMENT === 'production') {
+			require_once 'include/in_development_message.php';			
+		}
+		?>
+		
 		<?php 
 		$validation_errors = validation_errors();
 		if ($validation_errors !== '' || isset($message)):
