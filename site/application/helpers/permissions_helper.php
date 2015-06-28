@@ -17,11 +17,6 @@ abstract class Permissions {
 	/** the user can use the batch creation system */
 	const BATCH_USER_CREATE = 0x10;
 	
-	/**
-	 * should be added to every time a new type of admin is created.
-	 */
-	const ADMIN = Permissions::USER_ADMIN | Permissions::POINTS_ADMIN | Permissions::PORTFOLIO_ADMIN | Permissions::BATCH_USER_CREATE;
-	
 	public static function require_logged_in() {
 		if (! Permissions::is_logged_in ()) {
 			get_instance()->session->set_flashdata('message', 'You need to be logged in to view that page.');
