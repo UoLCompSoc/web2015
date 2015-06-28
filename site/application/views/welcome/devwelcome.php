@@ -3,7 +3,7 @@
 	<h5>Congratulations!</h5>
 	<p>You're successfully up and running with editing the CompSoc site!</p>
 	<p>The page you are looking at is being generated dynamically by
-		CodeIgniter.</p>
+		CodeIgniter; don't worry, this message won't be here in production.</p>
 
 	<p>
 		If you are exploring CodeIgniter for the very first time, you should

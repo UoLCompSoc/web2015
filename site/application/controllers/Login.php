@@ -36,10 +36,12 @@ class Login extends CI_Controller {
 				'password' => $this->input->post('password')
 			);
 			
-			if($this->user_model->login_verify($userdata)) {
+			$verified = $this->user_model->login_verify($userdata);
+			
+			if($verified !== FALSE) {
 				// logged in successfully
-				$this->set_login_session($userdata['email']);
-				$this->load->view('welcome_message.php', array('notification_message' => 'Login successful; welcome back!'));
+				$this->set_login_session($userdata['email'], $verified['permissions']);
+				$this->load->view('profile.php', array('notification_message' => 'Login successful; welcome back!'));
 			} else {
 				$this->load->view('login.php', array('message' => "Login failed; did you enter the correct e-mail and password?"));
 			}
@@ -91,8 +93,8 @@ class Login extends CI_Controller {
 			$result = $this->user_model->insert($userdata);
 			
 			if($result === TRUE) {
-				$this->set_login_session($userdata['email']);
-				$this->load->view('welcome_message.php', array('notification_message' => 'Account created successfully! Welcome to CompSoc!'));
+				$this->set_login_session($userdata['email'], 0x00);
+				$this->load->view('profile.php', array('notification_message' => 'Account created successfully! Welcome to CompSoc!'));
 			} else {
 				$userdata['message'] = "Account could not be created at this time. Please try again later.";
 				$this->load->view('login.php', $userdata);
@@ -107,12 +109,19 @@ class Login extends CI_Controller {
 		$this->load->view('welcome_message.php', array('notification_message' => 'Logout successful.'));
 	}
 	
-	private function set_login_session($email) {
+	private function set_login_session($email, $permissions) {
+		if(!is_int($permissions)) {
+			$permissions = intval($permissions, 0);
+		}
+		
 		$sessdata = array(
 				'username' => explode('@', $email)[0],
 				'email' => $email,
-				'logged_in' => TRUE
+				'logged_in' => TRUE,
+				'permissions' => $permissions
 		);
+		
+		log_message('debug', 'User ' . $sessdata['username'] . ' logged in with permissions ' . $sessdata['permissions'] . '.');
 		
 		$this->session->set_userdata($sessdata);
 	}

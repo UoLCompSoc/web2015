@@ -23,7 +23,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li><a href="#">Bits</a></li>
 				<li><a href="#">Projects</a></li>
 				<?php if (get_instance()->session->userdata('logged_in')):?>
-				<li><a href="#">Profile</a></li>
+				<li><a href="/index.php/profile">Profile</a></li>
 				<li><a href="/index.php/login/logout">Logout</a></li>
 				<?php else: ?>
 				<li><a href="/index.php/login">Login</a>

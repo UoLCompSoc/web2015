@@ -30,6 +30,11 @@ class User_model extends CI_Model {
 		return $query->result_array();
 	}
 	
+	/**
+	 * Checks if the userdata given verifies correctly and returns the user's details if it does.
+	 * @param $userdata an array containing an 'email' and a 'password' field
+	 * @return boolean FALSE if verification failed, the user's details otherwise.
+	 */
 	public function login_verify($userdata) {
 		$result = $this->get_by_email($userdata['email']);
 		
@@ -38,7 +43,7 @@ class User_model extends CI_Model {
 		} else {
 			$verified = password_verify($userdata['password'], $result[0]['passwordhash']);
 			
-			return $verified;
+			return $verified ? $result[0] : FALSE;
 		}
 	}
 	
@@ -46,7 +51,7 @@ class User_model extends CI_Model {
 		$email_check = $this->db->get_where('users', 'email', $userdata['email']);
 		
 		if($email_check->num_rows() > 0) {
-			syslog(LOG_INFO, "Attempt to create account with e-mail ${userdata['email']} collided with existing e-mail in DB. Form validation is probably off.");
+			log_message('info', "Attempt to create account with e-mail ${userdata['email']} collided with existing e-mail in DB. Form validation is probably off.");
 			return FALSE;
 		}
 		
@@ -60,7 +65,7 @@ class User_model extends CI_Model {
 		);
 		
 		if(!$this->db->insert('users', $insertdata)) {
-			syslog(LOG_ALERT, "Insert failed on database when creating user: " . $this->db->error()['message']);
+			log_message('error', "Insert failed on database when creating user: " . $this->db->error()['message']);
 			return FALSE;
 		} else {
 			syslog(LOG_INFO, "Successfully created user ${insertdata['email']}.");

@@ -24,7 +24,7 @@ require_once 'include/head_common.php';
 	<div class="container">
 
 		<div class="row text-center">
-			<h1>CompSoc @ University of Leicester</h1>
+			<h1>CompSoc Login</h1>
 		</div>
 		
 		<?php 
@@ -40,6 +40,10 @@ require_once 'include/head_common.php';
 			</div>
 		</div>
 		<?php endif; ?>
+		
+		<?php 
+		require_once 'include/flashdata_message.php';
+		?>
 
 		<div class="row">
 			<div class="col-lg-12 text-center">

@@ -29,6 +29,10 @@ require_once 'include/head_common.php';
 	<?php 
 	require_once 'include/notification_message.php';
 	?>
+	
+	<?php 
+		require_once 'include/flashdata_message.php';
+		?>
 
 		<div class="row text-center">
 			<h1>CompSoc @ University of Leicester</h1>
