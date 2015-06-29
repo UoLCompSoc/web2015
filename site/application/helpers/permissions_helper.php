@@ -15,7 +15,7 @@ abstract class Permissions {
 	const PORTFOLIO_ADMIN = 0x8;
 	
 	/** the user can use the batch creation system */
-	const BATCH_USER_CREATE = 0x10;
+	const BATCH_USER_CREATE = 0x16;
 	
 	public static function require_logged_in() {
 		if (! Permissions::is_logged_in ()) {
