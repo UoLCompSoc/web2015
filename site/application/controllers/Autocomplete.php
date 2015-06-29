@@ -10,7 +10,7 @@ class Autocomplete extends CI_Controller {
 	public function email() {	  	      
 	    $queryString = $this->input->post_get('emailQuery');
 
-	    if(!$this->session->permissions & Permissions::USER_ADMIN){
+	    if(!Permissions::is_authorized(Permissions::USER_ADMIN)){
 	        echo "{}";
 	        return;
 	    }
@@ -32,6 +32,10 @@ class Autocomplete extends CI_Controller {
             $results[] = $result;
         }
         
-        echo json_encode($results);
+        $to_send = json_encode($results);
+        
+        log_message('debug', $to_send);
+        
+        echo $to_send;
 	}
 }

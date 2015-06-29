@@ -1,20 +1,18 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
-?> 
+
+Permissions::require_authorized(Permissions::USER_ADMIN);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
 <?php
-/*
- * This should be the first "require" because it contains the charset,
- * which should come directly after the <head> tag.
- */
 require_once 'include/head_common.php';
 ?>
 
-<title>CompSoc :: Home</title>
+<title>CompSoc :: Autocomplete Test</title>
 
 </head>
 
@@ -26,13 +24,13 @@ require_once 'include/head_common.php';
 	<!-- Page Content -->
 	<div class="container">
 	
-	<?php 
+	<?php
 	require_once 'include/notification_message.php';
 	?>
 	
-	<?php 
-		require_once 'include/flashdata_message.php';
-		?>
+	<?php
+	require_once 'include/flashdata_message.php';
+	?>
 
 		<div class="row text-center">
 			<h1>CompSoc @ University of Leicester</h1>
@@ -41,10 +39,9 @@ require_once 'include/head_common.php';
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<div class="ui-widget">
-                    <label for="email">Email: </label>
-                    <input id="email">
-                </div>
-			    
+					<label for="email">Email: </label> <input id="email">
+				</div>
+
 			</div>
 			<!-- /.row -->
 
@@ -55,12 +52,11 @@ require_once 'include/head_common.php';
 		require_once 'include/bootstrapjs.php';
 		?>
 		
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script>
     $("#email").autocomplete({
         source: function(request, response) {
             $.ajax({
-              url: "/compsoc/site/index.php/autocomplete/email",
+              url: "/index.php/autocomplete/email",
               data: {
                 emailQuery: request.term
               },
@@ -72,5 +68,6 @@ require_once 'include/head_common.php';
           },
     });
     </script>
+
 </body>
 </html>
