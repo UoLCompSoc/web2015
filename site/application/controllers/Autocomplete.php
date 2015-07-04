@@ -23,12 +23,14 @@ class Autocomplete extends CI_Controller {
 	    $results = array();
 	    
         $this->db->select('email');
+	    $this->db->select('fullname');
         $this->db->like('email', $queryString);
+	    $this->db->or_like('fullname', $queryString);
         $query = $this->db->get('users', 5)->result();
         
         foreach($query as $row){
-            $result['value'] = $row->email;
-            $result['label'] = $row->email;
+            $result['value'] = $row->email;            
+            $result['label'] = '(' . $row->fullname . ') ' . $row->email;
             $results[] = $result;
         }
         
