@@ -28,7 +28,7 @@ require_once 'include/head_common.php';
 	<div class="container">
 	
 	<?php if(Permissions::is_authorized(Permissions::USER_ADMIN)):?>
-	<div class="row"><div class="col"><p>User Admin</p></div></div>
+	<div class="row"><div class="col"><p><a href="/index.php/user/">User Admin</a></p></div></div>
 	<?php endif; ?>
 	
 	<?php if (Permissions::is_authorized(Permissions::POINTS_ADMIN)):?>

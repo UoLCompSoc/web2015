@@ -39,6 +39,10 @@ require_once 'include/head_common.php';
 		<div class="col text-center">
 			<h1>Profile</h1>
 			<p>Logged in as <?php echo get_instance()->session->userdata('email'); ?></p>
+			
+			<?php if (Permissions::is_admin()): ?>
+			<p>Go to <a href="/index.php/admin">your admin panel.</a></p>
+			<?php endif;?>
 		</div>
 	</div>
 	

@@ -135,10 +135,10 @@ class User extends CI_Controller {
             $userdata['permissions'] = $this->_permissions_to_array($permissionValue);
 
             if($updated !== FALSE) {
-                $userdata['message'] = "Update Worked";
+                $userdata['message'] = "Update Successful";
                 $this->load->view('user/edit', $userdata);
             } else {
-                $userdata['errormessage'] = "Update failed";
+                $userdata['errormessage'] = "Update Failed: " . $this->db->_error_message();
                 $this->load->view('user/edit', $userdata);
             }
         }
