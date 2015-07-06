@@ -23,13 +23,6 @@ class User_model extends CI_Model {
 		parent::__construct();
 	}
 	
-	public function get_by_email($email_to_fetch)
-	{
-		$query = $this->db->get_where('users', array('email' => $email_to_fetch));
-		
-		return $query->result_array();
-	}
-	
 	/**
 	 * Checks if the userdata given verifies correctly and returns the user's details if it does.
 	 * @param $userdata an array containing an 'email' and a 'password' field
@@ -37,39 +30,66 @@ class User_model extends CI_Model {
 	 */
 	public function login_verify($userdata) {
 		$result = $this->get_by_email($userdata['email']);
-		
+
 		if(sizeof($result) != 1) {
 			return FALSE;
 		} else {
 			$verified = password_verify($userdata['password'], $result[0]['passwordhash']);
-			
+
 			return $verified ? $result[0] : FALSE;
 		}
 	}
 	
-	public function insert($userdata) {
-		$email_check = $this->db->get_where('users', 'email', $userdata['email']);
-		
-		if($email_check->num_rows() > 0) {
-			log_message('info', "Attempt to create account with e-mail ${userdata['email']} collided with existing e-mail in DB. Form validation is probably off.");
-			return FALSE;
-		}
-		
-		$insertdata = array(
-				'email' => $userdata['email'],
-				'username' => explode('@', $userdata['email'])[0],
-				'fullname' => $userdata['fname'] . ' ' . $userdata['lname'],
-				'datejoined' => date('Y-m-d'),
-				'permissions' => 0x00,
-				'passwordhash' => password_hash($userdata['password'], PASSWORD_BCRYPT)
-		);
-		
-		if(!$this->db->insert('users', $insertdata)) {
-			log_message('error', "Insert failed on database when creating user: " . $this->db->error()['message']);
-			return FALSE;
-		} else {
-			syslog(LOG_INFO, "Successfully created user ${insertdata['email']}.");
-			return TRUE;
-		}
+	public function get_by_email($email_to_fetch)
+	{
+		$query = $this->db->get_where('users', array('email' => $email_to_fetch));
+
+		return $query->result_array();
 	}
+
+    public function insert($userdata) {
+        $email_check = $this->db->get_where('users', 'email', $userdata['email']);
+
+        if($email_check->num_rows() > 0) {
+            log_message('info', "Attempt to create account with e-mail ${userdata['email']} collided with existing e-mail in DB. Form validation is probably off.");
+            return FALSE;
+        }
+
+        $insertdata = array(
+            'email' => $userdata['email'],
+            'username' => explode('@', $userdata['email'])[0],
+            'fullname' => $userdata['fname'] . ' ' . $userdata['lname'],
+            'datejoined' => date('Y-m-d'),
+            'permissions' => 0x00,
+            'passwordhash' => password_hash($userdata['password'], PASSWORD_BCRYPT)
+        );
+
+        if(!$this->db->insert('users', $insertdata)) {
+            log_message('error', "Insert failed on database when creating user: " . $this->db->error()['message']);
+            return FALSE;
+        } else {
+            syslog(LOG_INFO, "Successfully created user ${insertdata['email']}.");
+            return TRUE;
+        }
+    }
+
+    public function update($userdata) {
+        $existCheck = $this->db->get_where('users', array('userid' => $userdata['userid']));
+
+        if($existCheck->num_rows() != 1) {
+            log_message('info', "Attempt to edit account with e-mail ${userdata['email']} doesn't exist in DB.");
+            return FALSE;
+        }
+
+        $this->db->flush_cache();
+
+        $this->db->where('userid', $userdata['userid']);
+        if(!$this->db->update('users', $userdata)) {
+            log_message('error', "Update failed on database when updating user: " . $this->db->error()['message']);
+            return FALSE;
+        } else {
+            syslog(LOG_INFO, "Successfully updated user {$userdata['email']}.");
+            return TRUE;
+        }
+    }
 }
