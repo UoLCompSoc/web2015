@@ -65,7 +65,7 @@ require_once 'include/head_common.php';
               },
               dataType: "json"
             });
-          },
+          }
     });
     </script>
 

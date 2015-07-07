@@ -12,6 +12,33 @@ class Point extends CI_Controller {
 		$this->load->view('admin');
 	}
 
+    public function view($userid = -1){
+        if($userid == -1){
+            $this->load->view('admin');
+            return;
+        }
+
+        $this->db->select("a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type");
+        $this->db->from('transactions AS t');
+        $this->db->where('t.userid', $userid);
+        $this->db->join('point_types as p', 't.pointtype = p.id');
+        $this->db->join('users as a', 't.assignerid = a.userid');
+
+        $query = $this->db->get();
+
+        $user = $this->db->get_where('users', array ('userid' => $userid));
+
+        $this->db->select_sum('amount');
+        $total = $this->db->get_where('transactions', array ('userid' => $userid));
+
+        $data = array();
+        $data['points'] = $query->result();
+        $data['user'] = $user->row();
+        $data['total'] = $total->row()->amount;
+
+        $this->load->view('point/view', $data);
+    }
+
     public function add(){
         $rules = array (
             array (
@@ -44,7 +71,7 @@ class Point extends CI_Controller {
         $data = array();
         $data['email'] = $this->input->post('email') != FALSE ? $this->input->post('email') : '';
         $data['amount'] = $this->input->post('amount') != FALSE ? $this->input->post('amount') : '';
-        $data['pointtype'] = $this->input->post('pointtype') != FALSE ? $this->input->post('pointtype') : '0';
+        $data['pointtype'] = $this->input->post('pointtype') != FALSE ? $this->input->post('pointtype') : '1';
         $data['comment'] = $this->input->post('comment') != FALSE ? $this->input->post('comment') : '';
         $data['pointtypes'] = $this->db->get('point_types')->result();
 
@@ -67,7 +94,7 @@ class Point extends CI_Controller {
                     $data['message'] = 'Assigned ' . $data['amount'] . ' points to ' . $user->fullname;
                     $data['email'] = '';
                     $data['amount'] = '';
-                    $data['pointtype'] = '0';
+                    $data['pointtype'] = '1';
                     $data['comment'] = '';
 
                     //TODO add log points are added to a user
