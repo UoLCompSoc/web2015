@@ -51,7 +51,7 @@ class User_model extends CI_Model {
         $email_check = $this->db->get_where('users', 'email', $userdata['email']);
 
         if($email_check->num_rows() > 0) {
-            log_message('info', "Attempt to create account with e-mail ${userdata['email']} collided with existing e-mail in DB. Form validation is probably off.");
+            log_message('info', "Attempt to create account with e-mail {$userdata['email']} collided with existing e-mail in DB. Form validation is probably off.");
             return FALSE;
         }
 
@@ -68,7 +68,7 @@ class User_model extends CI_Model {
             log_message('error', "Insert failed on database when creating user: " . $this->db->error()['message']);
             return FALSE;
         } else {
-            syslog(LOG_INFO, "Successfully created user ${insertdata['email']}.");
+            syslog(LOG_INFO, "Successfully created user {$insertdata['email']}.");
             return TRUE;
         }
     }
@@ -77,7 +77,7 @@ class User_model extends CI_Model {
         $existCheck = $this->db->get_where('users', array('userid' => $userdata['userid']));
 
         if($existCheck->num_rows() != 1) {
-            log_message('info', "Attempt to edit account with e-mail ${userdata['email']} doesn't exist in DB.");
+            log_message('info', "Attempt to edit account with e-mail {$userdata['email']} doesn't exist in DB.");
             return FALSE;
         }
 
