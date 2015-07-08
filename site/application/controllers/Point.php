@@ -18,8 +18,9 @@ class Point extends CI_Controller {
             return;
         }
 
-        $this->db->select("a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type");
+        $this->db->select("a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type, t.timecreated AS date");
         $this->db->from('transactions AS t');
+        $this->db->order_by('t.timecreated');
         $this->db->where('t.userid', $userid);
         $this->db->join('point_types as p', 't.pointtype = p.id');
         $this->db->join('users as a', 't.assignerid = a.userid');

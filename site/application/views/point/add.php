@@ -1,7 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
-Permissions::require_authorized(Permissions::USER_ADMIN);
+Permissions::require_authorized(Permissions::POINTS_ADMIN);
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">

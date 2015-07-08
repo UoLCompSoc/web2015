@@ -1,7 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
-Permissions::require_authorized(Permissions::USER_ADMIN);
+Permissions::require_authorized(Permissions::POINTS_ADMIN);
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -63,11 +63,12 @@ $this->load->view('include/navbar.php');
     <div class="row">
         <div class="col-lg-12 text-center">
             <h4>Points Details for <?php echo $user->fullname; ?> (<?php echo $total; ?> Points)</h4><br>
-            <table>
+            <table border="1">
                 <tr>
                     <th>Assigner</th>
                     <th>Amount</th>
                     <th>Type</th>
+                    <th>Date</th>
                     <th>Comment</th>
                 </tr>
                 <?php foreach($points as $row) {
@@ -75,6 +76,7 @@ $this->load->view('include/navbar.php');
                             <td>{$row->Assigner}</td>
                             <td>{$row->amount}</td>
                             <td>{$row->type}</td>
+                            <td>{$row->date}</td>
                             <td>{$row->comment}</td>
                           </tr>";
                 } ?>
