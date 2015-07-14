@@ -76,7 +76,7 @@ $this->load->view('include/navbar.php');
                 <?php foreach($pointtypes as $row) { ?>
                     <div class="radio">
                         <label>
-                            <?php echo form_radio('pointtype', $row->id, ($row->id == $pointtype)); ?>
+                            <?php echo form_radio('pointtype', $row->id, ($row->id == $pointtype)); // Check if the selected type is this one ?>
                         </label>
                         <?php echo $row->title . ' - ' . $row->description; ?>
                     </div>
