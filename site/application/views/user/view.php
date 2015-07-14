@@ -12,7 +12,7 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
         $this->load->view('include/head_common.php');
     ?>
 
-    <title>CompSoc :: Edit User</title>
+    <title>CompSoc :: View User</title>
 
 </head>
 
@@ -56,22 +56,22 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
 
             <h3>Points</h3>
             <table border="1">
-                <tbody>
-                    <tr>
-                        <th>Points</th>
-                        <th>Type</th>
-                        <th>By</th>
-                        <th>Date</th>
-                        <th>Comment</th>
-                    </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>Academic</td>
-                        <td>Someone</td>
-                        <td>05/07/2015</td>
-                        <td>Comment</td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>Assigner</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Comment</th>
+                </tr>
+                <?php foreach ($points as $row) {
+                    echo "<tr>
+                            <td>{$row->Assigner}</td>
+                            <td>{$row->amount}</td>
+                            <td>{$row->type}</td>
+                            <td>{$row->date}</td>
+                            <td>{$row->comment}</td>
+                          </tr>";
+                } ?>
             </table>
         </div>
     </div>

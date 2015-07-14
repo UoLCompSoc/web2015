@@ -12,7 +12,7 @@ Permissions::require_authorized(Permissions::POINTS_ADMIN);
     $this->load->view('include/head_common.php');
     ?>
 
-    <title>CompSoc :: Add Points</title>
+    <title>CompSoc :: View Points</title>
 
 </head>
 

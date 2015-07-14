@@ -23,19 +23,11 @@ class Point extends CI_Controller
     {
         //Check if the view has been given a id to lookup
         if ($userid == -1) {
-            $this->load->view('admin');
+            redirect('user/listview');
             return;
         }
 
-        //TODO Make this less horrific
-        //Gets a list of all of the points given to a user and associates the Full name of the assigner, as well as the type of the points given
-        $this->db->select("a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type, t.timecreated AS date");
-        $this->db->from('transactions AS t');
-        $this->db->order_by('t.timecreated');
-        $this->db->where('t.userid', $userid);
-        $this->db->join('point_types as p', 't.pointtype = p.id');
-        $this->db->join('users as a', 't.assignerid = a.userid');
-        $query = $this->db->get();
+        $query = $this->_getPointResult($userid);
 
         //Gets the user
         $user = $this->db->get_where('users', array('userid' => $userid));
@@ -50,6 +42,19 @@ class Point extends CI_Controller
         $data['total'] = $total->row()->amount;
 
         $this->load->view('point/view', $data);
+    }
+
+    private function _getPointResult($userid)
+    {
+        //TODO Make this less horrific
+        //Gets a list of all of the points given to a user and associates the Full name of the assigner, as well as the type of the points given
+        $this->db->select("a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type, t.timecreated AS date");
+        $this->db->from('transactions AS t');
+        $this->db->order_by('t.timecreated');
+        $this->db->where('t.userid', $userid);
+        $this->db->join('point_types as p', 't.pointtype = p.id');
+        $this->db->join('users as a', 't.assignerid = a.userid');
+        return $this->db->get();
     }
 
     /**
