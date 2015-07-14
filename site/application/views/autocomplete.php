@@ -9,7 +9,7 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
 <head>
 
 <?php
-require_once 'include/head_common.php';
+$this->load->view('include/head_common.php');
 ?>
 
 <title>CompSoc :: Autocomplete Test</title>
@@ -18,18 +18,18 @@ require_once 'include/head_common.php';
 
 <body>
 	<?php
-	require_once 'include/navbar.php';
+    $this->load->view('include/navbar.php');
 	?>
 
 	<!-- Page Content -->
 	<div class="container">
 	
 	<?php
-	require_once 'include/notification_message.php';
+    $this->load->view('include/notification_message.php');
 	?>
 	
 	<?php
-	require_once 'include/flashdata_message.php';
+    $this->load->view('include/flashdata_message.php');
 	?>
 
 		<div class="row text-center">
@@ -49,7 +49,7 @@ require_once 'include/head_common.php';
 		<!-- /.container -->
 		
 		<?php
-		require_once 'include/bootstrapjs.php';
+        $this->load->view('include/bootstrapjs.php');
 		?>
 		
     <script>

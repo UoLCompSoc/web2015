@@ -8,7 +8,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 <head>
 
 <?php
-require_once 'include/head_common.php';
+$this->load->view('include/head_common.php');
 ?>
 
 <title>CompSoc :: Login</title>
@@ -17,7 +17,7 @@ require_once 'include/head_common.php';
 
 <body>
 	<?php
-	require_once 'include/navbar.php';
+    $this->load->view('include/navbar.php');
 	?>
 
 	<!-- Page Content -->
@@ -29,7 +29,7 @@ require_once 'include/head_common.php';
 		
 		<?php
 		if (ENVIRONMENT === 'production') {
-			require_once 'include/in_development_message.php';			
+            $this->load->view('include/in_development_message.php');
 		}
 		?>
 		
@@ -47,8 +47,8 @@ require_once 'include/head_common.php';
 		</div>
 		<?php endif; ?>
 		
-		<?php 
-		require_once 'include/flashdata_message.php';
+		<?php
+        $this->load->view('include/flashdata_message.php');
 		?>
 
 		<div class="row">
@@ -97,7 +97,7 @@ require_once 'include/head_common.php';
 		<!-- /.container -->
 		
 		<?php
-		require_once 'include/bootstrapjs.php';
+        $this->load->view('include/bootstrapjs.php');
 		?>
 </body>
 </html>

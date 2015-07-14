@@ -12,7 +12,7 @@ Permissions::require_admin();
  * This should be the first "require" because it contains the charset,
  * which should come directly after the <head> tag.
  */
-require_once 'include/head_common.php';
+$this->load->view('include/head_common.php');
 ?>
 
 <title>CompSoc :: Administrators</title>
@@ -21,7 +21,7 @@ require_once 'include/head_common.php';
 
 <body>
 	<?php
-	require_once 'include/navbar.php';
+    $this->load->view('include/navbar.php');
 	?>
 
 	<!-- Page Content -->
@@ -32,7 +32,9 @@ require_once 'include/head_common.php';
 	<?php endif; ?>
 	
 	<?php if (Permissions::is_authorized(Permissions::POINTS_ADMIN)):?>
-	<div class="row"><div class="col"><p>Points Admin</p></div></div>
+        <div class="row">
+            <div class="col"><p><a href="/index.php/point/">Points Admin</a></p></div>
+        </div>
 	<?php endif; ?>
 	
 	<?php if(Permissions::is_authorized(Permissions::PORTFOLIO_ADMIN)):?>
@@ -46,7 +48,7 @@ require_once 'include/head_common.php';
 	</div>
 		
 	<?php
-	require_once 'include/bootstrapjs.php';
+    $this->load->view('include/bootstrapjs.php');
 	?>
 </body>
 </html>

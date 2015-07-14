@@ -11,7 +11,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
  * This should be the first "require" because it contains the charset,
  * which should come directly after the <head> tag.
  */
-require_once 'include/head_common.php';
+$this->load->view('include/head_common.php');
 ?>
 
 <title>CompSoc :: Home</title>
@@ -20,18 +20,18 @@ require_once 'include/head_common.php';
 
 <body>
 	<?php
-	require_once 'include/navbar.php';
+    $this->load->view('include/navbar.php');
 	?>
 
 	<!-- Page Content -->
 	<div class="container">
-	
-	<?php 
-	require_once 'include/notification_message.php';
+
+        <?php
+        $this->load->view('include/notification_message.php');
 	?>
 	
-	<?php 
-		require_once 'include/flashdata_message.php';
+	<?php
+    $this->load->view('include/flashdata_message.php');
 		?>
 
 		<div class="row text-center">
@@ -42,10 +42,10 @@ require_once 'include/head_common.php';
 			<div class="col-lg-12 text-center">
 				<?php				
 				if (ENVIRONMENT === 'development') {
-					require_once 'welcome/devwelcome.php';
+                    $this->load->view('welcome/devwelcome.php');
 				}
-				
-				require_once 'welcome/welcome.php';
+
+                $this->load->view('welcome/welcome.php');
 				
 				?>
 			
@@ -56,7 +56,7 @@ require_once 'include/head_common.php';
 		<!-- /.container -->
 		
 		<?php
-		require_once 'include/bootstrapjs.php';
+        $this->load->view('include/bootstrapjs.php');
 		?>
 
 </body>
