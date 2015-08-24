@@ -53,6 +53,8 @@ require_once 'include/head_common.php';
 			<!-- /.row -->
 
 		</div>
+		
+		</div>
 		<!-- /.container -->
 		
 		<?php
