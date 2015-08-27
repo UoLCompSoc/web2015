@@ -68,6 +68,8 @@ $this->load->view('include/head_common.php');
           }
     });
     </script>
+    
+    </div>
 
 </body>
 </html>

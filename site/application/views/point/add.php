@@ -84,7 +84,7 @@ $this->load->view('include/navbar.php');
             </div>
 
             <label for="comment" class="sr-only">Comment:</label>
-            <textarea id="comment" name="comment" type="text" class="form-control" placeholder="Comment"><?php echo set_value('comment', $comment); ?></textarea>
+            <textarea id="comment" name="comment" class="form-control" placeholder="Comment"><?php echo set_value('comment', $comment); ?></textarea>
             <br />
             <input type="submit" value="Add Points" name="submit" id="submit" class="btn btn-primary">
         </div>
@@ -111,5 +111,6 @@ $this->load->view('include/navbar.php');
             }
         });
     </script>
+    </div>
 </body>
 </html>

@@ -111,5 +111,6 @@ $this->load->view('include/navbar.php');
     <?php
     $this->load->view('include/bootstrapjs.php');
     ?>
+</div>
 </body>
 </html>

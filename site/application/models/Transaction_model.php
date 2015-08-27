@@ -18,6 +18,26 @@ class Transaction_model extends CI_Model {
     {
         parent::__construct();
     }
+    
+    public function get_points_for_id($id) {
+    	$result = $this->db->query("SELECT SUM(amount) AS total FROM transactions WHERE userid={$id};");
+    	 
+    	if($result->num_rows() != 1) {
+    		return -1;
+    	}
+    	 
+    	return $result->row()->total;
+    }
+    
+    /**
+     * Returns the number of points that the given user email has, or -1 on failure
+     * @param $email the email of the user
+     */
+    public function get_points_for_email($email) {
+    	$user = $this->user_model->get_by_email($email);
+    	
+    	return $this->get_points_for_id($user->userid);
+    }
 
     public function insert($data){
         $insertdata = array(

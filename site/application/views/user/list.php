@@ -69,5 +69,6 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
     <?php
         $this->load->view('include/bootstrapjs.php');
     ?>
+</div>
 </body>
 </html>

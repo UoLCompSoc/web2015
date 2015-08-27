@@ -53,7 +53,7 @@ $this->load->view('include/head_common.php');
         $this->load->view('include/bootstrapjs.php');
 		?>
 
-
+	</div>
 
 </body>
 </html>

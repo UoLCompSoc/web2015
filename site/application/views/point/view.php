@@ -103,5 +103,6 @@ $this->load->view('include/navbar.php');
             }
         });
     </script>
+    </div>
 </body>
 </html>

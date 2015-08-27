@@ -2,8 +2,6 @@
 class Login extends CI_Controller {
 	public function __construct() {
 		parent::__construct ();
-		
-		$this->load->model ( 'user_model' );
 	}
 	
 	public function index() {
@@ -40,7 +38,7 @@ class Login extends CI_Controller {
 			
 			if($verified !== FALSE) {
 				// logged in successfully
-				$this->set_login_session($userdata['email'], $verified['permissions']);
+				$this->set_login_session($userdata['email'], $verified->permissions);
 				$this->load->view('profile.php', array('notification_message' => 'Login successful; welcome back!'));
 			} else {
 				$this->load->view('login.php', array('message' => "Login failed; did you enter the correct e-mail and password?"));
