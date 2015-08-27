@@ -7,13 +7,11 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
 <html lang="en">
 
 <head>
-
-    <?php
+<?php
 $this->load->view('include/head_common.php');
-    ?>
+?>
 
-    <title>CompSoc :: Edit User</title>
-
+<title>CompSoc :: Edit User</title>
 </head>
 
 <body>
@@ -21,7 +19,6 @@ $this->load->view('include/head_common.php');
 $this->load->view('include/navbar.php');
 ?>
 
-<!-- Page Content -->
 <div class="container">
 
     <?php
@@ -108,9 +105,10 @@ $this->load->view('include/navbar.php');
         <!-- /.row -->
         <?php echo form_close(); ?>
     </div>
+</div>
     <?php
+    $this->load->view('include/footer.php');
     $this->load->view('include/bootstrapjs.php');
     ?>
-</div>
 </body>
 </html>

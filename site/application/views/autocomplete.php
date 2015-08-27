@@ -2,6 +2,14 @@
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 Permissions::require_authorized(Permissions::USER_ADMIN);
+
+/*****************************
+ *  TEST FILE
+ * ****************************
+ * 
+ * 
+ * DOES NOT NEED FORMATTING
+ *****************************/
 ?>
 <!DOCTYPE html>
 <html lang="en">

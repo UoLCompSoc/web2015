@@ -13,7 +13,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 $this->load->view ( 'include/head_common.php' );
 ?>
 
-<title>CompSoc :: CHANGEME</title>
+<title>CompSoc :: Projects</title>
 </head>
 
 <body>
@@ -30,9 +30,19 @@ $this->load->view ( 'include/head_common.php' );
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="page-header">
-							<h2>HEADER</h2>
+							<h2>CompSoc Projects</h2>
 						</div>
-						<p>TEXT GOES HERE</p>
+						<p>Here you'll see a few of our projects, both past and present.</p>
+
+						<p>We're still working on writing up some of the finer details,
+							but this site is an excellent example of one of our group
+							projects, incorporating several people with different
+							specialities and interests!</p>
+
+						<p>
+							Check it out <a href="https://github.com/UoLCompSoc/web2015"
+								target="_blank">on GitHub</a> and throw us a star!
+						</p>
 					</div>
 				</div>
 			</div>
