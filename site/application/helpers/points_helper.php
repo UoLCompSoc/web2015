@@ -2,14 +2,18 @@
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 abstract class Points {
-	public static function get_points_for_current_user() {
+	/**
+	 * @param string $nomsg the string to print if there aren't any bits for the registered user.
+	 * @return the number of points as an int, or $nomsg if an error occurred.
+	 */
+	public static function get_points_for_current_user($nomsg = 'no') {
 		$CI =& get_instance();
+		$pts = $CI->transaction_model->get_points_for_email($CI->session->userdata ( 'email' ));
 		
-		return $CI->transaction_model->get_points_for_email($CI->session->userdata ( 'email' ));
+		return ($pts === -1 ? $nomsg : $pts);
 	}
 	
 	/**
-	 * 
 	 * @param string $nomsg the string to print if there aren't any bits for the registered user.
 	 */
 	public static function echo_points_for_current_user($nomsg = 'no') {

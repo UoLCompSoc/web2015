@@ -21,12 +21,10 @@ class Transaction_model extends CI_Model {
     
     public function get_points_for_id($id) {
     	$result = $this->db->query("SELECT SUM(amount) AS total FROM transactions WHERE userid={$id};");
-    	 
-    	if($result->num_rows() != 1) {
-    		return -1;
-    	}
-    	 
-    	return $result->row()->total;
+    	
+    	$pts = $result->row()->total;
+    	
+    	return ($pts === null ? -1 : $pts);
     }
     
     /**
