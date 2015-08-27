@@ -14,7 +14,8 @@ class User extends CI_Controller {
 	}
 
     public function listview(){
-        $query = $this->db->get('users');
+
+        $query = $this->db->query("SELECT users.userid,username,fullname,email,sum(amount) AS total FROM users LEFT JOIN transactions ON users.userid = transactions.userid GROUP BY transactions.userid");
         $data['users'] = $query->result();
 
         $this->load->view('user/list', $data);
@@ -26,8 +27,23 @@ class User extends CI_Controller {
         $user = $query->row();
         $data['user'] = $user;
 
+        $data['points'] = $this->_getPointResult($userid)->result();
+
         $data['permissions'] = $this->_permissions_to_array($user->permissions);
         $this->load->view('user/view', $data);
+    }
+
+    private function _getPointResult($userid)
+    {
+        //TODO Make this less horrific
+        //Gets a list of all of the points given to a user and associates the Full name of the assigner, as well as the type of the points given
+        $this->db->select("a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type, t.timecreated AS date");
+        $this->db->from('transactions AS t');
+        $this->db->order_by('t.timecreated');
+        $this->db->where('t.userid', $userid);
+        $this->db->join('point_types as p', 't.pointtype = p.id');
+        $this->db->join('users as a', 't.assignerid = a.userid');
+        return $this->db->get();
     }
 
     private function _permissions_to_array($permissions){

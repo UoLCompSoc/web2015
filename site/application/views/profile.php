@@ -12,7 +12,7 @@ Permissions::require_logged_in();
  * This should be the first "require" because it contains the charset,
  * which should come directly after the <head> tag.
  */
-require_once 'include/head_common.php';
+$this->load->view('include/head_common.php');
 ?>
 
 <title>CompSoc :: Profile</title>
@@ -21,18 +21,18 @@ require_once 'include/head_common.php';
 
 <body>
 	<?php
-	require_once 'include/navbar.php';
+    $this->load->view('include/navbar.php');
 	?>
 
 	<!-- Page Content -->
 	<div class="container">
-	
-	<?php 
-	require_once 'include/notification_message.php';
+
+        <?php
+        $this->load->view('include/notification_message.php');
 	?>
-	
-	<?php 
-	require_once 'include/account_confirmation_dialog.php';
+
+        <?php
+        $this->load->view('include/account_confirmation_dialog.php');
 	?>
 
 	<div class="row">
@@ -49,7 +49,7 @@ require_once 'include/head_common.php';
 	</div>
 		
 	<?php
-	require_once 'include/bootstrapjs.php';
+    $this->load->view('include/bootstrapjs.php');
 	?>
 </body>
 </html>
