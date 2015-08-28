@@ -2,7 +2,6 @@
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 ?>
 
-<!--
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true"
 	style="display: none;">
@@ -10,20 +9,19 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 		<div class="loginmodal-container">
 			<h1>Login to Your Account</h1>
 			<br>
-			<form>
-				<input type="text" name="user" placeholder="Username"> <input
-					type="password1" name="pass" placeholder="Password"> <input
-					type="submit" name="login" class="login loginmodal-submit"
+			<?php echo form_open('login/login_process'); ?>
+				<input type="text" name="email" id="email" placeholder="Username">
+				<input type="password1" name="password" id="password" placeholder="Password">
+				<input type="submit" name="submit" id="submit" class="login loginmodal-submit"
 					value="Login">
-			</form>
+			<?php echo form_close(); ?>
 
 			<div class="login-help">
-				<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				<a href="/index.php/login">Register</a>
 			</div>
 		</div>
 	</div>
 </div>
- -->
  
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

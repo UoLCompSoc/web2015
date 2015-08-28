@@ -27,7 +27,12 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li><a href="/index.php/profile">Profile</a></li>
 				<li><a href="/index.php/login/logout">Logout</a></li>
 				<?php else: ?>
-				<li><a href="/index.php/login">Login</a>
+				<li><a href="/index.php/login" data-toggle="modal" data-target="#login-modal" name="navbar-login" id="navbar-login">Login</a>
+				<script>
+					// we change the href to # so that if a user has javascript they get the fancy version
+					// but if they don't they'll go to the regular login page.
+					$(document).ready(function() {$("a.navbar-login").attr('href', '#');});
+				</script>
 				<?php endif;?>
 				
 				
