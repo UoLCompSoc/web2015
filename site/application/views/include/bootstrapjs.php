@@ -11,7 +11,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 			<br>
 			<?php echo form_open('login/login_process'); ?>
 				<input type="text" name="email" id="email" placeholder="Username">
-				<input type="password1" name="password" id="password" placeholder="Password">
+				<input type="password" name="password" id="password" placeholder="Password">
 				<input type="submit" name="submit" id="submit" class="login loginmodal-submit"
 					value="Login">
 			<?php echo form_close(); ?>

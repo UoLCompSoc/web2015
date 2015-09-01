@@ -3,7 +3,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 ?>
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -19,7 +19,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/index.php/about">About Us</a></li>
 				<li><a href="/index.php/bits">Bits</a></li>
 				<li><a href="/index.php/projects">Projects</a></li>

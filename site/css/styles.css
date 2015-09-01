@@ -1,17 +1,10 @@
 .page-header {
-
 	margin-top: 0;
-	
 }
 
 .panel-body {
-
 	padding-top: 0;
-
 }
-
-
-@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
@@ -23,13 +16,11 @@
   border-radius: 2px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  font-family: roboto;
 }
 
 .loginmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
-  font-family: roboto;
 }
 
 .loginmodal-container input[type=submit] {
@@ -39,7 +30,7 @@
   position: relative;
 }
 
-.loginmodal-container input[type=text], input[type=password1] {
+.loginmodal-container input[type=text], input[type=password] {
   height: 44px;
   font-size: 16px;
   width: 100%;
@@ -54,7 +45,7 @@
   -moz-box-sizing: border-box;
 }
 
-.loginmodal-container input[type=text]:hover, input[type=password1]:hover {
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
   border: 1px solid #b9b9b9;
   border-top: 1px solid #a0a0a0;
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
@@ -65,7 +56,6 @@
 .loginmodal {
   text-align: center;
   font-size: 14px;
-  font-family: 'Arial', sans-serif;
   font-weight: 700;
   height: 36px;
   padding: 0 8px;
@@ -81,7 +71,6 @@
   text-shadow: 0 1px rgba(0,0,0,0.1); 
   background-color: #4d90fe;
   padding: 17px 0px;
-  font-family: roboto;
   font-size: 14px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
