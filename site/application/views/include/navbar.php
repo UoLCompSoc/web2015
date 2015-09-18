@@ -23,11 +23,14 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li><a href="/index.php/about">About Us</a></li>
 				<li><a href="/index.php/bits">Bits</a></li>
 				<li><a href="/index.php/projects">Projects</a></li>
-				<?php if (get_instance()->session->userdata('logged_in')):?>
+				<?php if (get_instance()->session->userdata('logged_in')): ?>
 				<li><a href="/index.php/profile">Profile</a></li>
+				<?php if (Permissions::is_admin()): ?>
+				<li><a href="/index.php/admin">Admin</a></li>
+				<?php endif; ?>
 				<li><a href="/index.php/login/logout">Logout</a></li>
 				<?php else: ?>
-				<li><a href="/index.php/login" data-toggle="modal" data-target="#login-modal" name="navbar-login" id="navbar-login">Login</a>
+				<li><a href="/index.php/login" data-toggle="modal" data-target="#login-modal" id="navbar-login">Login</a>
 				<script>
 					// we change the href to # so that if a user has javascript they get the fancy version
 					// but if they don't they'll go to the regular login page.

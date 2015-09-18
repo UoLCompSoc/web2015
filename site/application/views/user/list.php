@@ -40,7 +40,7 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
         <div class="col-lg-12 text-center">
             <h4>List User Details</h4><br>
 
-            <table border="1">
+            <table class="table table-striped">
                 <tbody>
                 <tr>
                     <th>Full Name</th>
