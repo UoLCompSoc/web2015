@@ -16,8 +16,8 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					value="Login">
 			<?php echo form_close(); ?>
 
-			<div class="login-help">
-				<a href="/index.php/login">Register</a>
+			<div>
+				<a class="btn btn-danger btn-block" href="/index.php/login">Register</a>
 			</div>
 		</div>
 	</div>
@@ -28,6 +28,4 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
-	integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
-	crossorigin="anonymous"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

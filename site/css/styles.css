@@ -1,11 +1,3 @@
-.page-header {
-	margin-top: 0;
-}
-
-.panel-body {
-	padding-top: 0;
-}
-
 /****** LOGIN MODAL ******/
 .loginmodal-container {
   padding: 30px;
@@ -83,6 +75,7 @@
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
+/*
 .loginmodal-container a {
   text-decoration: none;
   color: #666;
@@ -91,7 +84,8 @@
   display: inline-block;
   opacity: 0.6;
   transition: opacity ease 0.5s;
-} 
+}
+*/
 
 .login-help{
   font-size: 12px;
