@@ -1,5 +1,5 @@
 <div class="col-lg-2 hidden-xs hidden-sm hidden-md">
-	<div class="list-group">
+	<div class="list-group" style="text-align: center;">
 		<a href="<?php echo Social::FACEBOOK_URL; ?>" target="_blank"
 			class="list-group-item list-group-item-heading"> Facebook <img
 			class="featuredImg" src="/img/facebook.png" width="100%">

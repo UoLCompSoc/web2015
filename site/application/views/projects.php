@@ -32,16 +32,17 @@ $this->load->view ( 'include/head_common.php' );
 						<div class="page-header">
 							<h2>CompSoc Projects</h2>
 						</div>
-						<p>Here you'll see a few of our projects, both past and present.</p>
-
-						<p>We're still working on writing up some of the finer details,
-							but this site is an excellent example of one of our group
-							projects, incorporating several people with different
-							specialities and interests!</p>
+						<p>Here we're building a project portfolio, so we can show off the cool stuff we've done. A great example is the
+							portfolio itself: a CompSoc project with multiple team members taking part.</p>
 
 						<p>
-							Check it out <a href="https://github.com/UoLCompSoc/web2015"
-								target="_blank">on GitHub</a> and throw us a star!
+							Check out the progress <a href="https://github.com/UoLCompSoc/web2015" target="_blank">on <i class="fa fa-github"></i>GitHub
+							</a> and throw us a star!
+						</p>
+
+						<p>
+							<iframe src="https://ghbtns.com/github-btn.html?user=UoLCompSoc&repo=web2015&type=star&count=true&size=large"
+								frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 						</p>
 					</div>
 				</div>

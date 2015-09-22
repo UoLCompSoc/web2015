@@ -14,7 +14,11 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					class="icon-bar"></span>
 			</button>
 
-			<a class="navbar-brand" href="/index.php/">CompSoc</a>
+			
+			<div class="pull-left" style="margin-top: 5px;"><img src="/img/icon.png" alt="Alien Icon"> </div>
+			<a class="navbar-brand" href="/index.php/">
+				CompSoc
+			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
@@ -43,12 +47,12 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Social Media <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo Social::FACEBOOK_URL; ?>" target="_blank">Facebook</a></li>
-						<li><a href="<?php echo Social::GITHUB_URL; ?>" target="_blank">GitHub</a></li>
-						<li><a href="<?php echo Social::TWITTER_URL; ?>" target="_blank">Twitter</a></li>
-						<li><a href="<?php echo Social::LINKEDIN_URL; ?>" target="_blank">LinkedIn</a></li>
-						<li><a href="<?php echo Social::GPLUS_URL;?>" target="_blank">Google+</a></li>
-						<li><a href="<?php echo Social::STEAM_URL; ?>" target="_blank">Steam</a></li>
+						<li><a href="<?php echo Social::FACEBOOK_URL; ?>" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+						<li><a href="<?php echo Social::TWITTER_URL; ?>" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
+						<li><a href="<?php echo Social::GITHUB_URL; ?>" target="_blank"><i class="fa fa-github"></i> GitHub</a></li>
+						<li><a href="<?php echo Social::LINKEDIN_URL; ?>" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+						<li><a href="<?php echo Social::GPLUS_URL;?>" target="_blank"><i class="fa fa-google-plus"></i> Google+</a></li>
+						<li><a href="<?php echo Social::STEAM_URL; ?>" target="_blank"><i class="fa fa-steam"></i> Steam</a></li>
 					</ul>
 				</li>
 			</ul>
