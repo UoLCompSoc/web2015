@@ -103,7 +103,13 @@ class User extends CI_Controller {
                 'field' => 'steamID',
                 'label' => 'Steam ID',
                 'rules' => 'trim'
-            )
+            ),
+        		
+        	array (
+        		'field' => 'twitterID',
+        		'label' => 'Twitter Handle',
+        		'rules' => 'trim'
+        	)
         );
         $this->form_validation->set_rules ( $rules );
 
@@ -120,6 +126,7 @@ class User extends CI_Controller {
                 'githubID' => $user->githubID,
                 'linkedinURL' => $user->linkedinURL,
                 'steamID' => $user->steamID,
+            	'twitterID' => $user->twitterID,
                 'permissions' => $this->_permissions_to_array($user->permissions)
             );
 
