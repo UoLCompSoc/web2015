@@ -46,6 +46,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					// but if they don't they'll go to the regular login page.
 					$(document).ready(function() {$("a.navbar-login").attr('href', '#');});
 				</script>
+				<li><a href="/index.php/login">Register</a></li>
 				<?php endif;?>
 				
 				
