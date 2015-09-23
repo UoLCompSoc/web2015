@@ -23,11 +23,6 @@ $this->load->view ( 'include/head_common.php' );
 	<!-- Page Content -->
 	<div class="container">
 		<?php $this->load->view('include/sitewide_banner.php'); ?>
-		<?php
-		if (ENVIRONMENT === 'production') {
-			$this->load->view ( 'include/in_development_message.php' );
-		}
-		?>
 		
 		<?php
 		$validation_errors = validation_errors ();
