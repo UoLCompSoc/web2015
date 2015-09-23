@@ -36,13 +36,14 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					</ul>
 				</li>
 				<?php if (Permissions::is_admin()): ?>
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="/index.php/user">Users</a></li>
 					<li><a href="/index.php/point">Points</a></li>
 					<li><a href="#">Portfolio</a></li>
 					<li><a href="#">Batch User</a></li>
 				</ul>
+				</li>
 				<?php endif; ?>
 				<li><a href="/index.php/login/logout">Logout</a></li>
 				<?php else: ?>
