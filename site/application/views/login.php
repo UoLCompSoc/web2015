@@ -44,21 +44,9 @@ $this->load->view ( 'include/head_common.php' );
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="page-header">
-						<h2>Login with your CompSoc Account</h2>
+						<h2>Register with CompSoc</h2>
 					</div>
-
-					<h4>Login</h4>
-					<br>
-					<?php echo form_open('login/login_process'); ?>
-						<label for="email" class="sr-only">E-mail Address</label>
-						<input type="text" name="email" id="email" class="form-control" placeholder="E-Mail Address" value="<?php echo set_value('email'); ?>"><br>
-						
-						<label for="password" class="sr-only">Password</label>
-						<input type="password" name="password" id="password" class="form-control" placeholder="Password"><br>
-						
-						<input type="submit" value="Login" name="submit" id="submit" class="btn btn-primary">
-					<?php echo form_close(); ?>
-			
+					
 					<h4>Register</h4>
 					<br>
 					<?php echo form_open('login/register_process'); ?>
@@ -79,6 +67,20 @@ $this->load->view ( 'include/head_common.php' );
 						
 						<input type="submit" value="Register" name="reg_submit" id="reg_submit" class="btn btn-primary">
 					<?php echo form_close(); ?>
+					
+					<br>
+					
+					<p>Already have an account? Login here!</p>
+					<?php echo form_open('login/login_process'); ?>
+						<label for="email" class="sr-only">E-mail Address</label>
+						<input type="text" name="email" id="email" class="form-control" placeholder="E-Mail Address" value="<?php echo set_value('email'); ?>"><br>
+						
+						<label for="password" class="sr-only">Password</label>
+						<input type="password" name="password" id="password" class="form-control" placeholder="Password"><br>
+						
+						<input type="submit" value="Login" name="submit" id="submit" class="btn btn-primary">
+					<?php echo form_close(); ?>
+		
 				</div>
 			</div>
 		</div>
