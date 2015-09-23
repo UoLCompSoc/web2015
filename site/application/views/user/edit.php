@@ -81,6 +81,9 @@ $this->load->view('include/navbar.php');
 
             <label for="steamID" class="sr-only">Steam ID:</label>
             <input id="steamID" name="steamID" type="text" class="form-control" placeholder="Steam ID" value="<?php echo set_value('steamID' , $steamID); ?>" /><br>
+            
+            <label for="twitterID" class="sr-only">Twitter Handle:</label>
+            <input id="twitterID" name="twitterID" type="text" class="form-control" placeholder="Twitter Handle" value="<?php echo set_value("twitterID", $twitterID); ?>"><br>
 
 
             <h5>Permissions:</h5>

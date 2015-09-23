@@ -38,14 +38,14 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
 
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h2>View User Details</h2><br>
+            <h2><?php echo $user->fullname; ?> - Full User Details</h2><br>
 
-            <p>Fullname: <?php echo $user->fullname; ?></p>
             <p>Email: <?php echo $user->email; ?></p>
             <p>Username: <?php echo $user->username; ?></p>
             <p>Github: <?php echo $user->githubID; ?></p>
             <p>Linkedin: <?php echo $user->linkedinURL; ?></p>
             <p>Steam: <?php echo $user->steamID; ?></p>
+            <p>Twitter: <?php echo $user->twitterID; ?></p>
 
             <h3>Permissions</h3>
             <p>Confirmed User: <?php echo ($permissions['confirmed'] ? 'True': 'False'); ?></p>
