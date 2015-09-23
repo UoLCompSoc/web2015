@@ -33,6 +33,12 @@ $this->load->view ( 'include/head_common.php' );
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="page-header">
+							<h4 class="pull-right">
+								<a href="/index.php/profile/settings" title="Account Settings">
+									<i class="fa fa-cog"></i>
+								</a>
+							</h4>
+							
 							<h2>Profile</h2>
 						</div>
 

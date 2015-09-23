@@ -14,6 +14,7 @@ class User_model extends CI_Model {
 	var $githubID = '';
 	var $linkedinURL = '';
 	var $steamID = '';
+	var $twitterID = '';
 	public function __construct() {
 		parent::__construct ();
 	}
@@ -48,6 +49,11 @@ class User_model extends CI_Model {
 		
 		return $query->row ();
 	}
+	
+	public function get_logged_in() {
+		return $this->get_by_email($this->session->email);
+	}
+	
 	public function insert($userdata) {
 		$email_check = $this->db->get_where ( 'users', 'email', $userdata ['email'] );
 		
@@ -58,7 +64,7 @@ class User_model extends CI_Model {
 		
 		$insertdata = array (
 				'email' => $userdata ['email'],
-				'username' => explode ( '@', $userdata ['email'] )[0],
+				'username' => explode ( '@', $userdata ['email'] ) [0],
 				'fullname' => $userdata ['fname'] . ' ' . $userdata ['lname'],
 				'datejoined' => date ( 'Y-m-d' ),
 				'permissions' => 0x00,
@@ -66,7 +72,7 @@ class User_model extends CI_Model {
 		);
 		
 		if (! $this->db->insert ( 'users', $insertdata )) {
-			log_message ( 'error', "Insert failed on database when creating user: " . $this->db->error ()['message'] );
+			log_message ( 'error', "Insert failed on database when creating user: " . $this->db->error () ['message'] );
 			return FALSE;
 		} else {
 			syslog ( LOG_INFO, "Successfully created user {$insertdata['email']}." );
@@ -87,7 +93,7 @@ class User_model extends CI_Model {
 		
 		$this->db->where ( 'userid', $userdata ['userid'] );
 		if (! $this->db->update ( 'users', $userdata )) {
-			log_message ( 'error', "Update failed on database when updating user: " . $this->db->error ()['message'] );
+			log_message ( 'error', "Update failed on database when updating user: " . $this->db->error () ['message'] );
 			return FALSE;
 		} else {
 			syslog ( LOG_INFO, "Successfully updated user {$userdata['email']}." );
