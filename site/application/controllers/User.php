@@ -13,7 +13,7 @@ class User extends CI_Controller {
 
     public function listview(){
 
-        $query = $this->db->query("SELECT users.userid,username,fullname,email,sum(amount) AS total FROM users LEFT JOIN transactions ON users.userid = transactions.userid GROUP BY transactions.userid");
+        $query = $this->db->query("SELECT users.userid,username,fullname,email FROM users;");
         $data['users'] = $query->result();
 
         $this->load->view('user/list', $data);
