@@ -4,18 +4,13 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description"
-	content="The official website of the Computing Society of the University of Leicester">
+<meta name="description" content="The official website of the Computing Society of the University of Leicester">
 <meta name="author" content="University of Leicester Computing Society">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
-	rel="stylesheet"
-	integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg=="
-	crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/bootstrap-social.css" rel="stylesheet">
 <link href="/css/styles.css" rel="stylesheet">
 <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
