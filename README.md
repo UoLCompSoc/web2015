@@ -5,7 +5,7 @@ Required feature checklist:
 - [ ] User Management System
     - [x] Admin/regular user distinction
     - [ ] Batch user creation system
-    - [ ] Audit system for admin actions
+    - [x] Audit system for admin actions
 - [ ] Portfolio
     - [ ] Entry creator to add new projects
     - [ ] Viewing page
@@ -14,7 +14,7 @@ Required feature checklist:
     - [ ] Leaderboard
     - [x] Audit system
 - [ ] Informational pages
-    - [ ] About Us
+    - [x] About Us
     - [ ] Contact Us
     - [x] Social Media links
 
