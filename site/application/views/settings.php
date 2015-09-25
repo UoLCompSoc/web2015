@@ -26,7 +26,16 @@ $this->load->view ( 'include/head_common.php' );
 		$this->load->view ( 'include/sitewide_banner.php' );
 		$this->load->view ( 'include/notification_message.php' );
 		$this->load->view ( 'include/account_confirmation_dialog.php' );
+		
+		$validation_errors = validation_errors ();
+		if ($validation_errors !== '') :
 		?>
+		<div class="row alert alert-danger">
+			<?php
+			echo $validation_errors;
+			?>
+		</div>
+		<?php endif; ?>
 	
 		<div class="row">
 			<div class="col-lg-9">
@@ -55,12 +64,13 @@ $this->load->view ( 'include/head_common.php' );
 							
 							<div class="form-group">
 								<label for="githubID">GitHub ID <i class="fa fa-github"></i></label>
-								<input type="text" name="githubID" id="githubID" class="form-control" placeholder="GitHub ID" value="<?php echo $githubID;?>"><br>
+								<input type="text" name="githubID" id="githubID" class="form-control" placeholder="GitHub ID" value="<?php echo $githubID; ?>" maxlength="39"><br>
 							</div>
 							
 							<div class="form-group">
 								<label for="twitterID">Twitter Handle <i class="fa fa-twitter"></i></label>
-								<input type="text" name="twitterID" id="twitterID" class="form-control" placeholder="Twitter ID" value="<?php echo $twitterID;?>"><br>
+								<!-- Max length = 16 to include the @ -->
+								<input type="text" name="twitterID" id="twitterID" class="form-control" placeholder="Twitter ID" value="<?php echo $twitterID;?>" maxlength="16"><br>
 							</div>
 							
 							<input type="submit" value="Update Details" name="updateDetails" id="updateDetails" class="btn btn-primary">
