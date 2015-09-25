@@ -11,6 +11,8 @@ class Githubpush extends CI_Controller {
 			$message .= $this->input->get_request_header('X-Hub-Signature');
 		}
 		
-		$this->load->view('ghfeed.php', array('notification_message'=>$message));
+		$data['notification_message'] = $message;
+		
+		$this->load->view('ghfeed.php', $data['notification_message']);
 	}
 }
