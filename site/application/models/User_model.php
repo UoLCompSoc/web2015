@@ -81,9 +81,12 @@ class User_model extends CI_Model {
 	}
 	
 	public function batch_insert($batchuserdata) {
-	    $email_check = $this->db->get_where ( 'users', 'email', $batchuserdata ['emailone'] ) && $this->db->get_where ( 'users', 'email', $batchuserdata ['emailtwo'] ) && 
-	           $this->db->get_where ( 'users', 'email', $batchuserdata ['emailthree'] ) && $this->db->get_where ( 'users', 'email', $batchuserdata ['emailfour'] ) && 
-	           $this->db->get_where ( 'users', 'email', $batchuserdata ['emailfive'] );
+	    $this->db->where ( 'email', $batchuserdata ['emailone'] );
+	    $this->db->where ( 'email', $batchuserdata ['emailtwo'] );
+	    $this->db->where ( 'email', $batchuserdata ['emailthree'] );
+	    $this->db->where ( 'email', $batchuserdata ['emailfour'] );
+	    $this->db->where ( 'email', $batchuserdata ['emailfive'] );
+	    $email_check = $this->db->get( 'users' );
 	           
 	    if ($email_check->num_rows () > 0) {
 			log_message ( 'debug', "Attempt to create account with e-mail {$userdata['email']} collided with existing e-mail in DB. Form validation is probably off." );

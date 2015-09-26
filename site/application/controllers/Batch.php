@@ -20,7 +20,7 @@ class Batch extends CI_Controller {
 				),
 				array (
 						'field' => 'reg_fullnameone',
-						'label' => 'first name',
+						'label' => 'full name',
 						'rules' => 'required|trim'
 				),
 				array (
@@ -30,7 +30,7 @@ class Batch extends CI_Controller {
 				),
 				array (
 						'field' => 'reg_fullnametwo',
-						'label' => 'first name',
+						'label' => 'full name',
 						'rules' => 'trim'
 				),
 				array (
@@ -40,7 +40,7 @@ class Batch extends CI_Controller {
 				),
 				array (
 						'field' => 'reg_fullnamethree',
-						'label' => 'first name',
+						'label' => 'full name',
 						'rules' => 'trim'
 				),
 				array (
@@ -50,7 +50,7 @@ class Batch extends CI_Controller {
 				),
 				array (
 						'field' => 'reg_fullnamefour',
-						'label' => 'first name',
+						'label' => 'full name',
 						'rules' => 'trim'
 				),
 				array (
@@ -60,7 +60,7 @@ class Batch extends CI_Controller {
 				),
 				array (
 						'field' => 'reg_fullnamefive',
-						'label' => 'first name',
+						'label' => 'full name',
 						'rules' => 'trim'
 				)
 		);
@@ -85,12 +85,12 @@ class Batch extends CI_Controller {
 			$result = $this->user_model->batch_insert($batchuserdata);
 			
 			if ($result === TRUE) {
-			    $userdata['message'] = "Accounts created successfully.";    
+			    echo "Accounts created successfully.";
+			    redirect('batch');   
 			} else {
-			    $userdata['message'] = "Could not create accounts. Please check for duplicate email addresses.";
+			    echo "Could not create accounts. Please check for duplicate email addresses.";
 			}
 		}
 		
-		redirect('batch');
     }
 }
