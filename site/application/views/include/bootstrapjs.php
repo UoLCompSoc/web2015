@@ -10,7 +10,9 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 			<h1>Login to Your Account</h1>
 			<br>
 			<?php echo form_open('login/login_process'); ?>
-				<input type="text" name="email" id="email" placeholder="Username">
+				<label for="email" class="sr-only">E-Mail</label>
+				<input type="text" name="email" id="email" placeholder="E-Mail">
+				<label for="password" class="sr-only">Password</label>
 				<input type="password" name="password" id="password" placeholder="Password">
 				<input type="submit" name="submit" id="submit" class="login loginmodal-submit"
 					value="Login">
