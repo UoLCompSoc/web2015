@@ -69,4 +69,32 @@ class Profile extends CI_Controller {
 		
 		$this->settings ( $this->user_model->update ( $userdata ) );
 	}
+	
+	public function change_password() {
+		$rules = array(
+// 			array (
+// 				'field' => 'oldPassword',
+// 				'label' => 'Old Password',
+// 				'rules' => 'required|min_length[5]'
+// 			),
+			array (
+				'field' => 'newPassword1',
+				'label' => 'New Password',
+				'rules' => 'required|min_length[5]'
+			),
+			array(
+				'field' => 'newPassword2',
+				'label' => 'Repeated Password',
+				'rules' => 'required|matches[newPassword1]'
+			)
+		);
+		
+		$this->form_validation->set_rules($rules);
+		if ($this->form_validation->run () === FALSE) {
+			$this->settings(FALSE);
+			return;
+		}
+		
+		$this->settings($this->user_model->change_password($this->input->post('newPassword1')));
+	}
 }

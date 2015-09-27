@@ -100,4 +100,11 @@ class User_model extends CI_Model {
 			return TRUE;
 		}
 	}
+	
+	public function change_password($newPassword) {
+		$user = (array)$this->get_logged_in();
+		
+		$user["passwordhash"] = password_hash($newPassword, PASSWORD_BCRYPT);
+		return $this->update($user);
+	}
 }
