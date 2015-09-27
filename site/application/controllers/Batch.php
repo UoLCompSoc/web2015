@@ -88,14 +88,18 @@ class Batch extends CI_Controller {
 					'passwordfive' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength)
 			);
 			
-			$result = $this->user_model->batch_check($batchuserdata);
+			$this->user_model->batch_insert($batchuserdata['emailone'], $batchuserdata['fullnameone'], $batchuserdata['passwordone']);
+			$this->user_model->batch_insert($batchuserdata['emailtwo'], $batchuserdata['fullnametwo'], $batchuserdata['passwordtwo']);
+			$this->user_model->batch_insert($batchuserdata['emailthree'], $batchuserdata['fullnamethree'], $batchuserdata['passwordthree']);
+			$this->user_model->batch_insert($batchuserdata['emailfour'], $batchuserdata['fullnamefour'], $batchuserdata['passwordfour']);
+			$this->user_model->batch_insert($batchuserdata['emailfive'], $batchuserdata['fullnamefive'], $batchuserdata['passwordfive']);
 			
-			if ($result === TRUE) {
+			/*if ($result === TRUE) {
 			    echo "Accounts created successfully.";
 			    redirect('batch');
 			} else {
 			    echo "Could not create accounts. Please check for duplicate email addresses and incomplete email/full name pairs.";
-			}
+			}*/
 		}
 		
     }
