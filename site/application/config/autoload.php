@@ -62,7 +62,7 @@ $autoload ['packages'] = array ();
 $autoload ['libraries'] = array (
 		'database',
 		'session',
-		'form_validation' 
+		'form_validation',
 );
 
 /*
@@ -94,7 +94,8 @@ $autoload ['helper'] = array (
 		'form',
 		'url',
 		'points',
-		'social' 
+		'social',
+		'batch'
 );
 
 /*

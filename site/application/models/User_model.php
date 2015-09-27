@@ -104,12 +104,18 @@ class User_model extends CI_Model {
 			if (! $this->db->insert ( 'users', $insertdata )) {
 				log_message ( 'error', "Insert failed on database when creating user: " . $this->db->error () ['message'] );
 				return FALSE;
-			} else {
-				syslog ( LOG_INFO, "Successfully created user {$email}." );
-				return TRUE;
 			}
+			
+			if (! BatchHelper::send_batch_creation_email ( $email, $password )) {
+				syslog ( LOG_ERR, "Couldn't send batch creation email, user {$email} is lost forever." );
+				return FALSE;
+			}
+			
+			syslog ( LOG_INFO, "Successfully created user {$email}." );
+			return TRUE;
 		} else {
-			return 0;
+			syslog ( LOG_INFO, "Invalid data in batch creation system." );
+			return FALSE;
 		}
 	}
 

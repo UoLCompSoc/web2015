@@ -52,7 +52,7 @@ $this->load->view ( 'include/head_common.php' );
 						<h3>Update Social Media Details</h3>
 						
 						<?php echo form_open("profile/update_profile"); ?>
-							<div class="form-group">
+						<div class="form-group">
 							<label for="steamID" class="control-label">Steam ID <i class="fa fa-steam"></i></label> <input type="text"
 								name="steamID" id="steamID" class="form-control" placeholder="Steam ID" value="<?php echo $steamID;?>"><br>
 						</div>

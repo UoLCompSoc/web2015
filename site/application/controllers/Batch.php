@@ -14,57 +14,60 @@ class Batch extends CI_Controller {
 		$rules = array (
 				array (
 						'field' => 'reg_emailone',
-						'label' => 'e-mail',
+						'label' => 'e-mail 1',
 						'rules' => 'valid_email|trim|is_unique[users.email]' 
 				),
 				array (
 						'field' => 'reg_fullnameone',
-						'label' => 'full name',
+						'label' => 'full name 1',
 						'rules' => 'trim' 
 				),
 				array (
 						'field' => 'reg_emailtwo',
-						'label' => 'e-mail',
+						'label' => 'e-mail 2',
 						'rules' => 'valid_email|trim|is_unique[users.email]' 
 				),
 				array (
 						'field' => 'reg_fullnametwo',
-						'label' => 'full name',
+						'label' => 'full name 2',
 						'rules' => 'trim' 
 				),
 				array (
 						'field' => 'reg_emailthree',
-						'label' => 'e-mail',
+						'label' => 'e-mail 3',
 						'rules' => 'valid_email|trim|is_unique[users.email]' 
 				),
 				array (
 						'field' => 'reg_fullnamethree',
-						'label' => 'full name',
+						'label' => 'full name 3',
 						'rules' => 'trim' 
 				),
 				array (
 						'field' => 'reg_emailfour',
-						'label' => 'e-mail',
+						'label' => 'e-mail 4',
 						'rules' => 'valid_email|trim|is_unique[users.email]' 
 				),
 				array (
 						'field' => 'reg_fullnamefour',
-						'label' => 'full name',
+						'label' => 'full name 4',
 						'rules' => 'trim' 
 				),
 				array (
 						'field' => 'reg_emailfive',
-						'label' => 'e-mail',
+						'label' => 'e-mail 5',
 						'rules' => 'valid_email|trim|is_unique[users.email]' 
 				),
 				array (
 						'field' => 'reg_fullnamefive',
-						'label' => 'full name',
+						'label' => 'full name 5',
 						'rules' => 'trim' 
 				) 
 		);
 		
 		$this->form_validation->set_rules ( $rules );
+		$userdata = $this->user_model->get_logged_in ();
+		$arr = ( array ) $userdata;
+		$arr ["notification_message"] = "";
 		
 		if ($this->form_validation->run () === TRUE) {
 			// verify
@@ -86,11 +89,6 @@ class Batch extends CI_Controller {
 					'fullnamefive' => $this->input->post ( 'reg_fullnamefive' ),
 					'passwordfive' => substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () - 4 ) ), 0, $passwordlength ) 
 			);
-			
-			// Get the user's profile to show success/fail messages
-			$userdata = $this->user_model->get_logged_in ();
-			$arr = ( array ) $userdata;
-			$arr ["notification_message"] = "";
 			
 			$result = $this->user_model->batch_insert ( $batchuserdata ['emailone'], $batchuserdata ['fullnameone'], $batchuserdata ['passwordone'] );
 			
@@ -132,8 +130,9 @@ class Batch extends CI_Controller {
 				$arr ["notification_message"] .= "Could not create {$batchuserdata['emailfive']}.</br>";
 			}
 			
-			$this->load->view ( 'batch/create', $arr );
 			$_POST = array ();
 		}
+		
+		$this->load->view ( 'batch/create', $arr );
 	}
 }
