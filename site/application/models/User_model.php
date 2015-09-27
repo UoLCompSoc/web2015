@@ -80,7 +80,7 @@ class User_model extends CI_Model {
 		}
 	}
 	
-	public function batch_insert($batchuserdata) {
+	public function batch_check($batchuserdata) {
 	    $this->db->where ( 'email', $batchuserdata ['emailone'] );
 	    $this->db->where ( 'email', $batchuserdata ['emailtwo'] );
 	    $this->db->where ( 'email', $batchuserdata ['emailthree'] );
@@ -89,11 +89,39 @@ class User_model extends CI_Model {
 	    $email_check = $this->db->get( 'users' );
 	           
 	    if ($email_check->num_rows () > 0) {
-			log_message ( 'debug', "Attempt to create account with e-mail {$userdata['email']} collided with existing e-mail in DB. Form validation is probably off." );
+			log_message ( 'debug', "Attempt to create accounts collided with existing e-mail in DB. Form validation is probably off." );
 			return FALSE;
 		}
+		
+		$this->batch_insert($batchuserdata['emailone'], $batchuserdata['fullnameone'], $batchuserdata['passwordone']);
+		$this->batch_insert($batchuserdata['emailtwo'], $batchuserdata['fullnametwo'], $batchuserdata['passwordtwo']);
+		$this->batch_insert($batchuserdata['emailthree'], $batchuserdata['fullnamethree'], $batchuserdata['passwordthree']);
+		$this->batch_insert($batchuserdata['emailfour'], $batchuserdata['fullnamefour'], $batchuserdata['passwordfour']);
+		$this->batch_insert($batchuserdata['emailfive'], $batchuserdata['fullnamefive'], $batchuserdata['passwordfive']);
+		
+	}
 	
-	    return FALSE;
+	public function batch_insert($email, $fullname, $password) {
+		//Check if email/full name pair is complete
+		if ( isset ($email) && strlen($email) && isset ($fullname) && strlen($fullname) ) {
+	        $insertdata = array (
+	            'email' => $email,
+	            'username' => explode ( '@', $email ) [0],
+	            'fullname' => $fullname,
+	            'datejoined' => date ( 'Y-m-d' ),
+	            'permissions' => 0x00,
+	            'passwordhash' => password_hash ($password, PASSWORD_BCRYPT)
+	        );
+	        
+		    if (! $this->db->insert ( 'users', $insertdata )) {
+			    log_message ( 'error', "Insert failed on database when creating user: " . $this->db->error () ['message'] );
+			    return FALSE;
+		    } else {
+			    syslog ( LOG_INFO, "Successfully created user {$email}." );
+			    return TRUE;
+		    }
+	    }
+	    
 	}
 	
 	public function update($userdata) {
