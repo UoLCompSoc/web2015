@@ -73,19 +73,19 @@ class Batch extends CI_Controller {
 			$batchuserdata = array(
 					'emailone' => $this->input->post('reg_emailone'),
 					'fullnameone' => $this->input->post('reg_fullnameone'),
-					'passwordone' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength),
+					'passwordone' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', time())), 0, $passwordlength),
 					'emailtwo' => $this->input->post('reg_emailtwo'),
 					'fullnametwo' => $this->input->post('reg_fullnametwo'),
-					'passwordtwo' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength),
+					'passwordtwo' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', time() - 1)), 0, $passwordlength),
 					'emailthree' => $this->input->post('reg_emailthree'),
 					'fullnamethree' => $this->input->post('reg_fullnamethree'),
-					'passwordthree' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength),
+					'passwordthree' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', time() - 2)), 0, $passwordlength),
 					'emailfour' => $this->input->post('reg_emailfour'),
 					'fullnamefour' => $this->input->post('reg_fullnamefour'),
-					'passwordfour' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength),
+					'passwordfour' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', time() - 3)), 0, $passwordlength),
 					'emailfive' => $this->input->post('reg_emailfive'),
 					'fullnamefive' => $this->input->post('reg_fullnamefive'),
-					'passwordfive' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength)
+					'passwordfive' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', time() - 4)), 0, $passwordlength)
 			);
 			
 			//Get the user's profile to show success/fail messages
@@ -96,44 +96,45 @@ class Batch extends CI_Controller {
 			$result = $this->user_model->batch_insert($batchuserdata['emailone'], $batchuserdata['fullnameone'], $batchuserdata['passwordone']);
 			
 			if ($result === TRUE) {
-				$arr ["notification_message"] .= "Created user {$batchuserdata['emailone']}.\r\n";
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailone']}.</br>";
 			} else if ($result === FALSE) {
-			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailone']}.\r\n";
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailone']}.</br>";
 			}
 			
 			$result = $this->user_model->batch_insert($batchuserdata['emailtwo'], $batchuserdata['fullnametwo'], $batchuserdata['passwordtwo']);
 			
 			if ($result === TRUE) {
-				$arr ["notification_message"] .= "Created user {$batchuserdata['emailtwo']}.\r\n";
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailtwo']}.</br>";
 			} else if ($result === FALSE) {
-			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailtwo']}.\r\n";
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailtwo']}.</br>";
 			}
 			
 			$result = $this->user_model->batch_insert($batchuserdata['emailthree'], $batchuserdata['fullnamethree'], $batchuserdata['passwordthree']);
 			
 			if ($result === TRUE) {
-				$arr ["notification_message"] .= "Created user {$batchuserdata['emailthree']}.\r\n";
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailthree']}.</br>";
 			} else if ($result === FALSE) {
-			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailthree']}.\r\n";
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailthree']}.</br>";
 			}
 			
 			$result = $this->user_model->batch_insert($batchuserdata['emailfour'], $batchuserdata['fullnamefour'], $batchuserdata['passwordfour']);
 			
 			if ($result === TRUE) {
-				$arr ["notification_message"] .= "Created user {$batchuserdata['emailfour']}.\r\n";
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailfour']}.</br>";
 			} else if ($result === FALSE) {
-			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailfour']}.\r\n";
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailfour']}.</br>";
 			}
 			
 			$result = $this->user_model->batch_insert($batchuserdata['emailfive'], $batchuserdata['fullnamefive'], $batchuserdata['passwordfive']);
 			
 			if ($result === TRUE) {
-				$arr ["notification_message"] .= "Created user {$batchuserdata['emailfive']}.\r\n";
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailfive']}.</br>";
 			} else if ($result === FALSE) {
-			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailfive']}.\r\n";
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailfive']}.</br>";
 			}
 			
 			$this->load->view('batch/create', $arr);
+			$_POST = array();
 		}
 		
     }
