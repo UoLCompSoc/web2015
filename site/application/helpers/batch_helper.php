@@ -14,7 +14,7 @@ abstract class BatchHelper {
 	
 		$ci->email->initialize ( $config );
 	
-		$ci->email->from ( 'admin@ulcompsoc.org.uk', 'CompSoc Committee' );
+		$ci->email->from ( 'webmaster@ulcompsoc.org.uk', 'CompSoc Committee' );
 		$ci->email->to ( $email );
 		$ci->email->subject ( 'Verify Your CompSoc Account' );
 		$ci->email->message ( '<p>Hi there!</p>
