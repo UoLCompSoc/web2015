@@ -74,7 +74,7 @@ $this->load->view ( 'include/navbar.php' );
 					</tr>
                 <?php
 																
-foreach ( $points as $row ) {
+																foreach ( $points as $row ) {
 																	echo "<tr>
                             <td>{$row->Assigner}</td>
                             <td>{$row->amount}</td>

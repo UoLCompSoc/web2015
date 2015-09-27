@@ -276,5 +276,4 @@ $smileys = array (
 				'19',
 				'question' 
 		) 
-)
-;
+);

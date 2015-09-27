@@ -23,7 +23,7 @@ class Transaction_model extends CI_Model {
 
 	/**
 	 * Returns the number of points that the given user email has, or -1 on failure
-	 * 
+	 *
 	 * @param $email the
 	 *        	email of the user
 	 */

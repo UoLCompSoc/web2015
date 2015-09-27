@@ -149,8 +149,8 @@ class CI_DB_oci8_driver extends CI_DB {
 				                                             // Easy Connect string (Oracle 10g+)
 				'ec' => '/^(\/\/)?[a-z0-9.:_-]+(:[1-9][0-9]{0,4})?(\/[a-z0-9$_]+)?(:[^\/])?(\/[a-z0-9$_]+)?$/i',
 				'in' => '/^[a-z0-9$_]+$/i' 
-		) // Instance name (defined in tnsnames.ora)
-;
+		); // Instance name (defined in tnsnames.ora)
+
 		
 		/*
 		 * Space characters don't have any effect when actually

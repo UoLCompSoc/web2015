@@ -175,8 +175,8 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 	public function write($session_id, $session_data) {
 		if (! isset ( $this->_memcached )) {
 			return FALSE;
-		}		// Was the ID regenerated?
-		elseif ($session_id !== $this->_session_id) {
+		} // Was the ID regenerated?
+elseif ($session_id !== $this->_session_id) {
 			if (! $this->_release_lock () or ! $this->_get_lock ( $session_id )) {
 				return FALSE;
 			}

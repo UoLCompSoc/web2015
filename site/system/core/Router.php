@@ -225,7 +225,7 @@ class CI_Router {
 	 * to be called.
 	 *
 	 * @used-by CI_Router::_parse_routes()
-	 * 
+	 *
 	 * @param array $segments        	
 	 * @return void
 	 */
@@ -299,7 +299,7 @@ class CI_Router {
 	 * Attempts validate the URI request and determine the controller path.
 	 *
 	 * @used-by CI_Router::_set_request()
-	 * 
+	 *
 	 * @param array $segments        	
 	 * @return mixed segments
 	 */
@@ -345,8 +345,8 @@ class CI_Router {
 			if (is_string ( $this->routes [$uri] )) {
 				$this->_set_request ( explode ( '/', $this->routes [$uri] ) );
 				return;
-			}			// Is there a matching http verb?
-			elseif (is_array ( $this->routes [$uri] ) && isset ( $this->routes [$uri] [$http_verb] )) {
+			} // Is there a matching http verb?
+elseif (is_array ( $this->routes [$uri] ) && isset ( $this->routes [$uri] [$http_verb] )) {
 				$this->_set_request ( explode ( '/', $this->routes [$uri] [$http_verb] ) );
 				return;
 			}
@@ -381,8 +381,8 @@ class CI_Router {
 					
 					// Execute the callback using the values in matches as its parameters.
 					$val = call_user_func_array ( $val, $matches );
-				}				// Are we using the default routing method for back-references?
-				elseif (strpos ( $val, '$' ) !== FALSE && strpos ( $key, '(' ) !== FALSE) {
+				} // Are we using the default routing method for back-references?
+elseif (strpos ( $val, '$' ) !== FALSE && strpos ( $key, '(' ) !== FALSE) {
 					$val = preg_replace ( '#^' . $key . '$#', $val, $uri );
 				}
 				

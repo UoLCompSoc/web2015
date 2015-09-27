@@ -98,7 +98,7 @@ abstract class CI_DB_driver {
 	 * Sub-driver
 	 *
 	 * @used-by CI_DB_pdo_driver
-	 * 
+	 *
 	 * @var string
 	 */
 	public $subdriver;
@@ -1231,8 +1231,8 @@ abstract class CI_DB_driver {
 			}
 			
 			return $item;
-		}		// Avoid breaking functions and literal values inside queries
-		elseif (ctype_digit ( $item ) or $item [0] === "'" or ($this->_escape_char !== '"' && $item [0] === '"') or strpos ( $item, '(' ) !== FALSE) {
+		} // Avoid breaking functions and literal values inside queries
+elseif (ctype_digit ( $item ) or $item [0] === "'" or ($this->_escape_char !== '"' && $item [0] === '"') or strpos ( $item, '(' ) !== FALSE) {
 			return $item;
 		}
 		
@@ -1393,8 +1393,8 @@ abstract class CI_DB_driver {
 					'\s+NOT IN\s*\([^\)]+\)', // NOT IN (list)
 					'\s+LIKE\s+\S+' . $_les, // LIKE 'expr'[ ESCAPE '%s']
 					'\s+NOT LIKE\s+\S+' . $_les 
-			) // NOT LIKE 'expr'[ ESCAPE '%s']
-;
+			); // NOT LIKE 'expr'[ ESCAPE '%s']
+
 		}
 		
 		return preg_match ( '/' . implode ( '|', $_operators ) . '/i', $str, $match ) ? $match [0] : FALSE;
@@ -1685,12 +1685,12 @@ abstract class CI_DB_driver {
 				// If so, we add the table prefix to the column name in the 3rd segment.
 				if (isset ( $parts [3] )) {
 					$i = 2;
-				}				// Do we have 3 segments (database.table.column)?
-				// If so, we add the table prefix to the column name in 2nd position
+				} // Do we have 3 segments (database.table.column)?
+				  // If so, we add the table prefix to the column name in 2nd position
 				elseif (isset ( $parts [2] )) {
 					$i = 1;
-				} 				// Do we have 2 segments (table.column)?
-				// If so, we add the table prefix to the column name in 1st segment
+				}  // Do we have 2 segments (table.column)?
+				  // If so, we add the table prefix to the column name in 1st segment
 				else {
 					$i = 0;
 				}
@@ -1704,8 +1704,8 @@ abstract class CI_DB_driver {
 				// Verify table prefix and replace if necessary
 				if ($this->swap_pre !== '' && strpos ( $parts [$i], $this->swap_pre ) === 0) {
 					$parts [$i] = preg_replace ( '/^' . $this->swap_pre . '(\S+?)/', $this->dbprefix . '\\1', $parts [$i] );
-				}				// We only add the table prefix if it does not already exist
-				elseif (strpos ( $parts [$i], $this->dbprefix ) !== 0) {
+				} // We only add the table prefix if it does not already exist
+elseif (strpos ( $parts [$i], $this->dbprefix ) !== 0) {
 					$parts [$i] = $this->dbprefix . $parts [$i];
 				}
 				
@@ -1725,8 +1725,8 @@ abstract class CI_DB_driver {
 			// Verify table prefix and replace if necessary
 			if ($this->swap_pre !== '' && strpos ( $item, $this->swap_pre ) === 0) {
 				$item = preg_replace ( '/^' . $this->swap_pre . '(\S+?)/', $this->dbprefix . '\\1', $item );
-			}			// Do we prefix an item with no segments?
-			elseif ($prefix_single === TRUE && strpos ( $item, $this->dbprefix ) !== 0) {
+			} // Do we prefix an item with no segments?
+elseif ($prefix_single === TRUE && strpos ( $item, $this->dbprefix ) !== 0) {
 				$item = $this->dbprefix . $item;
 			}
 		}

@@ -150,7 +150,7 @@ class Point extends CI_Controller {
 
 	/**
 	 * Stores a copy of the points transaction a separate log file
-	 * 
+	 *
 	 * @param
 	 *        	$data
 	 */
@@ -167,7 +167,7 @@ class Point extends CI_Controller {
 
 	/**
 	 * Stores a copy of the points transaction a separate log file
-	 * 
+	 *
 	 * @param
 	 *        	$data
 	 */

@@ -14,6 +14,7 @@ if (! Permissions::is_authorized ( Permissions::USER_CONFIRMED )) :
 </div>
 
 
+
 <?php 
 endif;
 ?>

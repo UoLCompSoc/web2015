@@ -802,7 +802,7 @@ class CI_Loader {
 	 *
 	 * @used-by CI_Loader::view()
 	 * @used-by CI_Loader::file()
-	 * 
+	 *
 	 * @param array $_ci_data
 	 *        	load
 	 * @return object
@@ -923,7 +923,7 @@ class CI_Loader {
 	 * Internal CI Library Loader
 	 *
 	 * @used-by CI_Loader::library()
-	 * 
+	 *
 	 * @uses CI_Loader::_ci_init_library()
 	 *      
 	 * @param string $class
@@ -982,8 +982,8 @@ class CI_Loader {
 				
 				log_message ( 'debug', $class . ' class already loaded. Second attempt ignored.' );
 				return;
-			}			// Does the file exist? No? Bummer...
-			elseif (! file_exists ( $filepath )) {
+			} // Does the file exist? No? Bummer...
+elseif (! file_exists ( $filepath )) {
 				continue;
 			}
 			
@@ -1007,7 +1007,7 @@ class CI_Loader {
 	 * Internal CI Stock Library Loader
 	 *
 	 * @used-by CI_Loader::_ci_load_library()
-	 * 
+	 *
 	 * @uses CI_Loader::_ci_init_library()
 	 *      
 	 * @param string $library
@@ -1178,7 +1178,7 @@ class CI_Loader {
 	 * Loads component listed in the config/autoload.php file.
 	 *
 	 * @used-by CI_Loader::initialize()
-	 * 
+	 *
 	 * @return void
 	 */
 	protected function _ci_autoloader() {

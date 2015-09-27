@@ -1197,8 +1197,8 @@ class XML_RPC_Message extends CI_Xmlrpc {
 				$this->xh [$the_parser] ['isf_reason'] = 'Top level XML-RPC element is missing';
 				return;
 			}
-		}		// not top level element: see if parent is OK
-		elseif (! in_array ( $this->xh [$the_parser] ['stack'] [0], $this->valid_parents [$name], TRUE )) {
+		} // not top level element: see if parent is OK
+elseif (! in_array ( $this->xh [$the_parser] ['stack'] [0], $this->valid_parents [$name], TRUE )) {
 			$this->xh [$the_parser] ['isf'] = 2;
 			$this->xh [$the_parser] ['isf_reason'] = 'XML-RPC element ' . $name . ' cannot be child of ' . $this->xh [$the_parser] ['stack'] [0];
 			return;
@@ -1401,7 +1401,7 @@ class XML_RPC_Message extends CI_Xmlrpc {
 		
 		if ($this->xh [$the_parser] ['isf'] > 1)
 			return; // XML Fault found already
-				                                               
+				        
 		// If a value has not been found
 		if ($this->xh [$the_parser] ['lv'] !== 3) {
 			if ($this->xh [$the_parser] ['lv'] === 1) {

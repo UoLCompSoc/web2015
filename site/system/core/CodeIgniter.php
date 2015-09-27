@@ -390,10 +390,10 @@ if (empty ( $class ) or ! file_exists ( APPPATH . 'controllers/' . $RTR->directo
 				array_slice ( $URI->rsegments, 2 ) 
 		);
 		$method = '_remap';
-	}	// WARNING: It appears that there are issues with is_callable() even in PHP 5.2!
-	// Furthermore, there are bug reports and feature/change requests related to it
-	// that make it unreliable to use in this context. Please, DO NOT change this
-	// work-around until a better alternative is available.
+	} // WARNING: It appears that there are issues with is_callable() even in PHP 5.2!
+	  // Furthermore, there are bug reports and feature/change requests related to it
+	  // that make it unreliable to use in this context. Please, DO NOT change this
+	  // work-around until a better alternative is available.
 	elseif (! in_array ( strtolower ( $method ), array_map ( 'strtolower', get_class_methods ( $class ) ), TRUE )) {
 		$e404 = TRUE;
 	}
@@ -411,8 +411,8 @@ if ($e404) {
 			if (file_exists ( APPPATH . 'controllers/' . $RTR->directory . $error_class . '.php' )) {
 				require_once (APPPATH . 'controllers/' . $RTR->directory . $error_class . '.php');
 				$e404 = ! class_exists ( $error_class, FALSE );
-			}			// Were we in a directory? If so, check for a global override
-			elseif (! empty ( $RTR->directory ) && file_exists ( APPPATH . 'controllers/' . $error_class . '.php' )) {
+			} // Were we in a directory? If so, check for a global override
+elseif (! empty ( $RTR->directory ) && file_exists ( APPPATH . 'controllers/' . $error_class . '.php' )) {
 				require_once (APPPATH . 'controllers/' . $error_class . '.php');
 				if (($e404 = ! class_exists ( $error_class, FALSE )) === FALSE) {
 					$RTR->directory = '';

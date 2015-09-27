@@ -544,8 +544,8 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			}
 			
 			$cond = ' ON ' . $newcond;
-		}		// Split apart the condition and protect the identifiers
-		elseif ($escape === TRUE && preg_match ( "/([\[\]\w\.'-]+)(\s*[^\"\[`'\w]+\s*)(.+)/i", $cond, $match )) {
+		} // Split apart the condition and protect the identifiers
+elseif ($escape === TRUE && preg_match ( "/([\[\]\w\.'-]+)(\s*[^\"\[`'\w]+\s*)(.+)/i", $cond, $match )) {
 			$cond = ' ON ' . $this->protect_identifiers ( $match [1] ) . $match [2] . $this->protect_identifiers ( $match [3] );
 		} elseif (! $this->_has_operator ( $cond )) {
 			$cond = ' USING (' . ($escape ? $this->escape_identifiers ( $cond ) : $cond) . ')';
@@ -2158,7 +2158,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		}
 		
 		$sql .= $this->_compile_wh ( 'qb_where' ) . $this->_compile_group_by () . $this->_compile_wh ( 'qb_having' ) . $this->_compile_order_by (); // ORDER BY
-		                             
+		                                                                                                                                            
 		// LIMIT
 		if ($this->qb_limit) {
 			return $this->_limit ( $sql . "\n" );

@@ -37,8 +37,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 						<li><a href="/index.php/point">Points</a></li>
 						<li><a href="#">Portfolio</a></li>
 						<li><a href="/index.php/batch">Batch User</a></li>
-					</ul>
-				</li>
+					</ul></li>
 				<?php endif; ?>
 				<li><a href="/index.php/login/logout">Logout</a></li>
 				<?php else: ?>

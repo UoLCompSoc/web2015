@@ -384,7 +384,7 @@ class CI_URI {
 	 *
 	 * @used-by CI_URI::uri_to_assoc()
 	 * @used-by CI_URI::ruri_to_assoc()
-	 * 
+	 *
 	 * @param int $n
 	 *        	3)
 	 * @param array $default        	

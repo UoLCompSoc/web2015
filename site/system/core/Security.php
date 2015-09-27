@@ -85,8 +85,8 @@ class CI_Security {
 			'%3f', // ?
 			'%3b', // ;
 			'%3d' 
-	) // =
-;
+	); // =
+
 	
 	/**
 	 * Character set
@@ -262,7 +262,7 @@ class CI_Security {
 	 * CSRF Set Cookie
 	 *
 	 * @codeCoverageIgnore
-	 * 
+	 *
 	 * @return CI_Security
 	 */
 	public function csrf_set_cookie() {
@@ -725,7 +725,7 @@ class CI_Security {
 	 * things like 'j a v a s c r i p t'.
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param array $matches        	
 	 * @return string
 	 */
@@ -801,13 +801,13 @@ class CI_Security {
 	 * Callback method for xss_clean() to remove naughty HTML elements.
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param array $matches        	
 	 * @return string
 	 */
 	protected function _sanitize_naughty_html($matches) {
 		return '&lt;' . $matches [1] . $matches [2] . $matches [3] . // encode opening brace
-		                                                  // encode captured opening or closing brace to prevent recursive vectors:
+		                                                             // encode captured opening or closing brace to prevent recursive vectors:
 		str_replace ( array (
 				'>',
 				'<' 
@@ -829,7 +829,7 @@ class CI_Security {
 	 * PHP 5.2+ on link-heavy strings.
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param array $match        	
 	 * @return string
 	 */
@@ -852,7 +852,7 @@ class CI_Security {
 	 * PHP 5.2+ on image tag heavy strings.
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param array $match        	
 	 * @return string
 	 */
@@ -869,7 +869,7 @@ class CI_Security {
 	 * Attribute Conversion
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param array $match        	
 	 * @return string
 	 */
@@ -894,7 +894,7 @@ class CI_Security {
 	 *
 	 * @used-by CI_Security::_js_img_removal()
 	 * @used-by CI_Security::_js_link_removal()
-	 * 
+	 *
 	 * @param string $str        	
 	 * @return string
 	 */
@@ -915,7 +915,7 @@ class CI_Security {
 	 * HTML Entity Decode Callback
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param array $match        	
 	 * @return string
 	 */
@@ -934,7 +934,7 @@ class CI_Security {
 	 * Do Never Allowed
 	 *
 	 * @used-by CI_Security::xss_clean()
-	 * 
+	 *
 	 * @param
 	 *        	string
 	 * @return string

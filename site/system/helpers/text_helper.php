@@ -168,8 +168,8 @@ if (! function_exists ( 'ascii_to_entities' )) {
 					$out .= '&#' . $number . ';';
 					$count = 1;
 					$temp = array ();
-				}				// If this is the last iteration, just output whatever we have
-				elseif ($i === $s) {
+				} // If this is the last iteration, just output whatever we have
+elseif ($i === $s) {
 					$out .= '&#' . implode ( ';', $temp ) . ';';
 				}
 			}

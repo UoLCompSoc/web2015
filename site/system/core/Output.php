@@ -191,7 +191,7 @@ class CI_Output {
 	 * Lets you set a server header which will be sent with the final output.
 	 *
 	 * Note: If a file is cached, headers will not be sent.
-	 * 
+	 *
 	 * @todo We need to figure out how to permit headers to be cached.
 	 *      
 	 * @param string $header        	

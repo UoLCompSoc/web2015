@@ -70,8 +70,8 @@ class CI_DB_pdo_informix_driver extends CI_DB_pdo_driver {
 			'ASC',
 			'ASC' 
 	);
- // Currently not supported
-	                                                  
+	// Currently not supported
+	
 	// --------------------------------------------------------------------
 	
 	/**
