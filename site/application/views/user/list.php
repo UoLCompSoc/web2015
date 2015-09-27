@@ -46,7 +46,6 @@ $this->load->view ( 'include/navbar.php' );
 						<tr>
 							<th>Full Name</th>
 							<th>Email</th>
-							<th>Username</th>
 							<!--<th>Points</th>-->
 							<th>View User</th>
 							<th>Edit User</th>
@@ -56,7 +55,6 @@ $this->load->view ( 'include/navbar.php' );
                     <tr>
 							<td><?php echo $user->fullname; ?></td>
 							<td><?php echo $user->email; ?></td>
-							<td><?php echo $user->username; ?></td>
 							<!--<td><?php /*echo isset($user->total) ? $user->total : 0;*/ ?></td>-->
 							<td><a href="/index.php/user/view/<?php echo $user->userid; ?>">View</a></td>
 							<td><a href="/index.php/user/edit/<?php echo $user->userid; ?>">Edit</a></td>

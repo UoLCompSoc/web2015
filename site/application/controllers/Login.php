@@ -110,7 +110,6 @@ class Login extends CI_Controller {
 	}
 
 	public function logout() {
-		$this->session->unset_userdata ( 'username' );
 		$this->session->unset_userdata ( 'email' );
 		$this->session->unset_userdata ( 'logged_in' );
 		$this->load->view ( 'welcome_message.php', array (
@@ -124,13 +123,12 @@ class Login extends CI_Controller {
 		}
 		
 		$sessdata = array (
-				'username' => explode ( '@', $email ) [0],
 				'email' => $email,
 				'logged_in' => TRUE,
 				'permissions' => $permissions 
 		);
 		
-		log_message ( 'debug', 'User ' . $sessdata ['username'] . ' logged in with permissions ' . $sessdata ['permissions'] . '.' );
+		log_message ( 'debug', 'User ' . $sessdata ['email'] . ' logged in with permissions ' . $sessdata ['permissions'] . '.' );
 		
 		$this->session->set_userdata ( $sessdata );
 	}

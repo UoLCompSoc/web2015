@@ -9,8 +9,8 @@ Permissions::require_authorized ( Permissions::USER_ADMIN );
 <head>
 
     <?php
-				$this->load->view ( 'include/head_common.php' );
-				?>
+	$this->load->view ( 'include/head_common.php' );
+	?>
 
     <title>CompSoc :: View User</title>
 
@@ -25,12 +25,12 @@ $this->load->view ( 'include/navbar.php' );
 	<div class="container">
 
     <?php
-				$this->load->view ( 'include/notification_message.php' );
-				?>
+	$this->load->view ( 'include/notification_message.php' );
+	?>
 
     <?php
-				$this->load->view ( 'include/flashdata_message.php' );
-				?>
+	$this->load->view ( 'include/flashdata_message.php' );
+	?>
 
     <div class="row text-center">
 			<h1>CompSoc @ University of Leicester</h1>
@@ -42,7 +42,6 @@ $this->load->view ( 'include/navbar.php' );
 				<br>
 
 				<p>Email: <?php echo $user->email; ?></p>
-				<p>Username: <?php echo $user->username; ?></p>
 				<p>Github: <?php echo $user->githubID; ?></p>
 				<p>Linkedin: <?php echo $user->linkedinURL; ?></p>
 				<p>Steam: <?php echo $user->steamID; ?></p>
@@ -65,9 +64,8 @@ $this->load->view ( 'include/navbar.php' );
 						<th>Comment</th>
 					</tr>
                 <?php
-																
-																foreach ( $points as $row ) {
-																	echo "<tr>
+								foreach ( $points as $row ) {
+									echo "<tr>
                             <td>{$row->Assigner}</td>
                             <td>{$row->amount}</td>
                             <td>{$row->type}</td>
@@ -80,8 +78,8 @@ $this->load->view ( 'include/navbar.php' );
 			</div>
 		</div>
     <?php
-				$this->load->view ( 'include/bootstrapjs.php' );
-				?>
+	$this->load->view ( 'include/bootstrapjs.php' );
+	?>
 </div>
 </body>
 </html>

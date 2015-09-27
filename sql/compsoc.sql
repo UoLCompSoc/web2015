@@ -20,7 +20,6 @@ INSERT INTO point_types (title, description) VALUES ("Social", "Awarded for gett
 CREATE TABLE users (
 	userid INT NOT NULL AUTO_INCREMENT UNIQUE,
 	email VARCHAR(50) NOT NULL UNIQUE,
-	username VARCHAR(50) NOT NULL UNIQUE,
 	fullname VARCHAR(50) NOT NULL,
 	datejoined DATE NOT NULL,
 	permissions INT NOT NULL,

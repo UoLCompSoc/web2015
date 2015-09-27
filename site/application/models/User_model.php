@@ -4,7 +4,6 @@ class User_model extends CI_Model {
 	// core details
 	var $id = - 1;
 	var $email = '';
-	var $username = '';
 	var $fullname = '';
 	var $datejoined = '';
 	var $permissions = 0x00;
@@ -66,7 +65,6 @@ class User_model extends CI_Model {
 		
 		$insertdata = array (
 				'email' => $userdata ['email'],
-				'username' => explode ( '@', $userdata ['email'] ) [0],
 				'fullname' => $userdata ['fname'] . ' ' . $userdata ['lname'],
 				'datejoined' => date ( 'Y-m-d' ),
 				'permissions' => 0x00,
@@ -94,7 +92,6 @@ class User_model extends CI_Model {
 		if (isset ( $email ) && strlen ( $email ) && isset ( $fullname ) && strlen ( $fullname )) {
 			$insertdata = array (
 					'email' => $email,
-					'username' => explode ( '@', $email ) [0],
 					'fullname' => $fullname,
 					'datejoined' => date ( 'Y-m-d' ),
 					'permissions' => 0x00,

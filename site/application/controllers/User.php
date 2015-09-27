@@ -11,7 +11,7 @@ class User extends CI_Controller {
 	}
 
 	public function listview() {
-		$query = $this->db->query ( "SELECT users.userid,username,fullname,email FROM users;" );
+		$query = $this->db->query ( "SELECT users.userid,fullname,email FROM users;" );
 		$data ['users'] = $query->result ();
 		
 		$this->load->view ( 'user/list', $data );
@@ -79,12 +79,6 @@ class User extends CI_Controller {
 				),
 				
 				array (
-						'field' => 'username',
-						'label' => 'Username',
-						'rules' => 'required' 
-				),
-				
-				array (
 						'field' => 'githubID',
 						'label' => 'Github ID',
 						'rules' => 'trim' 
@@ -121,7 +115,6 @@ class User extends CI_Controller {
 					'userid' => $user->userid,
 					'email' => $user->email,
 					'fullname' => $user->fullname,
-					'username' => $user->username,
 					'githubID' => $user->githubID,
 					'linkedinURL' => $user->linkedinURL,
 					'steamID' => $user->steamID,
@@ -143,7 +136,6 @@ class User extends CI_Controller {
 					'userid' => $this->input->post ( 'userid' ),
 					'email' => $this->input->post ( 'email' ),
 					'fullname' => $this->input->post ( 'fullname' ),
-					'username' => $this->input->post ( 'username' ),
 					'githubID' => $this->input->post ( 'githubID' ),
 					'linkedinURL' => $this->input->post ( '$linkedinURL' ),
 					'steamID' => $this->input->post ( 'steamID' ),

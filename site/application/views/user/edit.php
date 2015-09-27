@@ -67,10 +67,8 @@ $this->load->view ( 'include/navbar.php' );
 					for="email" class="sr-only">Email:</label> <input id="email" name="email" type="text" class="form-control"
 					placeholder="Email" value="<?php echo set_value('email', $email); ?>" /><br> <label for="fullname" class="sr-only">Full
 					Name:</label> <input id="fullname" name="fullname" type="text" class="form-control" placeholder="Full Name"
-					value="<?php echo set_value('fullname', $fullname); ?>" /><br> <label for="username" class="sr-only">Username:</label>
-				<input id="username" name="username" type="text" class="form-control" placeholder="Username"
-					value="<?php echo set_value('username', $username); ?>" /><br> <label for="githubID" class="sr-only">Github ID:</label>
-				<input id="githubID" name="githubID" type="text" class="form-control" placeholder="Github ID"
+					value="<?php echo set_value('fullname', $fullname); ?>" /><br> <br> <label for="githubID" class="sr-only">Github
+					ID:</label> <input id="githubID" name="githubID" type="text" class="form-control" placeholder="Github ID"
 					value="<?php echo set_value('githubID', $githubID); ?>" /><br> <label for="linkedinURL" class="sr-only">Linkedin
 					URL:</label> <input id="linkedinURL" name="linkedinURL" type="text" class="form-control" placeholder="Linkedin URL"
 					value="<?php echo set_value('linkedinURL', $linkedinURL); ?>" /><br> <label for="steamID" class="sr-only">Steam ID:</label>
