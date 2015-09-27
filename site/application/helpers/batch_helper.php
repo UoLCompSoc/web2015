@@ -23,7 +23,7 @@ abstract class BatchHelper {
 	
 		<p><em>IMPORTANT:</em> We generated a password for you, but you SHOULD CHANGE IT ASAP. There isn\'t really a better way of sending it to you unfortunately.</p>
 	
-		<p>Your password is ' . 'pass' . ' and you can now log in with this e-mail address at <a href="https://ulcompsoc.org.uk">the CompSoc site</a> and change it!</p>
+		<p>Your password is "' . $password . '" and you can now log in with this e-mail address at <a href="https://ulcompsoc.org.uk">the CompSoc site</a> and change it!</p>
 		<p>Cheers,</p>
 		<p>The CompSoc Committee</p>' );
 	
