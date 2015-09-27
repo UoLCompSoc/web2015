@@ -22,6 +22,10 @@
         <!-- Page Content -->
 	    <div class="container">
 	    
+	        <?php
+		        $this->load->view ( 'include/notification_message.php' );
+		    ?>
+	    
 	    	<div class="row">
 			    <div class="panel panel-default">
 				    <div class="panel-body">

@@ -81,7 +81,7 @@ class User_model extends CI_Model {
 	}
 	
 	public function batch_insert($email, $fullname, $password) {
-	    $email_check = $this->db->get_where ( 'email', $email );
+	    $email_check = $this->db->get_where ( 'users', 'email', $email );
 	           
 	    if ($email_check->num_rows () > 0) {
 			log_message ( 'debug', "Attempt to create accounts collided with existing e-mail in DB. Form validation is probably off." );
@@ -106,6 +106,8 @@ class User_model extends CI_Model {
 			    syslog ( LOG_INFO, "Successfully created user {$email}." );
 			    return TRUE;
 		    }
+	    } else {
+	        return 0;
 	    }
 	    
 	}

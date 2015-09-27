@@ -88,18 +88,52 @@ class Batch extends CI_Controller {
 					'passwordfive' => substr(preg_replace("/[^A-Za-z0-9 ]/", '', hash('md5', date('H:m:s'))), 0, $passwordlength)
 			);
 			
-			$this->user_model->batch_insert($batchuserdata['emailone'], $batchuserdata['fullnameone'], $batchuserdata['passwordone']);
-			$this->user_model->batch_insert($batchuserdata['emailtwo'], $batchuserdata['fullnametwo'], $batchuserdata['passwordtwo']);
-			$this->user_model->batch_insert($batchuserdata['emailthree'], $batchuserdata['fullnamethree'], $batchuserdata['passwordthree']);
-			$this->user_model->batch_insert($batchuserdata['emailfour'], $batchuserdata['fullnamefour'], $batchuserdata['passwordfour']);
-			$this->user_model->batch_insert($batchuserdata['emailfive'], $batchuserdata['fullnamefive'], $batchuserdata['passwordfive']);
+			//Get the user's profile to show success/fail messages
+	        $userdata = $this->user_model->get_logged_in ();
+			$arr = ( array ) $userdata;
+			$arr ["notification_message"] = "";
 			
-			/*if ($result === TRUE) {
-			    echo "Accounts created successfully.";
-			    redirect('batch');
-			} else {
-			    echo "Could not create accounts. Please check for duplicate email addresses and incomplete email/full name pairs.";
-			}*/
+			$result = $this->user_model->batch_insert($batchuserdata['emailone'], $batchuserdata['fullnameone'], $batchuserdata['passwordone']);
+			
+			if ($result === TRUE) {
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailone']}.\r\n";
+			} else if ($result === FALSE) {
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailone']}.\r\n";
+			}
+			
+			$result = $this->user_model->batch_insert($batchuserdata['emailtwo'], $batchuserdata['fullnametwo'], $batchuserdata['passwordtwo']);
+			
+			if ($result === TRUE) {
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailtwo']}.\r\n";
+			} else if ($result === FALSE) {
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailtwo']}.\r\n";
+			}
+			
+			$result = $this->user_model->batch_insert($batchuserdata['emailthree'], $batchuserdata['fullnamethree'], $batchuserdata['passwordthree']);
+			
+			if ($result === TRUE) {
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailthree']}.\r\n";
+			} else if ($result === FALSE) {
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailthree']}.\r\n";
+			}
+			
+			$result = $this->user_model->batch_insert($batchuserdata['emailfour'], $batchuserdata['fullnamefour'], $batchuserdata['passwordfour']);
+			
+			if ($result === TRUE) {
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailfour']}.\r\n";
+			} else if ($result === FALSE) {
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailfour']}.\r\n";
+			}
+			
+			$result = $this->user_model->batch_insert($batchuserdata['emailfive'], $batchuserdata['fullnamefive'], $batchuserdata['passwordfive']);
+			
+			if ($result === TRUE) {
+				$arr ["notification_message"] .= "Created user {$batchuserdata['emailfive']}.\r\n";
+			} else if ($result === FALSE) {
+			    $arr ["notification_message"] .= "Could not create {$batchuserdata['emailfive']}.\r\n";
+			}
+			
+			$this->load->view('batch/create', $arr);
 		}
 		
     }
