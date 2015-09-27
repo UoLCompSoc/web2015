@@ -82,6 +82,37 @@ class User_model extends CI_Model {
 		}
 	}
 
+	public function batch_insert($email, $fullname, $password) {
+		$email_check = $this->db->get_where ( 'users', 'email', $email );
+		
+		if ($email_check->num_rows () > 0) {
+			log_message ( 'debug', "Attempt to create accounts collided with existing e-mail in DB. Form validation is probably off." );
+			return FALSE;
+		}
+		
+		// Check if email/full name pair is complete
+		if (isset ( $email ) && strlen ( $email ) && isset ( $fullname ) && strlen ( $fullname )) {
+			$insertdata = array (
+					'email' => $email,
+					'username' => explode ( '@', $email ) [0],
+					'fullname' => $fullname,
+					'datejoined' => date ( 'Y-m-d' ),
+					'permissions' => 0x00,
+					'passwordhash' => password_hash ( $password, PASSWORD_BCRYPT ) 
+			);
+			
+			if (! $this->db->insert ( 'users', $insertdata )) {
+				log_message ( 'error', "Insert failed on database when creating user: " . $this->db->error () ['message'] );
+				return FALSE;
+			} else {
+				syslog ( LOG_INFO, "Successfully created user {$email}." );
+				return TRUE;
+			}
+		} else {
+			return 0;
+		}
+	}
+
 	public function update($userdata) {
 		$existCheck = $this->db->get_where ( 'users', array (
 				'userid' => $userdata ['userid'] 

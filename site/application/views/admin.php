@@ -52,7 +52,7 @@ $this->load->view ( 'include/head_common.php' );
 	<?php if(Permissions::is_authorized(Permissions::BATCH_USER_CREATE)):?>
 	<div class="row">
 			<div class="col">
-				<p>Batch User Creation</p>
+				<a href="/index.php/batch/">Batch User Creation</a>
 			</div>
 		</div>
 	<?php endif; ?>
