@@ -41,7 +41,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					<li><a href="/index.php/user">Users</a></li>
 					<li><a href="/index.php/point">Points</a></li>
 					<li><a href="#">Portfolio</a></li>
-					<li><a href="#">Batch User</a></li>
+					<li><a href="/index.php/batch">Batch User</a></li>
 				</ul>
 				</li>
 				<?php endif; ?>
