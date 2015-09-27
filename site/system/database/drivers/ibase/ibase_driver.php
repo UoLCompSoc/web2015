@@ -35,7 +35,7 @@
  * @since	Version 3.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 /**
  * Firebird/Interbase Database Adapter Class
@@ -44,228 +44,212 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * creates dynamically based on whether the query builder
  * class is being used or not.
  *
- * @package		CodeIgniter
- * @subpackage	Drivers
- * @category	Database
- * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/database/
+ * @package CodeIgniter
+ * @subpackage Drivers
+ * @category Database
+ * @author EllisLab Dev Team
+ * @link http://codeigniter.com/user_guide/database/
  */
 class CI_DB_ibase_driver extends CI_DB {
-
+	
 	/**
 	 * Database driver
 	 *
-	 * @var	string
+	 * @var string
 	 */
 	public $dbdriver = 'ibase';
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * ORDER BY random keyword
 	 *
-	 * @var	array
+	 * @var array
 	 */
-	protected $_random_keyword = array('RAND()', 'RAND()');
-
+	protected $_random_keyword = array (
+			'RAND()',
+			'RAND()' 
+	);
+	
 	/**
 	 * IBase Transaction status flag
 	 *
-	 * @var	resource
+	 * @var resource
 	 */
 	protected $_ibase_trans;
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Non-persistent database connection
 	 *
-	 * @param	bool	$persistent
-	 * @return	resource
+	 * @param bool $persistent        	
+	 * @return resource
 	 */
-	public function db_connect($persistent = FALSE)
-	{
-		return ($persistent === TRUE)
-			? ibase_pconnect($this->hostname.':'.$this->database, $this->username, $this->password, $this->char_set)
-			: ibase_connect($this->hostname.':'.$this->database, $this->username, $this->password, $this->char_set);
+	public function db_connect($persistent = FALSE) {
+		return ($persistent === TRUE) ? ibase_pconnect ( $this->hostname . ':' . $this->database, $this->username, $this->password, $this->char_set ) : ibase_connect ( $this->hostname . ':' . $this->database, $this->username, $this->password, $this->char_set );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Database version number
 	 *
-	 * @return	string
+	 * @return string
 	 */
-	public function version()
-	{
-		if (isset($this->data_cache['version']))
-		{
-			return $this->data_cache['version'];
+	public function version() {
+		if (isset ( $this->data_cache ['version'] )) {
+			return $this->data_cache ['version'];
 		}
-
-		if (($service = ibase_service_attach($this->hostname, $this->username, $this->password)))
-		{
-			$this->data_cache['version'] = ibase_server_info($service, IBASE_SVC_SERVER_VERSION);
-
+		
+		if (($service = ibase_service_attach ( $this->hostname, $this->username, $this->password ))) {
+			$this->data_cache ['version'] = ibase_server_info ( $service, IBASE_SVC_SERVER_VERSION );
+			
 			// Don't keep the service open
-			ibase_service_detach($service);
-			return $this->data_cache['version'];
+			ibase_service_detach ( $service );
+			return $this->data_cache ['version'];
 		}
-
+		
 		return FALSE;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Execute the query
 	 *
-	 * @param	string	$sql	an SQL query
-	 * @return	resource
+	 * @param string $sql
+	 *        	query
+	 * @return resource
 	 */
-	protected function _execute($sql)
-	{
-		return ibase_query($this->conn_id, $sql);
+	protected function _execute($sql) {
+		return ibase_query ( $this->conn_id, $sql );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Begin Transaction
 	 *
-	 * @param	bool	$test_mode
-	 * @return	bool
+	 * @param bool $test_mode        	
+	 * @return bool
 	 */
-	public function trans_begin($test_mode = FALSE)
-	{
+	public function trans_begin($test_mode = FALSE) {
 		// When transactions are nested we only begin/commit/rollback the outermost ones
-		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
-		{
+		if (! $this->trans_enabled or $this->_trans_depth > 0) {
 			return TRUE;
 		}
-
+		
 		// Reset the transaction failure flag.
 		// If the $test_mode flag is set to TRUE transactions will be rolled back
 		// even if the queries produce a successful result.
 		$this->_trans_failure = ($test_mode === TRUE);
-
-		$this->_ibase_trans = ibase_trans($this->conn_id);
-
+		
+		$this->_ibase_trans = ibase_trans ( $this->conn_id );
+		
 		return TRUE;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Commit Transaction
 	 *
-	 * @return	bool
+	 * @return bool
 	 */
-	public function trans_commit()
-	{
+	public function trans_commit() {
 		// When transactions are nested we only begin/commit/rollback the outermost ones
-		if ( ! $this->trans_enabled OR $this->_trans->depth > 0)
-		{
+		if (! $this->trans_enabled or $this->_trans->depth > 0) {
 			return TRUE;
 		}
-
-		return ibase_commit($this->_ibase_trans);
+		
+		return ibase_commit ( $this->_ibase_trans );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Rollback Transaction
 	 *
-	 * @return	bool
+	 * @return bool
 	 */
-	public function trans_rollback()
-	{
+	public function trans_rollback() {
 		// When transactions are nested we only begin/commit/rollback the outermost ones
-		if ( ! $this->trans_enabled OR $this->_trans_depth > 0)
-		{
+		if (! $this->trans_enabled or $this->_trans_depth > 0) {
 			return TRUE;
 		}
-
-		return ibase_rollback($this->_ibase_trans);
+		
+		return ibase_rollback ( $this->_ibase_trans );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Affected Rows
 	 *
-	 * @return	int
+	 * @return int
 	 */
-	public function affected_rows()
-	{
-		return ibase_affected_rows($this->conn_id);
+	public function affected_rows() {
+		return ibase_affected_rows ( $this->conn_id );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Insert ID
 	 *
-	 * @param	string	$generator_name
-	 * @param	int	$inc_by
-	 * @return	int
+	 * @param string $generator_name        	
+	 * @param int $inc_by        	
+	 * @return int
 	 */
-	public function insert_id($generator_name, $inc_by = 0)
-	{
-		//If a generator hasn't been used before it will return 0
-		return ibase_gen_id('"'.$generator_name.'"', $inc_by);
+	public function insert_id($generator_name, $inc_by = 0) {
+		// If a generator hasn't been used before it will return 0
+		return ibase_gen_id ( '"' . $generator_name . '"', $inc_by );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * List table query
 	 *
 	 * Generates a platform-specific query string so that the table names can be fetched
 	 *
-	 * @param	bool	$prefix_limit
-	 * @return	string
+	 * @param bool $prefix_limit        	
+	 * @return string
 	 */
-	protected function _list_tables($prefix_limit = FALSE)
-	{
+	protected function _list_tables($prefix_limit = FALSE) {
 		$sql = 'SELECT TRIM("RDB$RELATION_NAME") AS TABLE_NAME FROM "RDB$RELATIONS" WHERE "RDB$RELATION_NAME" NOT LIKE \'RDB$%\' AND "RDB$RELATION_NAME" NOT LIKE \'MON$%\'';
-
-		if ($prefix_limit !== FALSE && $this->dbprefix !== '')
-		{
-			return $sql.' AND TRIM("RDB$RELATION_NAME") AS TABLE_NAME LIKE \''.$this->escape_like_str($this->dbprefix)."%' "
-				.sprintf($this->_like_escape_str, $this->_like_escape_chr);
+		
+		if ($prefix_limit !== FALSE && $this->dbprefix !== '') {
+			return $sql . ' AND TRIM("RDB$RELATION_NAME") AS TABLE_NAME LIKE \'' . $this->escape_like_str ( $this->dbprefix ) . "%' " . sprintf ( $this->_like_escape_str, $this->_like_escape_chr );
 		}
-
+		
 		return $sql;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Show column query
 	 *
 	 * Generates a platform-specific query string so that the column names can be fetched
 	 *
-	 * @param	string	$table
-	 * @return	string
+	 * @param string $table        	
+	 * @return string
 	 */
-	protected function _list_columns($table = '')
-	{
-		return 'SELECT TRIM("RDB$FIELD_NAME") AS COLUMN_NAME FROM "RDB$RELATION_FIELDS" WHERE "RDB$RELATION_NAME" = '.$this->escape($table);
+	protected function _list_columns($table = '') {
+		return 'SELECT TRIM("RDB$FIELD_NAME") AS COLUMN_NAME FROM "RDB$RELATION_FIELDS" WHERE "RDB$RELATION_NAME" = ' . $this->escape ( $table );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Returns an object with field data
 	 *
-	 * @param	string	$table
-	 * @return	array
+	 * @param string $table        	
+	 * @return array
 	 */
-	public function field_data($table)
-	{
+	public function field_data($table) {
 		$sql = 'SELECT "rfields"."RDB$FIELD_NAME" AS "name",
 				CASE "fields"."RDB$FIELD_TYPE"
 					WHEN 7 THEN \'SMALLINT\'
@@ -288,48 +272,47 @@ class CI_DB_ibase_driver extends CI_DB {
 				"rfields"."RDB$DEFAULT_VALUE" AS "default"
 			FROM "RDB$RELATION_FIELDS" "rfields"
 				JOIN "RDB$FIELDS" "fields" ON "rfields"."RDB$FIELD_SOURCE" = "fields"."RDB$FIELD_NAME"
-			WHERE "rfields"."RDB$RELATION_NAME" = '.$this->escape($table).'
+			WHERE "rfields"."RDB$RELATION_NAME" = ' . $this->escape ( $table ) . '
 			ORDER BY "rfields"."RDB$FIELD_POSITION"';
-
-		return (($query = $this->query($sql)) !== FALSE)
-			? $query->result_object()
-			: FALSE;
+		
+		return (($query = $this->query ( $sql )) !== FALSE) ? $query->result_object () : FALSE;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Error
 	 *
 	 * Returns an array containing code and message of the last
 	 * database error that has occured.
 	 *
-	 * @return	array
+	 * @return array
 	 */
-	public function error()
-	{
-		return array('code' => ibase_errcode(), 'message' => ibase_errmsg());
+	public function error() {
+		return array (
+				'code' => ibase_errcode (),
+				'message' => ibase_errmsg () 
+		);
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Update statement
 	 *
 	 * Generates a platform-specific update string from the supplied data
 	 *
-	 * @param	string	$table
-	 * @param	array	$values
-	 * @return	string
+	 * @param string $table        	
+	 * @param array $values        	
+	 * @return string
 	 */
-	protected function _update($table, $values)
-	{
+	protected function _update($table, $values) {
 		$this->qb_limit = FALSE;
-		return parent::_update($table, $values);
+		return parent::_update ( $table, $values );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Truncate statement
 	 *
@@ -338,67 +321,57 @@ class CI_DB_ibase_driver extends CI_DB {
 	 * If the database does not support the TRUNCATE statement,
 	 * then this method maps to 'DELETE FROM table'
 	 *
-	 * @param	string	$table
-	 * @return	string
+	 * @param string $table        	
+	 * @return string
 	 */
-	protected function _truncate($table)
-	{
-		return 'DELETE FROM '.$table;
+	protected function _truncate($table) {
+		return 'DELETE FROM ' . $table;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Delete statement
 	 *
 	 * Generates a platform-specific delete string from the supplied data
 	 *
-	 * @param	string	$table
-	 * @return	string
+	 * @param string $table        	
+	 * @return string
 	 */
-	protected function _delete($table)
-	{
+	protected function _delete($table) {
 		$this->qb_limit = FALSE;
-		return parent::_delete($table);
+		return parent::_delete ( $table );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * LIMIT
 	 *
 	 * Generates a platform-specific LIMIT clause
 	 *
-	 * @param	string	$sql	SQL Query
-	 * @return	string
+	 * @param string $sql        	
+	 * @return string
 	 */
-	protected function _limit($sql)
-	{
+	protected function _limit($sql) {
 		// Limit clause depends on if Interbase or Firebird
-		if (stripos($this->version(), 'firebird') !== FALSE)
-		{
-			$select = 'FIRST '.$this->qb_limit
-				.($this->qb_offset ? ' SKIP '.$this->qb_offset : '');
+		if (stripos ( $this->version (), 'firebird' ) !== FALSE) {
+			$select = 'FIRST ' . $this->qb_limit . ($this->qb_offset ? ' SKIP ' . $this->qb_offset : '');
+		} else {
+			$select = 'ROWS ' . ($this->qb_offset ? $this->qb_offset . ' TO ' . ($this->qb_limit + $this->qb_offset) : $this->qb_limit);
 		}
-		else
-		{
-			$select = 'ROWS '
-				.($this->qb_offset ? $this->qb_offset.' TO '.($this->qb_limit + $this->qb_offset) : $this->qb_limit);
-		}
-
-		return preg_replace('`SELECT`i', 'SELECT '.$select, $sql, 1);
+		
+		return preg_replace ( '`SELECT`i', 'SELECT ' . $select, $sql, 1 );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Close DB Connection
 	 *
-	 * @return	void
+	 * @return void
 	 */
-	protected function _close()
-	{
-		ibase_close($this->conn_id);
+	protected function _close() {
+		ibase_close ( $this->conn_id );
 	}
-
 }

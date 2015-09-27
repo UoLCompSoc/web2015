@@ -28,17 +28,13 @@ $this->load->view ( 'include/head_common.php' );
 						</div>
 
 						<p>
-							CompSoc is <em>your</em> academic society at the University of
-							Leicester if you do any kind of programming!
+							CompSoc is <em>your</em> academic society at the University of Leicester if you do any kind of programming!
 						</p>
-						<p>We run regular academic sessions from extracurricular group
-							projects to lectures to help you get the most from your time at
-							the University of Leicester, and ideally get everyone good jobs
-							after they graduate!</p>
-						<p>But of course, we recognise that it's not all about work, and
-							we have regular scheduled social events both by ourselves and
-							also mixed with other great societies at Leicester, meaning
-							there's always a way for you to get involved.</p>
+						<p>We run regular academic sessions from extracurricular group projects to lectures to help you get the most from
+							your time at the University of Leicester, and ideally get everyone good jobs after they graduate!</p>
+						<p>But of course, we recognise that it's not all about work, and we have regular scheduled social events both by
+							ourselves and also mixed with other great societies at Leicester, meaning there's always a way for you to get
+							involved.</p>
 					</div>
 				</div>
 			</div>

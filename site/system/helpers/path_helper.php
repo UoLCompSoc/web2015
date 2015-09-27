@@ -35,48 +35,45 @@
  * @since	Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 /**
  * CodeIgniter Path Helpers
  *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/helpers/path_helper.html
+ * @package CodeIgniter
+ * @subpackage Helpers
+ * @category Helpers
+ * @author EllisLab Dev Team
+ * @link http://codeigniter.com/user_guide/helpers/path_helper.html
  */
 
 // ------------------------------------------------------------------------
 
-if ( ! function_exists('set_realpath'))
-{
+if (! function_exists ( 'set_realpath' )) {
+
 	/**
 	 * Set Realpath
 	 *
-	 * @param	string
-	 * @param	bool	checks to see if the path exists
-	 * @return	string
+	 * @param
+	 *        	string
+	 * @param
+	 *        	bool checks to see if the path exists
+	 * @return string
 	 */
-	function set_realpath($path, $check_existance = FALSE)
-	{
+	function set_realpath($path, $check_existance = FALSE) {
 		// Security check to make sure the path is NOT a URL. No remote file inclusion!
-		if (preg_match('#^(http:\/\/|https:\/\/|www\.|ftp|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})#i', $path))
-		{
-			show_error('The path you submitted must be a local server path, not a URL');
+		if (preg_match ( '#^(http:\/\/|https:\/\/|www\.|ftp|[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})#i', $path )) {
+			show_error ( 'The path you submitted must be a local server path, not a URL' );
 		}
-
+		
 		// Resolve the path
-		if (realpath($path) !== FALSE)
-		{
-			$path = realpath($path);
+		if (realpath ( $path ) !== FALSE) {
+			$path = realpath ( $path );
+		} elseif ($check_existance && ! is_dir ( $path ) && ! is_file ( $path )) {
+			show_error ( 'Not a valid path: ' . $path );
 		}
-		elseif ($check_existance && ! is_dir($path) && ! is_file($path))
-		{
-			show_error('Not a valid path: '.$path);
-		}
-
+		
 		// Add a trailing slash, if this is a directory
-		return is_dir($path) ? rtrim($path, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR : $path;
+		return is_dir ( $path ) ? rtrim ( $path, DIRECTORY_SEPARATOR ) . DIRECTORY_SEPARATOR : $path;
 	}
 }

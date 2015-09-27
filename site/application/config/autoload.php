@@ -94,7 +94,7 @@ $autoload ['helper'] = array (
 		'form',
 		'url',
 		'points',
-		'social'
+		'social' 
 );
 
 /*

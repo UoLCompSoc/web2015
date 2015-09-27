@@ -1,15 +1,17 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
-Permissions::require_authorized(Permissions::USER_ADMIN);
+Permissions::require_authorized ( Permissions::USER_ADMIN );
 
-/*****************************
- *  TEST FILE
+/**
+ * ***************************
+ * TEST FILE
  * ****************************
- * 
- * 
+ *
+ *
  * DOES NOT NEED FORMATTING
- *****************************/
+ * ***************************
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +19,7 @@ Permissions::require_authorized(Permissions::USER_ADMIN);
 <head>
 
 <?php
-$this->load->view('include/head_common.php');
+$this->load->view ( 'include/head_common.php' );
 ?>
 
 <title>CompSoc :: Autocomplete Test</title>
@@ -26,18 +28,18 @@ $this->load->view('include/head_common.php');
 
 <body>
 	<?php
-    $this->load->view('include/navbar.php');
+	$this->load->view ( 'include/navbar.php' );
 	?>
 
 	<!-- Page Content -->
 	<div class="container">
 	
 	<?php
-    $this->load->view('include/notification_message.php');
+	$this->load->view ( 'include/notification_message.php' );
 	?>
 	
 	<?php
-    $this->load->view('include/flashdata_message.php');
+	$this->load->view ( 'include/flashdata_message.php' );
 	?>
 
 		<div class="row text-center">
@@ -57,7 +59,7 @@ $this->load->view('include/head_common.php');
 		<!-- /.container -->
 		
 		<?php
-        $this->load->view('include/bootstrapjs.php');
+		$this->load->view ( 'include/bootstrapjs.php' );
 		?>
 		
     <script>
@@ -76,8 +78,8 @@ $this->load->view('include/head_common.php');
           }
     });
     </script>
-    
-    </div>
+
+	</div>
 
 </body>
 </html>

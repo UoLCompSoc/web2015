@@ -27,30 +27,30 @@ $this->load->view ( 'include/head_common.php' );
 	<div class="container">
 
     <?php
-		$this->load->view ( 'include/notification_message.php' );
-		$this->load->view ( 'include/flashdata_message.php' );
-	
-		if (ENVIRONMENT === 'development') {
-			$this->load->view ( 'welcome/devwelcome.php' );
-		}
-	?>
+				$this->load->view ( 'include/notification_message.php' );
+				$this->load->view ( 'include/flashdata_message.php' );
+				
+				if (ENVIRONMENT === 'development') {
+					$this->load->view ( 'welcome/devwelcome.php' );
+				}
+				?>
 	
 	<?php $this->load->view('include/sitewide_banner.php'); ?>
 
 	<div class="row">
-		<div class="col-lg-9">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<div class="page-header">
-						<h2>CompSoc @ University of Leicester</h2>
-					</div>
+			<div class="col-lg-9">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="page-header">
+							<h2>CompSoc @ University of Leicester</h2>
+						</div>
 					
 					<?php
-						$this->load->view ( 'welcome/welcome.php' );
+					$this->load->view ( 'welcome/welcome.php' );
 					?>
 					</div>
+				</div>
 			</div>
-		</div>
 		
 		<?php $this->load->view('include/social_sidebar.php'); ?>
 

@@ -60,8 +60,8 @@ $this->load->view ( 'include/head_common.php' );
 	</div>
 		
 	<?php
-	$this->load->view('include/footer.php');
-	$this->load->view('include/bootstrapjs.php');
+	$this->load->view ( 'include/footer.php' );
+	$this->load->view ( 'include/bootstrapjs.php' );
 	?>
 </body>
 </html>

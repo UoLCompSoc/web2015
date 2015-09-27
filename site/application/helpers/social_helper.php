@@ -1,6 +1,5 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
-
 abstract class Social {
 	const FACEBOOK_URL = "https://www.facebook.com/groups/758979347496685/";
 	const GITHUB_URL = "https://github.com/UoLCompSoc";

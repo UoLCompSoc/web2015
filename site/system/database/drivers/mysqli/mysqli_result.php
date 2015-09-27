@@ -35,110 +35,100 @@
  * @since	Version 1.3.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 /**
  * MySQLi Result Class
  *
  * This class extends the parent result class: CI_DB_result
  *
- * @package		CodeIgniter
- * @subpackage	Drivers
- * @category	Database
- * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/database/
+ * @package CodeIgniter
+ * @subpackage Drivers
+ * @category Database
+ * @author EllisLab Dev Team
+ * @link http://codeigniter.com/user_guide/database/
  */
 class CI_DB_mysqli_result extends CI_DB_result {
 
 	/**
 	 * Number of rows in the result set
 	 *
-	 * @return	int
+	 * @return int
 	 */
-	public function num_rows()
-	{
-		return is_int($this->num_rows)
-			? $this->num_rows
-			: $this->num_rows = $this->result_id->num_rows;
+	public function num_rows() {
+		return is_int ( $this->num_rows ) ? $this->num_rows : $this->num_rows = $this->result_id->num_rows;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Number of fields in the result set
 	 *
-	 * @return	int
+	 * @return int
 	 */
-	public function num_fields()
-	{
+	public function num_fields() {
 		return $this->result_id->field_count;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Fetch Field Names
 	 *
 	 * Generates an array of column names
 	 *
-	 * @return	array
+	 * @return array
 	 */
-	public function list_fields()
-	{
-		$field_names = array();
-		$this->result_id->field_seek(0);
-		while ($field = $this->result_id->fetch_field())
-		{
-			$field_names[] = $field->name;
+	public function list_fields() {
+		$field_names = array ();
+		$this->result_id->field_seek ( 0 );
+		while ( $field = $this->result_id->fetch_field () ) {
+			$field_names [] = $field->name;
 		}
-
+		
 		return $field_names;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Field data
 	 *
 	 * Generates an array of objects containing field meta-data
 	 *
-	 * @return	array
+	 * @return array
 	 */
-	public function field_data()
-	{
-		$retval = array();
-		$field_data = $this->result_id->fetch_fields();
-		for ($i = 0, $c = count($field_data); $i < $c; $i++)
-		{
-			$retval[$i]			= new stdClass();
-			$retval[$i]->name		= $field_data[$i]->name;
-			$retval[$i]->type		= $field_data[$i]->type;
-			$retval[$i]->max_length		= $field_data[$i]->max_length;
-			$retval[$i]->primary_key	= (int) ($field_data[$i]->flags & 2);
-			$retval[$i]->default		= $field_data[$i]->def;
+	public function field_data() {
+		$retval = array ();
+		$field_data = $this->result_id->fetch_fields ();
+		for($i = 0, $c = count ( $field_data ); $i < $c; $i ++) {
+			$retval [$i] = new stdClass ();
+			$retval [$i]->name = $field_data [$i]->name;
+			$retval [$i]->type = $field_data [$i]->type;
+			$retval [$i]->max_length = $field_data [$i]->max_length;
+			$retval [$i]->primary_key = ( int ) ($field_data [$i]->flags & 2);
+			$retval [$i]->default = $field_data [$i]->def;
 		}
-
+		
 		return $retval;
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Free the result
 	 *
-	 * @return	void
+	 * @return void
 	 */
-	public function free_result()
-	{
-		if (is_object($this->result_id))
-		{
-			$this->result_id->free();
+	public function free_result() {
+		if (is_object ( $this->result_id )) {
+			$this->result_id->free ();
 			$this->result_id = FALSE;
 		}
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Data Seek
 	 *
@@ -146,41 +136,37 @@ class CI_DB_mysqli_result extends CI_DB_result {
 	 * this internally before fetching results to make sure the
 	 * result set starts at zero.
 	 *
-	 * @param	int	$n
-	 * @return	bool
+	 * @param int $n        	
+	 * @return bool
 	 */
-	public function data_seek($n = 0)
-	{
-		return $this->result_id->data_seek($n);
+	public function data_seek($n = 0) {
+		return $this->result_id->data_seek ( $n );
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Result - associative array
 	 *
 	 * Returns the result set as an array
 	 *
-	 * @return	array
+	 * @return array
 	 */
-	protected function _fetch_assoc()
-	{
-		return $this->result_id->fetch_assoc();
+	protected function _fetch_assoc() {
+		return $this->result_id->fetch_assoc ();
 	}
-
+	
 	// --------------------------------------------------------------------
-
+	
 	/**
 	 * Result - object
 	 *
 	 * Returns the result set as an object
 	 *
-	 * @param	string	$class_name
-	 * @return	object
+	 * @param string $class_name        	
+	 * @return object
 	 */
-	protected function _fetch_object($class_name = 'stdClass')
-	{
-		return $this->result_id->fetch_object($class_name);
+	protected function _fetch_object($class_name = 'stdClass') {
+		return $this->result_id->fetch_object ( $class_name );
 	}
-
 }

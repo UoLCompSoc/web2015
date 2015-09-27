@@ -35,16 +35,17 @@
  * @since	Version 2.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 /**
  * CodeIgniter Dummy Caching Class
  *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Core
- * @author		EllisLab Dev Team
+ * @package CodeIgniter
+ * @subpackage Libraries
+ * @category Core
+ * @author EllisLab Dev Team
  * @link
+ *
  */
 class CI_Cache_dummy extends CI_Driver {
 
@@ -53,120 +54,120 @@ class CI_Cache_dummy extends CI_Driver {
 	 *
 	 * Since this is the dummy class, it's always going to return FALSE.
 	 *
-	 * @param	string
-	 * @return	bool	FALSE
+	 * @param
+	 *        	string
+	 * @return bool
 	 */
-	public function get($id)
-	{
+	public function get($id) {
 		return FALSE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Cache Save
 	 *
-	 * @param	string	Unique Key
-	 * @param	mixed	Data to store
-	 * @param	int	Length of time (in seconds) to cache the data
-	 * @param	bool	Whether to store the raw value
-	 * @return	bool	TRUE, Simulating success
+	 * @param
+	 *        	string Unique Key
+	 * @param
+	 *        	mixed Data to store
+	 * @param
+	 *        	int Length of time (in seconds) to cache the data
+	 * @param
+	 *        	bool Whether to store the raw value
+	 * @return bool Simulating success
 	 */
-	public function save($id, $data, $ttl = 60, $raw = FALSE)
-	{
+	public function save($id, $data, $ttl = 60, $raw = FALSE) {
 		return TRUE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Delete from Cache
 	 *
-	 * @param	mixed	unique identifier of the item in the cache
-	 * @return	bool	TRUE, simulating success
+	 * @param
+	 *        	mixed unique identifier of the item in the cache
+	 * @return bool simulating success
 	 */
-	public function delete($id)
-	{
+	public function delete($id) {
 		return TRUE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Increment a raw value
 	 *
-	 * @param	string	$id	Cache ID
-	 * @param	int	$offset	Step/value to add
-	 * @return	mixed	New value on success or FALSE on failure
+	 * @param string $id        	
+	 * @param int $offset
+	 *        	add
+	 * @return mixed value on success or FALSE on failure
 	 */
-	public function increment($id, $offset = 1)
-	{
+	public function increment($id, $offset = 1) {
 		return TRUE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Decrement a raw value
 	 *
-	 * @param	string	$id	Cache ID
-	 * @param	int	$offset	Step/value to reduce by
-	 * @return	mixed	New value on success or FALSE on failure
+	 * @param string $id        	
+	 * @param int $offset
+	 *        	reduce by
+	 * @return mixed value on success or FALSE on failure
 	 */
-	public function decrement($id, $offset = 1)
-	{
+	public function decrement($id, $offset = 1) {
 		return TRUE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Clean the cache
 	 *
-	 * @return	bool	TRUE, simulating success
+	 * @return bool simulating success
 	 */
-	public function clean()
-	{
+	public function clean() {
 		return TRUE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Cache Info
 	 *
-	 * @param	string	user/filehits
-	 * @return	bool	FALSE
+	 * @param
+	 *        	string user/filehits
+	 * @return bool
 	 */
-	 public function cache_info($type = NULL)
-	 {
-		 return FALSE;
-	 }
-
+	public function cache_info($type = NULL) {
+		return FALSE;
+	}
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Get Cache Metadata
 	 *
-	 * @param	mixed	key to get cache metadata on
-	 * @return	bool	FALSE
+	 * @param
+	 *        	mixed key to get cache metadata on
+	 * @return bool
 	 */
-	public function get_metadata($id)
-	{
+	public function get_metadata($id) {
 		return FALSE;
 	}
-
+	
 	// ------------------------------------------------------------------------
-
+	
 	/**
 	 * Is this caching driver supported on the system?
 	 * Of course this one is.
 	 *
-	 * @return	bool	TRUE
+	 * @return bool
 	 */
-	public function is_supported()
-	{
+	public function is_supported() {
 		return TRUE;
 	}
-
 }

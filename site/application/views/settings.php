@@ -92,8 +92,8 @@ $this->load->view ( 'include/head_common.php' );
 						</div>
 
 						<div class="form-group">
-							<label for="newPassword2">New Password (again)</label> <input type="password" name="newPassword2" id="newPassword2"
-								class="form-control" placeholder="New Password (again)">
+							<label for="newPassword2">New Password (again)</label> <input type="password" name="newPassword2"
+								id="newPassword2" class="form-control" placeholder="New Password (again)">
 						</div>
 
 						<input type="submit" value="Change Password" name="updateDetails" id="updateDetails" class="btn btn-primary">

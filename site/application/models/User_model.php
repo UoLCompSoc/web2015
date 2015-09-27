@@ -15,10 +15,11 @@ class User_model extends CI_Model {
 	var $linkedinURL = '';
 	var $steamID = '';
 	var $twitterID = '';
+
 	public function __construct() {
 		parent::__construct ();
 	}
-	
+
 	/**
 	 * Checks if the userdata given verifies correctly and returns the user's details if it does.
 	 *
@@ -37,6 +38,7 @@ class User_model extends CI_Model {
 			return $verified ? $result : FALSE;
 		}
 	}
+
 	public function get_by_email($email_to_fetch) {
 		$query = $this->db->get_where ( 'users', array (
 				'email' => $email_to_fetch 
@@ -49,11 +51,11 @@ class User_model extends CI_Model {
 		
 		return $query->row ();
 	}
-	
+
 	public function get_logged_in() {
-		return $this->get_by_email($this->session->email);
+		return $this->get_by_email ( $this->session->email );
 	}
-	
+
 	public function insert($userdata) {
 		$email_check = $this->db->get_where ( 'users', 'email', $userdata ['email'] );
 		
@@ -79,6 +81,7 @@ class User_model extends CI_Model {
 			return TRUE;
 		}
 	}
+
 	public function update($userdata) {
 		$existCheck = $this->db->get_where ( 'users', array (
 				'userid' => $userdata ['userid'] 
@@ -100,11 +103,11 @@ class User_model extends CI_Model {
 			return TRUE;
 		}
 	}
-	
+
 	public function change_password($newPassword) {
-		$user = (array)$this->get_logged_in();
+		$user = ( array ) $this->get_logged_in ();
 		
-		$user["passwordhash"] = password_hash($newPassword, PASSWORD_BCRYPT);
-		return $this->update($user);
+		$user ["passwordhash"] = password_hash ( $newPassword, PASSWORD_BCRYPT );
+		return $this->update ( $user );
 	}
 }

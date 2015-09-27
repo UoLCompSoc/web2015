@@ -210,7 +210,10 @@ $config ['directory_trigger'] = 'd';
  * | your log files will fill up very fast.
  * |
  */
-$config ['log_threshold'] = array(1, 2);
+$config ['log_threshold'] = array (
+		1,
+		2 
+);
 
 /*
  * |--------------------------------------------------------------------------
@@ -305,7 +308,7 @@ $config ['cache_query_string'] = FALSE;
  * |
  */
 
-require_once('encryptiondetails.php');
+require_once ('encryptiondetails.php');
 
 if (! is_encryption_details_valid ()) {
 	die ( "Your encryption key is invalid; please set it to a valid state in encryptiondetails.php." );

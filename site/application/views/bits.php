@@ -30,14 +30,12 @@ $this->load->view ( 'include/head_common.php' );
 							<h2>Bits @ CompSoc</h2>
 						</div>
 
-						<p>Bits are a bonus you get from CompSoc! By
-							coming to events, joining us on socials or by participating in
+						<p>Bits are a bonus you get from CompSoc! By coming to events, joining us on socials or by participating in
 							projects, you automatically earn bits.</p>
-						<p>At certain points throughout the year, people with a lot of
-							bits could be in for some cool prizes and rewards, all totally
-							for free!</p>
-						<p>All you need to do is be a paid member and do stuff; you collect
-							bits just by joining in, so why not get involved?</p>
+						<p>At certain points throughout the year, people with a lot of bits could be in for some cool prizes and rewards,
+							all totally for free!</p>
+						<p>All you need to do is be a paid member and do stuff; you collect bits just by joining in, so why not get
+							involved?</p>
 					</div>
 				</div>
 			</div>
@@ -47,7 +45,7 @@ $this->load->view ( 'include/head_common.php' );
 	</div>
 	
 	<?php
-	$this->load->view ('include/footer.php');
+	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );
 	?>
 </body>
