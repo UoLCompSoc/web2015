@@ -99,7 +99,6 @@ class Login extends CI_Controller {
 		
 		if ($result === TRUE) {
 			$this->set_login_session ( $userdata ['email'], 0x00 );
-			$this->send_confirmation_email ();
 			$this->load->view ( 'profile.php', array (
 					'notification_message' => 'Account created successfully! Welcome to CompSoc!' 
 			) );
