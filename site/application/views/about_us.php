@@ -41,11 +41,12 @@ $this->load->view ( 'include/head_common.php' );
 			
 			<?php $this->load->view('include/social_sidebar.php'); ?>
 		</div>
-	</div>
+	
 		
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );
 	?>
+	</div>
 </body>
 </html>

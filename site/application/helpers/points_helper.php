@@ -34,7 +34,7 @@ abstract class Points {
 	public static function make_bits_helper($bits = -1) {
 		$ret = ($bits === 1 ? 'bit' : 'bits');
 		
-		return $ret . '<sup><a href="/index.php/bits" title="What are bits?">[?]</a></sup>';
+		return $ret . '<sup><a href="/bits" title="What are bits?">[?]</a></sup>';
 	}
 
 	public static function echo_bits_helper() {

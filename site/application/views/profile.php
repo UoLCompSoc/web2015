@@ -34,7 +34,7 @@ $this->load->view ( 'include/head_common.php' );
 					<div class="panel-body">
 						<div class="page-header">
 							<h4 class="pull-right">
-								<a href="/index.php/profile/settings" title="Account Settings"> <i class="fa fa-cog"></i>
+								<a href="/profile/settings" title="Account Settings"> <i class="fa fa-cog"></i>
 								</a>
 							</h4>
 
@@ -45,7 +45,7 @@ $this->load->view ( 'include/head_common.php' );
 						
 						<?php if (Permissions::is_admin()): ?>
 						<p>
-							Go to <a href="/index.php/admin">your admin panel.</a>
+							Go to <a href="/admin">your admin panel.</a>
 						</p>
 						<?php endif; ?>
 						

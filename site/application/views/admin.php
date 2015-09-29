@@ -25,7 +25,7 @@ $this->load->view ( 'include/head_common.php' );
 	<div class="row">
 			<div class="col">
 				<p>
-					<a href="/index.php/user/">User Admin</a>
+					<a href="/user/">User Admin</a>
 				</p>
 			</div>
 		</div>
@@ -35,7 +35,7 @@ $this->load->view ( 'include/head_common.php' );
         <div class="row">
 			<div class="col">
 				<p>
-					<a href="/index.php/point/">Points Admin</a>
+					<a href="/point/">Points Admin</a>
 				</p>
 			</div>
 		</div>
@@ -52,7 +52,7 @@ $this->load->view ( 'include/head_common.php' );
 	<?php if(Permissions::is_authorized(Permissions::BATCH_USER_CREATE)):?>
 	<div class="row">
 			<div class="col">
-				<a href="/index.php/batch/">Batch User Creation</a>
+				<a href="/batch/">Batch User Creation</a>
 			</div>
 		</div>
 	<?php endif; ?>

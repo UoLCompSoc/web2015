@@ -1,11 +1,11 @@
-<div class="col-lg-2 hidden-xs hidden-sm hidden-md">
+<div class="col-lg-2 col-lg-push-1 hidden-xs hidden-sm hidden-md">
 	<div class="list-group" style="text-align: center;">
 		<a href="<?php echo Social::FACEBOOK_URL; ?>" target="_blank" class="list-group-item list-group-item-heading">
-			Facebook <img class="featuredImg" src="/img/facebook.png" width="100%">
+			Facebook <img class="featuredImg" src="<?=base_url();?>assets/img/facebook.png" width="100%">
 		</a> <a href="<?php echo Social::GITHUB_URL; ?>" target="_blank" class="list-group-item list-group-item-heading">GitHub
-			<img class="featuredImg" src="/img/github.png" width="100%">
+			<img class="featuredImg" src="<?=base_url();?>assets/img/github.png" width="100%">
 		</a> <a href="<?php echo Social::TWITTER_URL; ?>" target="_blank" class="list-group-item list-group-item-heading">
-			Twitter <img class="featuredImg" src="/img/twitter.png" width="100%">
+			Twitter <img class="featuredImg" src="<?=base_url();?>assets/img/twitter.png" width="100%">
 		</a>
 
 		<!-- <a href="<?php /*echo Social::LINKEDIN_URL;*/ ?>" target="_blank"

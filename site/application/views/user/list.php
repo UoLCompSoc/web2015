@@ -56,9 +56,9 @@ $this->load->view ( 'include/navbar.php' );
 							<td><?php echo $user->fullname; ?></td>
 							<td><?php echo $user->email; ?></td>
 							<!--<td><?php /*echo isset($user->total) ? $user->total : 0;*/ ?></td>-->
-							<td><a href="/index.php/user/view/<?php echo $user->userid; ?>">View</a></td>
-							<td><a href="/index.php/user/edit/<?php echo $user->userid; ?>">Edit</a></td>
-							<td><a href="/index.php/user/reset/<?php echo $user->userid; ?>">Reset</a></td>
+							<td><a href="/user/view/<?php echo $user->userid; ?>">View</a></td>
+							<td><a href="/user/edit/<?php echo $user->userid; ?>">Edit</a></td>
+							<td><a href="/user/reset/<?php echo $user->userid; ?>">Reset</a></td>
 						</tr>
                 <?php endforeach; ?>
                 </tbody>
