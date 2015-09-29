@@ -97,7 +97,7 @@ $this->load->view ( 'include/navbar.php' );
         $("#email").autocomplete({
             source: function(request, response) {
                 $.ajax({
-                    url: "/index.php/autocomplete/email",
+                    url: "/autocomplete/email",
                     data: {
                         emailQuery: request.term
                     },

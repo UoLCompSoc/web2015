@@ -62,7 +62,7 @@ $this->load->view ( 'include/navbar.php' );
 
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<a href="/index.php/point/add">Add Points</a>
+				<a href="/point/add">Add Points</a>
 			</div>
 		</div>
     <?php

@@ -14,34 +14,34 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 
 			<div class="pull-left" style="margin-top: 5px;">
-				<img src="/img/icon.png" alt="Alien Icon">
+				<img src="<?=base_url();?>assets/img/icon.png" alt="Alien Icon">
 			</div>
-			<a class="navbar-brand" href="/index.php/"> CompSoc </a>
+			<a class="navbar-brand" href="/"> CompSoc </a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/index.php/about">About Us</a></li>
-				<li><a href="/index.php/bits">Bits</a></li>
-				<li><a href="/index.php/projects">Projects</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li><a href="/bits">Bits</a></li>
+				<li><a href="/projects">Projects</a></li>
 				<?php if (get_instance()->session->userdata('logged_in')): ?>
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="/index.php/profile">Profile</a></li>
-						<li><a href="/index.php/profile/settings">Settings</a></li>
+						<li><a href="/profile">Profile</a></li>
+						<li><a href="/profile/settings">Settings</a></li>
 					</ul></li>
 				<?php if (Permissions::is_admin()): ?>
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="/index.php/user">Users</a></li>
-						<li><a href="/index.php/point">Points</a></li>
+						<li><a href="/user">Users</a></li>
+						<li><a href="/point">Points</a></li>
 						<li><a href="#">Portfolio</a></li>
-						<li><a href="/index.php/batch">Batch User</a></li>
+						<li><a href="/batch">Batch User</a></li>
 					</ul></li>
 				<?php endif; ?>
-				<li><a href="/index.php/login/logout">Logout</a></li>
+				<li><a href="/login/logout">Logout</a></li>
 				<?php else: ?>
-				<li><a href="/index.php/login" data-toggle="modal" data-target="#login-modal" id="navbar-login">Login</a> <script>
+				<li><a href="/login" data-toggle="modal" data-target="#login-modal" id="navbar-login">Login</a> <script>
 					// we change the href to # so that if a user has javascript they get the fancy version
 					// but if they don't they'll go to the regular login page.
 					$(document).ready(function() {$("a.navbar-login").attr('href', '#');});

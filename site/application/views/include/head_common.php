@@ -11,9 +11,9 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="/css/bootstrap-social.css" rel="stylesheet">
-<link href="/css/styles.css" rel="stylesheet">
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+<link href="<?=base_url();?>assets/css/bootstrap-social.css" rel="stylesheet">
+<link href="<?=base_url();?>assets/css/styles.css" rel="stylesheet">
+<link rel="shortcut icon" href="<?=base_url();?>assets/img/favicon.ico" type="image/x-icon">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

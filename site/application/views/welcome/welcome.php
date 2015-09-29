@@ -2,7 +2,7 @@
 
 <p>
 	No matter what you study, if it involves programming or you just enjoy it as a hobby, we're the academic society for
-	you and we'd love to have you involved! Feel free to <a href="/index.php/about">read more</a> about the things we do!
+	you and we'd love to have you involved! Feel free to <a href="/about">read more</a> about the things we do!
 </p>
 
 <p>
@@ -13,7 +13,7 @@
 </p>
 
 <div>
-	<a href="http://www.leicesterunion.com/groups/computing" target="_blank"> <img src="/img/joingroup.png"
+	<a href="http://www.leicesterunion.com/groups/computing" target="_blank"> <img src="<?=base_url();?>assets/img/joingroup.png"
 		alt="Join us at leicesterunion.com!">
 	</a>
 	<p class="pull-right">

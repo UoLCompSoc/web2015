@@ -15,7 +15,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 			<?php echo form_close(); ?>
 
 			<div>
-				<a class="btn btn-danger btn-block" href="/index.php/login">Register</a>
+				<a class="btn btn-danger btn-block" href="/login">Register</a>
 			</div>
 		</div>
 	</div>
