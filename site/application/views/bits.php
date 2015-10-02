@@ -42,6 +42,36 @@ $this->load->view ( 'include/head_common.php' );
 	
 		<?php $this->load->view('include/social_sidebar.php'); ?>
 		</div>
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="page-header">
+							<h2>Current Leaderboard - Top Ten</h2>
+						</div>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name</th>
+                                <th>Total</th>
+                            </tr>
+                            <?php
+
+                            foreach ( $leaderboard as $row ) {
+                                echo "<tr>
+                                    <td>{$row->fullname}</td>
+                                    <td>{$row->total}</td>
+                                  </tr>";
+                            }
+                            ?>
+                            <tr>
+                                <th colspan="2"><a href="point/leaderboard" >Full Leaderboard</a></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 	
 	<?php

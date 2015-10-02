@@ -14,6 +14,13 @@ class Point extends CI_Controller {
 		$this->load->view ( 'point/dashboard' );
 	}
 
+    public function leaderboard() {
+        $data = array ();
+        $data['leaderboard'] = $this->_getPointLeaderboard()->result();
+
+        $this->load->view ( 'point/leaderboard', $data);
+    }
+
 	public function view($userid = -1) {
 		// Check if the view has been given a id to lookup
 		if ($userid == - 1) {
@@ -40,6 +47,27 @@ class Point extends CI_Controller {
 		$data ['total'] = $total->row ()->amount;
 		
 		$this->load->view ( 'point/view', $data );
+	}
+
+    private function _getPointLeaderboard() {
+
+        /**
+         * Query used to get a leaderboard of points
+         *
+         * SELECT fullname, users.userid, SUM(amount) as total FROM transactions
+         * JOIN users ON users.userid = transactions.userid
+         * GROUP BY userid
+         * ORDER BY total;
+         */
+
+		// TODO Make this less horrific
+		// Gets a list of all of the points given to a user and associates the Full name of the assigner, as well as the type of the points given
+		$this->db->select ( "u.fullname, u.userid, SUM(t.amount) as total" );
+		$this->db->from ( 'transactions AS t' );
+        $this->db->group_by( 'u.userid' );
+		$this->db->order_by ( 'total' , "desc" );
+		$this->db->join ( 'users as u', 't.userid = u.userid' );
+		return $this->db->get ();
 	}
 
 	private function _getPointResult($userid) {
