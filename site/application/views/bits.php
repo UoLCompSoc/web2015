@@ -16,64 +16,54 @@ $this->load->view ( 'include/head_common.php' );
 	<?php
 	$this->load->view ( 'include/navbar.php' );
 	?>
-	
+
 	<div class="container">
 		<?php
 		$this->load->view ( 'include/sitewide_banner.php' );
 		?>
-		
 		<div class="row">
 			<div class="col-lg-9">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div class="page-header">
-							<h2>Bits @ CompSoc</h2>
-						</div>
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="page-header">
+								<h2>Bits @ CompSoc</h2>
+							</div>
 
-						<p>Bits are a bonus you get from CompSoc! By coming to events, joining us on socials or by participating in
-							projects, you automatically earn bits.</p>
-						<p>At certain points throughout the year, people with a lot of bits could be in for some cool prizes and rewards,
-							all totally for free!</p>
-						<p>All you need to do is be a paid member and do stuff; you collect bits just by joining in, so why not get
-							involved?</p>
+							<p>Bits are a bonus you get from CompSoc! By coming to events, joining us on socials or by participating in
+								projects, you automatically earn bits.</p>
+							<p>At certain points throughout the year, people with a lot of bits could be in for some cool prizes and rewards,
+								all totally for free!</p>
+							<p>All you need to do is be a paid member and do stuff; you collect bits just by joining in, so why not get
+								involved?</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h2>Current Leaderboard - Top Ten</h2>
+							<table class="table table-striped">
+								<tr>
+									<th>Name</th>
+									<th>Total</th>
+								</tr>
+								<?php
+								foreach ( $leaderboard as $row ) {
+									echo "<tr><td>{$row->fullname}</td><td>{$row->total}</td></tr>";
+								}
+								?>
+							</table>
+							<p><a href="/point/leaderboard">View Overall Leaderboard</a></p>
+						</div>
 					</div>
 				</div>
 			</div>
-	
 		<?php $this->load->view('include/social_sidebar.php'); ?>
 		</div>
-
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="page-header">
-							<h2>Current Leaderboard - Top Ten</h2>
-						</div>
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Name</th>
-                                <th>Total</th>
-                            </tr>
-                            <?php
-
-                            foreach ( $leaderboard as $row ) {
-                                echo "<tr>
-                                    <td>{$row->fullname}</td>
-                                    <td>{$row->total}</td>
-                                  </tr>";
-                            }
-                            ?>
-                            <tr>
-                                <th colspan="2"><a href="point/leaderboard" >Full Leaderboard</a></th>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
 	</div>
-	
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );
