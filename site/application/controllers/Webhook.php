@@ -19,14 +19,23 @@ class Webhook extends CI_Controller {
 
 		$decoded = json_decode ( $this->_getContent ( $url ) );
 
-		foreach ( $decoded as $repo ) {
-			$collaborators = json_decode ( $this->_getContent ( $repo->contributors_url ) );
+        $github_data = array();
+
+        foreach ( $decoded as $repo ) {
+			if($repo->fork === TRUE){
+                continue;
+            }
+
+            $collaborators = json_decode ( $this->_getContent ( $repo->contributors_url ) );
 			$repo->collaborator_count = sizeof ( $collaborators );
+
+            array_push($github_data, $repo);
 		}
+
 
 		$filepath = APPPATH . 'logs/repocache.json';
 
-		if (! write_file ( $filepath, json_encode ( $decoded ), 'w' )) {
+		if (! write_file ( $filepath, json_encode ( $github_data ), 'w' )) {
 			log_message ( 'error', 'Cannot write to github cache file at ' . $filepath );
 		}
 	}
