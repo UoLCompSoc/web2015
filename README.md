@@ -2,18 +2,18 @@ CompSoc's 2015 Website Revamp - http://ulcompsoc.org.uk
 =======================================================
 
 Required feature checklist:
-- [ ] User Management System
+- [x] User Management System
     - [x] Admin/regular user distinction
     - [x] Batch user creation system
     - [x] Audit system for admin actions
 - [ ] Portfolio
     - [ ] Entry creator to add new projects
     - [ ] Viewing page
-- [ ] Points Tracking System
+- [x] Points Tracking System
     - [x] Admin console
     - [x] Leaderboard
     - [x] Audit system
-- [ ] Informational pages
+- [x] Informational pages
     - [x] About Us
     - [x] Social Media links
 
