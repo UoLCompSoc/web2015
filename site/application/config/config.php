@@ -29,7 +29,7 @@ $config ['base_url'] = '';
  * | variable so that it is blank.
  * |
  */
-$config ['index_page'] = 'index.php';
+$config ['index_page'] = '';
 
 /*
  * |--------------------------------------------------------------------------
@@ -367,7 +367,7 @@ $config ['encryption_key'] = CompSocEncryption::ENCRYPTION_KEY;
 $config ['sess_driver'] = 'files';
 $config ['sess_cookie_name'] = 'ci_session';
 $config ['sess_expiration'] = 7200;
-$config ['sess_save_path'] = NULL;
+$config ['sess_save_path'] = '/tmp';
 $config ['sess_match_ip'] = FALSE;
 $config ['sess_time_to_update'] = 300;
 $config ['sess_regenerate_destroy'] = FALSE;
@@ -506,3 +506,17 @@ $config ['rewrite_short_tags'] = FALSE;
  * | Array: array('10.0.1.200', '192.168.5.0/24')
  */
 $config ['proxy_ips'] = '';
+
+
+/**
+ * The github client id and secret used in the Github API to gt information about the organisation
+ */
+
+require_once ('githubdetails.php');
+
+if (! is_github_details_valid ()) {
+    die ( "Your github details are invalid; please set it to a valid state in githubdetails.php." );
+}
+
+$config ['github_client_id'] = GithubOAUTH::CLIENT_ID;
+$config ['github_client_secret'] = GithubOAUTH::CLIENT_SECRET;
