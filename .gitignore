@@ -28,6 +28,7 @@ node_modules/
 
 site/application/config/dbdetails.php
 site/application/config/encryptiondetails.php
+site/application/config/githubdetails.php
 site/application/logs/*
 
 deploy.sh
