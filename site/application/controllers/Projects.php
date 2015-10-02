@@ -11,6 +11,11 @@ class Projects extends CI_Controller {
         $cachefile = read_file($filepath);
         $decoded = json_decode($cachefile);
 
+        usort($decoded, function($a, $b)
+        {
+            return ($a->pushed_at < $b->pushed_at);
+        });
+
         $data = array();
         $data['githubFeed'] = $decoded;
 
