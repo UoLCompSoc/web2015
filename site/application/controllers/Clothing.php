@@ -59,6 +59,14 @@ class Clothing extends CI_Controller {
 
     public function details($campaign_id = -1){
         if($campaign_id == -1 && ($this->input->server ( 'REQUEST_METHOD' ) != 'POST')){
+            //First visit to the page
+            $data['campaigns'] = $this->_getActiveCampaigns()->result();
+            $this->load->view ( 'clothing/clothing' , $data);
+            return;
+        }
+
+        if (($this->_getCampaign($campaign_id)->first_row() == NULL) && ($this->input->server ( 'REQUEST_METHOD' ) != 'POST')) {
+            //Catch a campaign id that doesn't exist
             $data['campaigns'] = $this->_getActiveCampaigns()->result();
             $this->load->view ( 'clothing/clothing' , $data);
             return;
@@ -76,7 +84,7 @@ class Clothing extends CI_Controller {
         $data['campaign'] = $this->_getCampaign($campaign_id)->first_row();
         $data['clothing_sizes'] = $this->_getSizes()->result();
 
-        if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST') {
+        if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST' && $this->input->post('size') != 0) {
             //Page loaded by a POST request
             $orderdata = array (
                 'userid' => $user_id,
