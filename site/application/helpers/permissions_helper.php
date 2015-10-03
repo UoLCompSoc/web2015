@@ -26,6 +26,11 @@ abstract class Permissions {
 	 */
 	const BATCH_USER_CREATE = 0x10;
 
+    /**
+     * the user can use the clothing system
+     */
+    const CLOTHING_ADMIN = 0x20;
+
 	public static function require_logged_in() {
 		if (! Permissions::is_logged_in ()) {
 			get_instance ()->session->set_flashdata ( 'message', 'You need to be logged in to view that page.' );
@@ -71,7 +76,7 @@ abstract class Permissions {
 		if ($CI->session->userdata ( 'logged_in' ) === TRUE) {
 			$granted = $CI->session->permissions;
 			
-			if ($granted & Permissions::USER_ADMIN || $granted & Permissions::PORTFOLIO_ADMIN || $granted & Permissions::POINTS_ADMIN || $granted & Permissions::BATCH_USER_CREATE) {
+			if ($granted & Permissions::USER_ADMIN || $granted & Permissions::PORTFOLIO_ADMIN || $granted & Permissions::POINTS_ADMIN || $granted & Permissions::BATCH_USER_CREATE || $granted & Permissions::CLOTHING_ADMIN) {
 				return TRUE;
 			}
 		}
