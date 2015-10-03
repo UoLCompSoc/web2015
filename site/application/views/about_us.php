@@ -35,6 +35,11 @@ $this->load->view ( 'include/head_common.php' );
 						<p>But of course, we recognise that it's not all about work, and we have regular scheduled social events both by
 							ourselves and also mixed with other great societies at Leicester, meaning there's always a way for you to get
 							involved.</p>
+						<div>
+	                        <a href="http://www.leicesterunion.com/groups/computing" target="_blank"> <img src="<?=base_url();?>assets/img/joingroup.png"
+		                        alt="Join us at leicesterunion.com!">
+	                        </a>
+	                    </div>
 					</div>
 				</div>
 			</div>
