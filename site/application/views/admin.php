@@ -30,7 +30,7 @@ $this->load->view ( 'include/head_common.php' );
 			</div>
 		</div>
 	<?php endif; ?>
-	
+
 	<?php if (Permissions::is_authorized(Permissions::POINTS_ADMIN)):?>
         <div class="row">
 			<div class="col">
@@ -40,11 +40,11 @@ $this->load->view ( 'include/head_common.php' );
 			</div>
 		</div>
 	<?php endif; ?>
-	
+
 	<?php if(Permissions::is_authorized(Permissions::PORTFOLIO_ADMIN)):?>
 	    <div class="row">
 			<div class="col">
-				<p>Portfolio Admin</p>
+				<p><a href="/webhook/update">Update Projects</a></p>
 			</div>
 		</div>
 	<?php endif; ?>
@@ -70,7 +70,7 @@ $this->load->view ( 'include/head_common.php' );
     <?php endif; ?>
 
 	</div>
-		
+
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );

@@ -35,7 +35,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					<ul class="dropdown-menu">
 						<li><a href="/user">Users</a></li>
 						<li><a href="/point">Points</a></li>
-						<li><a href="#">Portfolio</a></li>
+						<li><a href="/webhook/update">Update Projects</a></li>
 						<li><a href="/batch">Batch User</a></li>
 					</ul></li>
 				<?php endif; ?>
@@ -46,12 +46,12 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					// but if they don't they'll go to the regular login page.
 					$(document).ready(function() {$("a.navbar-login").attr('href', '#');});
 				</script>
-				
+
 				<li><a href="/index.php/login">Register</a></li>
 				<?php endif;?>
-				
-				
-				
+
+
+
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="<?php echo Social::FACEBOOK_URL; ?>" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
