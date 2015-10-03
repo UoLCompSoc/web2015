@@ -55,9 +55,10 @@ $this->load->view ( 'include/head_common.php' );
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="page-header">
-                            <h2>New Campaign</h2>
+                            <h2>Add New Size</h2>
+                            <p><a href="/clothing/sizelistview">View All Sizes</a></p>
 						</div>
-                        <?php echo form_open('clothing/add'); ?>
+                        <?php echo form_open('clothing/addsize'); ?>
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input name="name" type="text" class="form-control" id="name" value="<?php echo $name; ?>">
@@ -68,13 +69,7 @@ $this->load->view ( 'include/head_common.php' );
                             <input name="desc" type="text" class="form-control" id="desc" value="<?php echo $desc; ?>">
                         </div>
 
-                        <div class="form-group">
-                            <label for="date">Expiry Date:</label>
-                            <input name="date" type="datetime-local" class="form-control" id="date" value="<?php echo $date; ?>">
-                        </div>
-
-
-                        <button type="submit" class="btn btn-default">Add Campaign</button>
+                        <button type="submit" class="btn btn-default">Add Size</button>
 
                         <?php echo form_close(); ?>
 					</div>

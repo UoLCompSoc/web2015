@@ -52,6 +52,82 @@ class Clothing extends CI_Controller {
         $this->load->view( 'clothing/add' , $data);
     }
 
+    public function addsize(){
+        $data = array();
+        $data['name'] = '';
+        $data['desc'] = '';
+
+        if($this->input->server ( 'REQUEST_METHOD' ) == 'POST'){
+
+            $data['name'] = $this->input->post('name');
+            $data['desc'] = $this->input->post('desc');
+
+            if($this->input->post('name') == ''){
+                $data['errormessage'] = 'Please fill out the size name';
+            } else if($this->input->post('desc') == ''){
+                $data['errormessage'] = 'Please fill out the size description';
+            } else {
+                $insert = $this->size_model->insert ( $data );
+                if ($insert !== FALSE) {
+                    $data ['message'] = "Successfully Added new Size";
+
+                    //Clear the form
+                    $data['name'] = '';
+                    $data['desc'] = '';
+                } else {
+                    $data ['errormessage'] = "Sorry couldn't add new size: " . $this->db->_error_message ();
+                }
+            }
+        }
+
+        $this->load->view( 'clothing/addsize' , $data);
+    }
+
+    public function editsize($size_id = -1){
+        $data = array();
+        $data['size_id'] = '';
+        $data['name'] = '';
+        $data['desc'] = '';
+
+        if($this->input->server ( 'REQUEST_METHOD' ) == 'POST'){
+            $data['size_id'] = $this->input->post('size_id');
+            $data['name'] = $this->input->post('name');
+            $data['desc'] = $this->input->post('desc');
+
+            if($this->input->post('name') == ''){
+                $data['errormessage'] = 'Please fill out the size name';
+            } else if($this->input->post('desc') == ''){
+                $data['errormessage'] = 'Please fill out the size description';
+            } else {
+                $update = $this->size_model->update ( $data );
+                if ($update !== FALSE) {
+                    $data ['message'] = "Successfully updated size";
+                } else {
+                    $data ['errormessage'] = "Sorry couldn't update size: " . $this->db->_error_message ();
+                }
+            }
+        } else {
+            if($this->_getSize($size_id)->first_row() == NULL){
+                $this->sizelistview();
+                return;
+            } else {
+                $size = $this->_getSize($size_id)->first_row();
+
+                $data['size_id'] = $size->id;
+                $data['name'] = $size->name;
+                $data['desc'] = $size->description;
+            }
+        }
+
+        $this->load->view( 'clothing/editsize' , $data);
+    }
+
+    public function sizelistview(){
+        $data = array();
+        $data['sizes'] = $this->_getSizes()->result();
+        $this->load->view( 'clothing/sizelistview' , $data);
+    }
+
     public function edit($campaign_id = -1){
         $data = array();
         $data['campaign_id'] = '';
@@ -200,6 +276,13 @@ class Clothing extends CI_Controller {
         }
 
         $this->load->view('clothing/details', $data);
+    }
+
+    private function _getSize($size_id){
+        $this->db->select ( 'id, name, description' );
+        $this->db->from ( 'clothing_sizes' );
+        $this->db->where( 'id' , $size_id);
+        return $this->db->get ();
     }
 
     private function _getCampaign($campaign_id){

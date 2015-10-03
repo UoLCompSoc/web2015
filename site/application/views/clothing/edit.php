@@ -1,6 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
-Permissions::require_logged_in ();
+Permissions::require_authorized ( Permissions::CLOTHING_ADMIN);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

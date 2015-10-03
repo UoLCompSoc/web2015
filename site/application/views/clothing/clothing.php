@@ -31,6 +31,11 @@ $this->load->view ( 'include/head_common.php' );
 					<div class="panel-body">
 						<div class="page-header">
 							<h2>Clothing Campaigns</h2>
+                            <?php if(Permissions::is_authorized(Permissions::CLOTHING_ADMIN)):?>
+                                <p>
+                                    <a href="/clothing/sizelistview/">View Size List</a>
+                                </p>
+                            <?php endif; ?>
 						</div>
                         <?php
                             foreach($campaigns as $campaign){ ?>
