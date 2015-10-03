@@ -21,8 +21,8 @@ $this->load->view ( 'include/head_common.php' );
 
 	<!-- Page Content -->
 	<div class="container">
-	<?php if(Permissions::is_authorized(Permissions::USER_ADMIN)):?>
-	<div class="row">
+    <?php if(Permissions::is_authorized(Permissions::USER_ADMIN)):?>
+	    <div class="row">
 			<div class="col">
 				<p>
 					<a href="/user/">User Admin</a>
@@ -42,7 +42,7 @@ $this->load->view ( 'include/head_common.php' );
 	<?php endif; ?>
 
 	<?php if(Permissions::is_authorized(Permissions::PORTFOLIO_ADMIN)):?>
-	<div class="row">
+	    <div class="row">
 			<div class="col">
 				<p><a href="/webhook/update">Update Projects</a></p>
 			</div>
@@ -52,10 +52,22 @@ $this->load->view ( 'include/head_common.php' );
 	<?php if(Permissions::is_authorized(Permissions::BATCH_USER_CREATE)):?>
 	<div class="row">
 			<div class="col">
-				<a href="/batch/">Batch User Creation</a>
+				<p>
+                    <a href="/batch/">Batch User Creation</a>
+                </p>
 			</div>
 		</div>
 	<?php endif; ?>
+
+    <?php if(Permissions::is_authorized(Permissions::CLOTHING_ADMIN)):?>
+        <div class="row">
+            <div class="col">
+                <p>
+                    <a href="/clothing/listview/">Clothing Admin</a>
+                </p>
+            </div>
+        </div>
+    <?php endif; ?>
 
 	</div>
 

@@ -48,7 +48,8 @@ class User extends CI_Controller {
 		$return ['user'] = ($permissions & Permissions::USER_ADMIN) == Permissions::USER_ADMIN;
 		$return ['points'] = ($permissions & Permissions::POINTS_ADMIN) == Permissions::POINTS_ADMIN;
 		$return ['portfolio'] = ($permissions & Permissions::PORTFOLIO_ADMIN) == Permissions::PORTFOLIO_ADMIN;
-		$return ['batch'] = ($permissions & Permissions::BATCH_USER_CREATE) == Permissions::BATCH_USER_CREATE;
+        $return ['batch'] = ($permissions & Permissions::BATCH_USER_CREATE) == Permissions::BATCH_USER_CREATE;
+        $return ['clothing'] = ($permissions & Permissions::CLOTHING_ADMIN) == Permissions::CLOTHING_ADMIN;
 		return $return;
 	}
 
@@ -130,7 +131,8 @@ class User extends CI_Controller {
 			$this->input->post ( 'p_user' ) == 1 ? $permissionValue += Permissions::USER_ADMIN : NULL;
 			$this->input->post ( 'p_points' ) == 1 ? $permissionValue += Permissions::POINTS_ADMIN : NULL;
 			$this->input->post ( 'p_portfolio' ) == 1 ? $permissionValue += Permissions::PORTFOLIO_ADMIN : NULL;
-			$this->input->post ( 'p_batch' ) == 1 ? $permissionValue += Permissions::BATCH_USER_CREATE : NULL;
+            $this->input->post ( 'p_batch' ) == 1 ? $permissionValue += Permissions::BATCH_USER_CREATE : NULL;
+            $this->input->post ( 'p_clothing' ) == 1 ? $permissionValue += Permissions::CLOTHING_ADMIN : NULL;
 			
 			$userdata = array (
 					'userid' => $this->input->post ( 'userid' ),
@@ -139,6 +141,7 @@ class User extends CI_Controller {
 					'githubID' => $this->input->post ( 'githubID' ),
 					'linkedinURL' => $this->input->post ( '$linkedinURL' ),
 					'steamID' => $this->input->post ( 'steamID' ),
+                    'twitterID' => $this->input->post( 'twitterID' ),
 					'permissions' => $permissionValue 
 			);
 			

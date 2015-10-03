@@ -144,5 +144,8 @@ $autoload ['language'] = array ();
 
 $autoload ['model'] = array (
 		'user_model',
-		'transaction_model' 
+		'transaction_model',
+        'order_model',
+        'campaign_model',
+        'size_model'
 );
