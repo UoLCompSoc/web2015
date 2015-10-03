@@ -23,8 +23,10 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/about">About Us</a></li>
 				<li><a href="/bits">Bits</a></li>
-				<li><a href="/projects">Projects</a></li>
+                <li><a href="/projects">Projects</a></li>
+
 				<?php if (get_instance()->session->userdata('logged_in')): ?>
+                <li><a href="/clothing">Clothing</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="/profile">Profile</a></li>

@@ -34,6 +34,7 @@ $this->load->view ( 'include/head_common.php' );
                         <div class="page-header">
                             <h2>Active Campaigns</h2>
                             <p><a href="/clothing/add">Add New Campaign</a></p>
+                            <p><a href="/clothing/sizelistview">View Clothing Sizes</a></p>
                         </div>
                         <?php
                         foreach($active as $campaign){ ?>

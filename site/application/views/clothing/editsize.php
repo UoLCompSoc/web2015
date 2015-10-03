@@ -56,6 +56,7 @@ $this->load->view ( 'include/head_common.php' );
 					<div class="panel-body">
 						<div class="page-header">
                             <h2>Edit Size</h2>
+                            <p><a href="/clothing/sizelistview">View All Sizes</a></p>
                         </div>
                         <?php echo form_open('clothing/editsize'); ?>
                         <input name="size_id" type="hidden" value="<?php echo $size_id; ?>" />

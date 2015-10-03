@@ -14,6 +14,36 @@ class Clothing extends CI_Controller {
         $this->load->view ( 'clothing/clothing' , $data);
 	}
 
+    private function _getorder($order_id){
+        $this->db->select ( 'id, userid, campaign_id, size_id, paid' );
+        $this->db->from ( 'orders' );
+        $this->db->where( 'id' , $order_id);
+        return $this->db->get ();
+    }
+
+    public function paid($order_id = -1){
+        if($this->_getOrder($order_id)->first_row() == NULL){
+            $this->listview();
+            return;
+        } else {
+            $order = $this->_getOrder($order_id)->first_row();
+
+            $data = array();
+            $data['userid'] = $order->userid;
+			$data['campaign_id'] = $order->campaign_id;
+            $data['paid'] = !$order->paid;
+            $update = $this->order_model->update($data);
+
+            if ($update !== FALSE) {
+                $data ['message'] = "Successfully updated paid status";
+            } else {
+                $data ['errormessage'] = "Sorry couldn't update paid status: " . $this->db->_error_message ();
+            }
+
+            $this->listview( $order->campaign_id , $data);
+        }
+    }
+
     public function add(){
         $data = array();
         $data['name'] = '';
@@ -36,9 +66,6 @@ class Clothing extends CI_Controller {
                 $insert = $this->campaign_model->insert ( $data );
                 if ($insert !== FALSE) {
                     $data ['message'] = "Successfully Added new campaign";
-
-                    echo $data['date'];
-
                     //Clear the form
                     $data['name'] = '';
                     $data['desc'] = '';
@@ -173,9 +200,8 @@ class Clothing extends CI_Controller {
         $this->load->view( 'clothing/edit' , $data);
     }
 
-    public function listview($campaign_id = -1){
+    public function listview($campaign_id = -1, $data = array()){
         if($campaign_id == -1 || ($this->_getCampaign($campaign_id)->first_row() == NULL)){
-            $data = array();
             $data['active'] = $this->_getActiveCampaigns()->result();
             $data['expired'] = $this->_getExpiredCampaigns()->result();
 
@@ -183,7 +209,6 @@ class Clothing extends CI_Controller {
             return;
         }
 
-        $data = array();
         $data['campaign'] = $this->_getCampaign($campaign_id)->first_row();
         $data['aggregate'] = $this->_getAggregatedList($campaign_id)->result();
         $data['orders'] = $this->_getList($campaign_id)->result();
@@ -208,7 +233,7 @@ class Clothing extends CI_Controller {
     }
 
     function _getList($campaign_id = -1){
-        $this->db->select('users.fullname, clothing_sizes.name, orders.paid');
+        $this->db->select('orders.id, users.fullname, clothing_sizes.name, orders.paid');
         $this->db->from('orders');
         $this->db->join('users', 'users.userid = orders.userid');
         $this->db->join('clothing_sizes', 'clothing_sizes.id = orders.size_id');
