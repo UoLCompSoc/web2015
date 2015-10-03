@@ -15,7 +15,7 @@ class Clothing extends CI_Controller {
 	}
 
     public function listview($campaign_id = -1){
-        if($campaign_id == -1){
+        if($campaign_id == -1 || ($this->_getCampaign($campaign_id)->first_row() == NULL)){
             $data = array();
             $data['active'] = $this->_getActiveCampaigns()->result();
             $data['expired'] = $this->_getExpiredCampaigns()->result();
