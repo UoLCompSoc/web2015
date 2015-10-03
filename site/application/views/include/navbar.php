@@ -39,7 +39,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 						<li><a href="/point">Points</a></li>
 						<li><a href="/webhook/update">Update Projects</a></li>
 						<li><a href="/batch">Batch User</a></li>
-						<li><a href="/clothing/listview">Clothing Admin</a></li>
+						<li><a href="/clothing/listview">Clothing</a></li>
 					</ul></li>
 				<?php endif; ?>
 				<li><a href="/login/logout">Logout</a></li>
@@ -52,7 +52,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 				<li><a href="/index.php/login">Register</a></li>
 				<?php endif;?>
-				
+
 				<li><a href="http://www.leicesterunion.com/groups/computing" target="_blank">Pay Membership</a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <b class="caret"></b></a>
