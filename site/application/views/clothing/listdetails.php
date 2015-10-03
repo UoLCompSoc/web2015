@@ -32,6 +32,7 @@ $this->load->view ( 'include/head_common.php' );
 					<div class="panel-body">
 						<div class="page-header">
                             <h2><?php echo $campaign->name; ?></h2>
+                            <p><a href="/clothing/edit/<?php echo $campaign->id ?>"> Edit Campaign</a></p>
 						</div>
                         <p><?php echo $campaign->description; ?></p>
                         <p>Orders:</p>

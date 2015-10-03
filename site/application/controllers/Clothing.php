@@ -14,6 +14,89 @@ class Clothing extends CI_Controller {
         $this->load->view ( 'clothing/clothing' , $data);
 	}
 
+    public function add(){
+        $data = array();
+        $data['name'] = '';
+        $data['desc'] = '';
+        $data['date'] = '';
+
+        if($this->input->server ( 'REQUEST_METHOD' ) == 'POST'){
+
+            $data['name'] = $this->input->post('name');
+            $data['desc'] = $this->input->post('desc');
+            $data['date'] = $this->input->post('date');
+
+            if($this->input->post('name') == ''){
+                $data['errormessage'] = 'Please fill out the campaign name';
+            } else if($this->input->post('desc') == ''){
+                $data['errormessage'] = 'Please fill out the campaign description';
+            } else if($this->input->post('date') == ''){
+                $data['errormessage'] = 'Please fill out the campaign expiry date';
+            } else {
+                $insert = $this->campaign_model->insert ( $data );
+                if ($insert !== FALSE) {
+                    $data ['message'] = "Successfully Added new campaign";
+
+                    echo $data['date'];
+
+                    //Clear the form
+                    $data['name'] = '';
+                    $data['desc'] = '';
+                    $data['date'] = '';
+                } else {
+                    $data ['errormessage'] = "Sorry couldn't add new campaign: " . $this->db->_error_message ();
+                }
+            }
+        }
+
+        $this->load->view( 'clothing/add' , $data);
+    }
+
+    public function edit($campaign_id = -1){
+        $data = array();
+        $data['campaign_id'] = '';
+        $data['name'] = '';
+        $data['desc'] = '';
+        $data['date'] = '';
+
+        if($this->input->server ( 'REQUEST_METHOD' ) == 'POST'){
+            $data['campaign_id'] = $this->input->post('campaign_id');
+            $data['name'] = $this->input->post('name');
+            $data['desc'] = $this->input->post('desc');
+            $data['date'] = $this->input->post('date');
+
+            if($this->input->post('name') == ''){
+                $data['errormessage'] = 'Please fill out the campaign name';
+            } else if($this->input->post('desc') == ''){
+                $data['errormessage'] = 'Please fill out the campaign description';
+            } else if($this->input->post('date') == ''){
+                $data['errormessage'] = 'Please fill out the campaign expiry date';
+            } else {
+                $update = $this->campaign_model->update ( $data );
+                if ($update !== FALSE) {
+                    $data ['message'] = "Successfully updated campaign";
+                } else {
+                    $data ['errormessage'] = "Sorry couldn't update campaign: " . $this->db->_error_message ();
+                }
+            }
+        } else {
+            if($this->_getCampaign($campaign_id)->first_row() == NULL){
+                $this->listview();
+                return;
+            } else {
+                $campaign = $this->_getCampaign($campaign_id)->first_row();
+
+                $data['campaign_id'] = $campaign->id;
+                $data['name'] = $campaign->name;
+                $data['desc'] = $campaign->description;
+                $data['date'] = $campaign->expiry_date;
+                $data['date'] = str_replace(' ', 'T', $data['date']);
+            }
+        }
+
+        $this->load->view( 'clothing/edit' , $data);
+    }
+
     public function listview($campaign_id = -1){
         if($campaign_id == -1 || ($this->_getCampaign($campaign_id)->first_row() == NULL)){
             $data = array();
