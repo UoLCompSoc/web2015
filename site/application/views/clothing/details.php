@@ -33,7 +33,6 @@ $this->load->view ( 'include/head_common.php' );
             <div class="row">
                 <div class="col-lg-12 text-center alert alert-danger">
                     <?php
-                    echo $validation_errors;
                     echo (isset ( $errormessage ) ? $errormessage : '');
                     ?>
                 </div>
@@ -58,15 +57,13 @@ $this->load->view ( 'include/head_common.php' );
 						<div class="page-header">
                             <h2><?php echo $campaign->name; ?></h2>
 						</div>
-                        <p><?php echo $campaign->description; ?></p>
+                        <p><strong>About this campaign: </strong><?php echo $campaign->description; ?></p>
 
+                        <?php if($user_choice->size_id == 0): ?>
                         <div class="alert alert-info" role="alert">
-                        <?php if($user_choice->size_id == 0) {
-                            echo "You have not yet made a selection";
-                        } else {
-                            echo "This will change you current selection";
-                        } ?>
+                            You haven't made a selection!
                         </div>
+                        <?php endif; ?>
                         <p>Your choice:</p>
 
                         <?php echo form_open('clothing/details'); ?>
@@ -95,11 +92,11 @@ $this->load->view ( 'include/head_common.php' );
 					</div>
 				</div>
 			</div>
-			
+
 			<?php $this->load->view('include/social_sidebar.php'); ?>
 		</div>
 	</div>
-	
+
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );

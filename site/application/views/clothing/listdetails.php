@@ -56,7 +56,7 @@ $this->load->view ( 'include/head_common.php' );
                             <h2><?php echo $campaign->name; ?></h2>
                             <p><a href="/clothing/edit/<?php echo $campaign->id ?>"> Edit Campaign</a></p>
 						</div>
-                        <p><?php echo $campaign->description; ?></p>
+                        <p><strong>Campaign description:</strong> <?php echo $campaign->description; ?></p>
                         <p>Orders:</p>
 
                         <table class="table table-striped">
@@ -95,11 +95,11 @@ $this->load->view ( 'include/head_common.php' );
 					</div>
 				</div>
 			</div>
-			
+
 			<?php $this->load->view('include/social_sidebar.php'); ?>
 		</div>
 	</div>
-	
+
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );
