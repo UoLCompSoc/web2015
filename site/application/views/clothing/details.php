@@ -74,6 +74,9 @@ $this->load->view ( 'include/head_common.php' );
                         <input type="hidden" name="campaign_id" value="<?php echo $campaign->id; ?>" />
 
                         <div class="input-group">
+                            <input name="size" type="radio" aria-label="..."
+                                <?php if ($user_choice->size_id == 0){ echo 'checked="checked"'; } ?>
+                                   value="0"> No selection <br />
                         <?php
                             foreach($clothing_sizes as $clothing_size){ ?>
                                 <input name="size"

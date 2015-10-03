@@ -291,6 +291,16 @@ class Clothing extends CI_Controller {
                     $data ['errormessage'] = "Update Failed: " . $this->db->_error_message ();
                 }
             }
+        } else if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST' && $this->input->post('size') == 0){
+            $user_choice = $this->_getUserChoice($campaign_id, $user_id)->first_row();
+            if($user_choice != NULL){
+                $delete = $this->order_model->delete($user_choice->id);
+                if ($delete !== FALSE) {
+                    $data ['message'] = "Successfully Removed your selection";
+                } else {
+                    $data ['errormessage'] = "Sorry couldn't remove your selection: " . $this->db->_error_message ();
+                }
+            }
         }
 
         $data['user_choice'] = $this->_getUserChoice($campaign_id, $user_id)->first_row();

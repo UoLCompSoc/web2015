@@ -41,4 +41,14 @@ class Order_model extends CI_Model {
 		}
 	}
 
+    public function delete ($order_id){
+        if(!$this->db->delete('orders', array('id' => $order_id))){
+            log_message ( 'error', "Delete failed on database when deleting order: " . $this->db->error () ['message'] );
+            return FALSE;
+        } else {
+            syslog ( LOG_INFO, "Successfully deleted order {$order_id}." );
+            return TRUE;
+        }
+    }
+
 }
