@@ -6,9 +6,10 @@ Required feature checklist:
     - [x] Admin/regular user distinction
     - [x] Batch user creation system
     - [x] Audit system for admin actions
-- [ ] Portfolio
-    - [ ] Entry creator to add new projects
-    - [ ] Viewing page
+- [x] Portfolio
+    - [ ] ~~Entry creator to add new projects~~
+    - [x] Viewing page
+    - [x] Pull from UoLCompSoc Github feed
 - [x] Points Tracking System
     - [x] Admin console
     - [x] Leaderboard
