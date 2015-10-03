@@ -18,11 +18,6 @@ class Webhook extends CI_Controller {
 		$url = "https://api.github.com/users/UoLCompSoc/repos?per_page=10&client_id=" . $client_id . "&client_secret=" . $client_secret;
 
 		$decoded = json_decode ( $this->_getContent ( $url ) );
-		
-		usort($decoded, function($a, $b)
-        {
-            return ($a->pushed_at < $b->pushed_at);
-        });
 
         $github_data = array();
 
