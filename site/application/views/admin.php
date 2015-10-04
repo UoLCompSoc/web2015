@@ -44,7 +44,9 @@ $this->load->view ( 'include/head_common.php' );
 	<?php if(Permissions::is_authorized(Permissions::PORTFOLIO_ADMIN)):?>
 	    <div class="row">
 			<div class="col">
-				<p><a href="/webhook/update">Update Projects</a></p>
+				<p>
+					<a href="/webhook/update">Update Projects</a>
+				</p>
 			</div>
 		</div>
 	<?php endif; ?>
@@ -53,20 +55,31 @@ $this->load->view ( 'include/head_common.php' );
 	<div class="row">
 			<div class="col">
 				<p>
-                    <a href="/batch/">Batch User Creation</a>
-                </p>
+					<a href="/batch/">Batch User Creation</a>
+				</p>
 			</div>
 		</div>
 	<?php endif; ?>
 
     <?php if(Permissions::is_authorized(Permissions::CLOTHING_ADMIN)):?>
         <div class="row">
-            <div class="col">
-                <p>
-                    <a href="/clothing/listview/">Clothing Admin</a>
-                </p>
-            </div>
-        </div>
+			<div class="col">
+				<p>
+					<a href="/clothing/listview/">Clothing Admin</a>
+				</p>
+			</div>
+		</div>
+    <?php endif; ?>
+    
+    <?php if(Permissions::is_authorized(Permissions::MAILER_ADMIN)): ?>
+		<div class="row">
+			<div class="col">
+				<p>
+					<a href="/mailer">Batch Mailing</a>
+				</p>
+			</div>
+		</div>
+    
     <?php endif; ?>
 
 	</div>

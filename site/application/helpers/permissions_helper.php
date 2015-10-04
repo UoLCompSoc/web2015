@@ -30,6 +30,11 @@ abstract class Permissions {
      * the user can use the clothing system
      */
     const CLOTHING_ADMIN = 0x20;
+    
+    /**
+     * the user can send batch emails
+     */
+    const MAILER_ADMIN = 0x30;
 
 	public static function require_logged_in() {
 		if (! Permissions::is_logged_in ()) {

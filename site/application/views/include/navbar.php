@@ -40,6 +40,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 						<li><a href="/webhook/update">Update Projects</a></li>
 						<li><a href="/batch">Batch User</a></li>
 						<li><a href="/clothing/listview">Clothing</a></li>
+						<li><a href="/mailer">Batch Mailing</a></li>
 					</ul></li>
 				<?php endif; ?>
 				<li><a href="/login/logout">Logout</a></li>
