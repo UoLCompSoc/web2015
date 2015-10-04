@@ -38,6 +38,8 @@ class Webhook extends CI_Controller {
 		if (! write_file ( $filepath, json_encode ( $github_data ), 'w' )) {
 			log_message ( 'error', 'Cannot write to github cache file at ' . $filepath );
 		}
+		
+		$this->load->view ( 'admin' );
 	}
 
 	function _getContent($url) {
