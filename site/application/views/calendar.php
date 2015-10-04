@@ -27,7 +27,9 @@ $this->load->view ( 'include/head_common.php' );
 							<h2>Events Calendar</h2>
 						</div>
 
-						<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;src=qnj1ebvrt9mvhng4pqhqr8npio%40group.calendar.google.com&amp;color=%2328754E&amp;ctz=Europe%2FLondon" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                        <div class="responsive-iframe-container">
+						    <iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;src=qnj1ebvrt9mvhng4pqhqr8npio%40group.calendar.google.com&amp;color=%2328754E&amp;ctz=Europe%2FLondon" style=" border-width:0 " frameborder="0" scrolling="no"></iframe>
+						</div>
 						
 					</div>
 				</div>
