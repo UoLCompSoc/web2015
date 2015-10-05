@@ -123,6 +123,7 @@ CREATE TABLE batch_mails (
   recipientCount INT NOT NULL,
   committeeOnly TINYINT NOT NULL,
 
+  title VARCHAR(255) NOT NULL,
   subject VARCHAR(255) NOT NULL,
   emailText TEXT NOT NULL,
   

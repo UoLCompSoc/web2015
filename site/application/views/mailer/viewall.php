@@ -42,6 +42,7 @@ $this->load->view ( 'include/head_common.php' );
 								<th>Author</th>
 								<th>Date Sent</th>
 								<th>Subject</th>
+								<th>Raw Version</th>
 							</tr>
 
 						<?php foreach ($pastMails as $mail) {?>
@@ -50,6 +51,7 @@ $this->load->view ( 'include/head_common.php' );
 								<td><?php echo $mail["email"]; ?></td>
 								<td><?php echo $mail["sentDate"]; ?></td>
 								<td><a href="/mailer/view/<?php echo $mail["id"]; ?>"><?php echo $mail["subject"]; ?></a></td>
+								<td><a href="/mailer/viewraw/<?php echo $mail["id"]; ?>">View Raw</a></td>
 							</tr>
 						<?php } ?>
 						</table>
