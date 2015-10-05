@@ -13,20 +13,20 @@ class User extends CI_Controller {
 	public function listview() {
 		$query = $this->db->query ( "SELECT users.userid,fullname,email FROM users;" );
 		$data ['users'] = $query->result ();
-		
+
 		$this->load->view ( 'user/list', $data );
 	}
 
 	public function view($userid) {
 		// TODO Check the id is of the correct format
 		$query = $this->db->get_where ( 'users', array (
-				'userid' => $userid 
+				'userid' => $userid
 		) );
 		$user = $query->row ();
 		$data ['user'] = $user;
-		
+
 		$data ['points'] = $this->_getPointResult ( $userid )->result ();
-		
+
 		$data ['permissions'] = $this->_permissions_to_array ( $user->permissions );
 		$this->load->view ( 'user/view', $data );
 	}
@@ -48,8 +48,9 @@ class User extends CI_Controller {
 		$return ['user'] = ($permissions & Permissions::USER_ADMIN) == Permissions::USER_ADMIN;
 		$return ['points'] = ($permissions & Permissions::POINTS_ADMIN) == Permissions::POINTS_ADMIN;
 		$return ['portfolio'] = ($permissions & Permissions::PORTFOLIO_ADMIN) == Permissions::PORTFOLIO_ADMIN;
-        $return ['batch'] = ($permissions & Permissions::BATCH_USER_CREATE) == Permissions::BATCH_USER_CREATE;
-        $return ['clothing'] = ($permissions & Permissions::CLOTHING_ADMIN) == Permissions::CLOTHING_ADMIN;
+		$return ['batch'] = ($permissions & Permissions::BATCH_USER_CREATE) == Permissions::BATCH_USER_CREATE;
+		$return ['clothing'] = ($permissions & Permissions::CLOTHING_ADMIN) == Permissions::CLOTHING_ADMIN;
+		$return ['mailer'] = ($permissions & Permissions::MAILER_ADMIN) == Permissions::MAILER_ADMIN;
 		return $return;
 	}
 
@@ -59,59 +60,59 @@ class User extends CI_Controller {
 			$this->listview ();
 			return;
 		}
-		
+
 		$rules = array (
 				array (
 						'field' => 'userid',
 						'label' => 'userid',
-						'rules' => 'required' 
+						'rules' => 'required'
 				),
-				
+
 				array (
 						'field' => 'email',
 						'label' => 'Email',
-						'rules' => 'required' 
+						'rules' => 'required'
 				),
-				
+
 				array (
 						'field' => 'fullname',
 						'label' => 'Full Name',
-						'rules' => 'required' 
+						'rules' => 'required'
 				),
-				
+
 				array (
 						'field' => 'githubID',
 						'label' => 'Github ID',
-						'rules' => 'trim' 
+						'rules' => 'trim'
 				),
-				
+
 				array (
 						'field' => '$linkedinURL',
 						'label' => 'Linkedin URL',
-						'rules' => 'trim' 
+						'rules' => 'trim'
 				),
-				
+
 				array (
 						'field' => 'steamID',
 						'label' => 'Steam ID',
-						'rules' => 'trim' 
+						'rules' => 'trim'
 				),
-				
+
 				array (
 						'field' => 'twitterID',
 						'label' => 'Twitter Handle',
-						'rules' => 'trim' 
-				) 
+						'rules' => 'trim'
+				)
 		);
 		$this->form_validation->set_rules ( $rules );
-		
+
 		if ($this->form_validation->run () === FALSE) {
 			$query = $this->db->get_where ( 'users', array (
-					'userid' => $userid 
+					'userid' => $userid
 			) );
-			
+
 			$user = $query->row ();
-			
+
 			$userdata = array (
 					'userid' => $user->userid,
 					'email' => $user->email,
@@ -120,20 +121,21 @@ class User extends CI_Controller {
 					'linkedinURL' => $user->linkedinURL,
 					'steamID' => $user->steamID,
 					'twitterID' => $user->twitterID,
-					'permissions' => $this->_permissions_to_array ( $user->permissions ) 
+					'permissions' => $this->_permissions_to_array ( $user->permissions )
 			);
-			
+
 			$this->load->view ( 'user/edit', $userdata );
 		} else {
 			$permissionValue = 0;
-			
+
 			$this->input->post ( 'p_confirmed' ) == 1 ? $permissionValue += Permissions::USER_CONFIRMED : NULL;
 			$this->input->post ( 'p_user' ) == 1 ? $permissionValue += Permissions::USER_ADMIN : NULL;
 			$this->input->post ( 'p_points' ) == 1 ? $permissionValue += Permissions::POINTS_ADMIN : NULL;
 			$this->input->post ( 'p_portfolio' ) == 1 ? $permissionValue += Permissions::PORTFOLIO_ADMIN : NULL;
-            $this->input->post ( 'p_batch' ) == 1 ? $permissionValue += Permissions::BATCH_USER_CREATE : NULL;
-            $this->input->post ( 'p_clothing' ) == 1 ? $permissionValue += Permissions::CLOTHING_ADMIN : NULL;
-			
+			$this->input->post ( 'p_batch' ) == 1 ? $permissionValue += Permissions::BATCH_USER_CREATE : NULL;
+			$this->input->post ( 'p_clothing' ) == 1 ? $permissionValue += Permissions::CLOTHING_ADMIN : NULL;
+			$this->input->post ( 'p_mailer' ) == 1 ? $permissionValue += Permissions::MAILER_ADMIN : NULL;
+
 			$userdata = array (
 					'userid' => $this->input->post ( 'userid' ),
 					'email' => $this->input->post ( 'email' ),
@@ -141,14 +143,14 @@ class User extends CI_Controller {
 					'githubID' => $this->input->post ( 'githubID' ),
 					'linkedinURL' => $this->input->post ( '$linkedinURL' ),
 					'steamID' => $this->input->post ( 'steamID' ),
-                    'twitterID' => $this->input->post( 'twitterID' ),
-					'permissions' => $permissionValue 
+					'twitterID' => $this->input->post ( 'twitterID' ),
+					'permissions' => $permissionValue
 			);
-			
+
 			$updated = $this->user_model->update ( $userdata );
-			
+
 			$userdata ['permissions'] = $this->_permissions_to_array ( $permissionValue );
-			
+
 			if ($updated !== FALSE) {
 				$userdata ['message'] = "Update Successful";
 				$this->load->view ( 'user/edit', $userdata );

@@ -1,5 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
+
+Permissions::require_authorized ( Permissions::MAILER_ADMIN );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,7 @@ $this->load->view ( 'include/head_common.php' );
 	<!-- Page Content -->
 	<div class="container">
 		<?php $this->load->view('include/sitewide_banner.php'); ?>
-		
+
 		<div class="row">
 			<div class="col-lg-9">
 				<div class="panel panel-default">
@@ -38,7 +40,7 @@ $this->load->view ( 'include/head_common.php' );
 			</div>
 		</div>
 	</div>
-	
+
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );

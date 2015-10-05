@@ -53,6 +53,7 @@ $this->load->view ( 'include/navbar.php' );
 				<p>Points Admin: <i class="fa fa-<?php echo ($permissions['points'] ? 'check': 'times'); ?>"></i></p>
 				<p>Portfolio Admin: <i class="fa fa-<?php echo ($permissions['portfolio'] ? 'check': 'times'); ?>"></i></p>
 				<p>Batch User Admin: <i class="fa fa-<?php echo ($permissions['batch'] ? 'check': 'times'); ?>"></i></p>
+				<p>Batch Mailer: <i class="fa fa-<?php echo ($permissions['batch'] ? 'check': 'times'); ?>"></i></p>
 
 				<h3>Points</h3>
 				<table class="table table-striped">
