@@ -56,6 +56,11 @@ $this->load->view ( 'include/head_common.php' );
 								<textarea rows="10" cols="10" name="body" id="body" class="form-control"></textarea>
 							</div>
 
+							<div class="form-group">
+								<label for="committeeOnly">Send to committee members only?:</label>
+								<input id="committeeOnly" name="committeeOnly" type="checkbox" value="1" checked>
+							</div>
+
 							<input type="submit" value="Send" name="send" id="send" class="btn btn-primary">
 						<?php echo form_close(); ?>
 					</div>

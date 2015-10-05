@@ -4,6 +4,7 @@ class Batch_mails_model extends CI_Model {
 	var $id = - 1;
 	var $subject = '';
 	var $emailText = '';
+	var $committeeOnly = FALSE;
 	var $recipientCount = 0;
 	var $sentDate = NULL;
 	var $senderID = - 1;
@@ -12,7 +13,7 @@ class Batch_mails_model extends CI_Model {
 		parent::__construct ();
 	}
 
-	public function insert($subject, $emailText, $recipientCount, $senderEmail) {
+	public function insert($subject, $emailText, $committeeOnly, $recipientCount, $senderEmail) {
 		$dbRes = $this->db->get_where ( 'users', array (
 				'email' => $senderEmail
 		) );
@@ -21,10 +22,11 @@ class Batch_mails_model extends CI_Model {
 		$senderID = $row ['userid'];
 
 		$insertdata = array (
+				'committeeOnly' => $committeeOnly,
 				'recipientCount' => $recipientCount,
 				'subject' => $subject,
 				'emailText' => $emailText,
-				'sentDate' => date ( 'Y-m-d' ),
+				'sentDate' => date ( 'Y-m-d H:i:s' ),
 				'senderID' => $senderID
 		);
 

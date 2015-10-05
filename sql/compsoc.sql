@@ -10,63 +10,65 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS batch_mails;
 
 CREATE TABLE point_types (
-	id INT NOT NULL AUTO_INCREMENT UNIQUE,
-	
-	title VARCHAR(50) NOT NULL UNIQUE,
-	description VARCHAR(255) NOT NULL,
-	
-	PRIMARY KEY(id)
+  id INT NOT NULL AUTO_INCREMENT UNIQUE,
+
+  title VARCHAR(50) NOT NULL UNIQUE,
+  description VARCHAR(255) NOT NULL,
+
+  PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
 
 INSERT INTO point_types (title, description) VALUES ("Academic", "Awarded for academic participation such as joining in with lectures or projects");
 INSERT INTO point_types (title, description) VALUES ("Social", "Awarded for getting involved with social events");
 
 CREATE TABLE users (
-	userid INT NOT NULL AUTO_INCREMENT UNIQUE,
-	email VARCHAR(50) NOT NULL UNIQUE,
-	fullname VARCHAR(50) NOT NULL,
-	datejoined DATE NOT NULL,
-	permissions INT NOT NULL,
+  userid INT NOT NULL AUTO_INCREMENT UNIQUE,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  fullname VARCHAR(50) NOT NULL,
+  datejoined DATE NOT NULL,
 
-    passwordhash VARCHAR(255) NOT NULL,
-		
-	githubID VARCHAR(40),
-	linkedinURL VARCHAR(255),
-	steamID VARCHAR(50),
-	twitterID VARCHAR(20),
+  permissions INT NOT NULL,
+  committee TINYINT NOT NULL DEFAULT 0,
+
+  passwordhash VARCHAR(255) NOT NULL,
 	
-	PRIMARY KEY (userid)
+  githubID VARCHAR(40),
+  linkedinURL VARCHAR(255),
+  steamID VARCHAR(50),
+  twitterID VARCHAR(20),
+
+  PRIMARY KEY (userid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
 
 CREATE TABLE transactions (
-	id INT NOT NULL AUTO_INCREMENT UNIQUE,
-	
-	userid INT NOT NULL,
-	assignerid INT NOT NULL,
-	
-	timecreated DATETIME NOT NULL,
-	
-	amount INT NOT NULL,
-	pointtype INT NOT NULL,
-	
-	transaction_comment TEXT,
-	
-	PRIMARY KEY (id),
-	
-	FOREIGN KEY(userid)
-		REFERENCES users(userid)
-		ON DELETE CASCADE
-		ON UPDATE CASCADE,
-		
-	FOREIGN KEY(assignerid)
-		REFERENCES users(userid)
-		ON DELETE RESTRICT
-		ON UPDATE CASCADE,
-		
-	FOREIGN KEY(pointtype)
-		REFERENCES point_types(id)
-		ON DELETE RESTRICT
-		ON UPDATE CASCADE
+  id INT NOT NULL AUTO_INCREMENT UNIQUE,
+
+  userid INT NOT NULL,
+  assignerid INT NOT NULL,
+
+  timecreated DATETIME NOT NULL,
+
+  amount INT NOT NULL,
+  pointtype INT NOT NULL,
+
+  transaction_comment TEXT,
+
+  PRIMARY KEY (id),
+
+  FOREIGN KEY(userid)
+    REFERENCES users(userid)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+  FOREIGN KEY(assignerid)
+    REFERENCES users(userid)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+
+  FOREIGN KEY(pointtype)
+    REFERENCES point_types(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
 
 CREATE TABLE campaigns (
@@ -119,6 +121,7 @@ CREATE TABLE batch_mails (
   id INT NOT NULL AUTO_INCREMENT,
 
   recipientCount INT NOT NULL,
+  committeeOnly TINYINT NOT NULL,
 
   subject VARCHAR(255) NOT NULL,
   emailText TEXT NOT NULL,

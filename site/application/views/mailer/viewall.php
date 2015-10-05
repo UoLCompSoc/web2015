@@ -26,15 +26,33 @@ $this->load->view ( 'include/head_common.php' );
 	<!-- Page Content -->
 	<div class="container">
 		<?php $this->load->view('include/sitewide_banner.php'); ?>
+		<?php $this->load->view('include/notification_message.php'); ?>
 
 		<div class="row">
 			<div class="col-lg-9">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="page-header">
-							<h2>Batch Mailer</h2>
+							<h2>Past Batch Mails</h2>
 						</div>
-						<p>Batch mails</p>
+
+						<table class="table table-striped">
+							<tr>
+								<th>ID #</th>
+								<th>Author</th>
+								<th>Date Sent</th>
+								<th>Subject</th>
+							</tr>
+
+						<?php foreach ($pastMails as $mail) {?>
+							<tr>
+								<td><?php echo $mail["id"]; ?> </td>
+								<td><?php echo $mail["email"]; ?></td>
+								<td><?php echo $mail["sentDate"]; ?></td>
+								<td><a href="/mailer/view/<?php echo $mail["id"]; ?>"><?php echo $mail["subject"]; ?></a></td>
+							</tr>
+						<?php } ?>
+						</table>
 					</div>
 				</div>
 			</div>
