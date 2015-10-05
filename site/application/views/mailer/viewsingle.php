@@ -40,7 +40,7 @@ $this->load->view ( 'include/head_common.php' );
 
 								<td><strong>By:</strong> <?php echo $mail["email"]; ?></td>
 
-								<td>Commitee Only? <i class="fa fa-<?php echo ($mail["committeeOnly"] ? 'check': 'times'); ?>"></i></td>
+								<td><strong>Commitee Only?</strong> <i class="fa fa-<?php echo ($mail["committeeOnly"] ? 'check': 'times'); ?>"></i></td>
 							</tr>
 
 							<tr>
@@ -48,7 +48,7 @@ $this->load->view ( 'include/head_common.php' );
 							</tr>
 
 							<tr>
-								<td colspan="3"><?php echo $mail["emailText"]; ?></td>
+								<td colspan="3"><?php echo htmlspecialchars($mail["emailText"]); ?></td>
 							</tr>
 						</table>
 					</div>
