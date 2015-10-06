@@ -33,7 +33,7 @@ class Webhook extends CI_Controller {
 		}
 
 
-		$filepath = APPPATH . 'logs/repocache.json';
+		$filepath = APPPATH . 'cache/repocache.json';
 
 		if (! write_file ( $filepath, json_encode ( $github_data ), 'w' )) {
 			log_message ( 'error', 'Cannot write to github cache file at ' . $filepath );
