@@ -61,8 +61,8 @@ $this->load->view ( 'include/head_common.php' );
 						<?php echo form_open('question/search_phrase'); ?>
 						<div class="form-group">
 						    <div class="form-group">
-						        <label for="srch_phrase" class="sr-only">Question</label>
-						        <input type="text" name="srch_phrase" id="srch_phrase" class="form-control" placeholder="Question" value="<?php echo set_value('srch_phrase');?>">
+						        <label for="srch_phrase">Question</label>
+						        <input type="search" name="srch_phrase" id="srch_phrase" class="form-control" placeholder="Question" value="<?php echo set_value('srch_phrase');?>">
 						    </div>
 						    
 						    <input type="submit" value="Search" name="srch_submit" id="srch_submit" class="btn btn-primary" style="margin-right: 6px">
