@@ -4,6 +4,9 @@ abstract class CompSocDB {
 	const DB_USERNAME = '';
 	const DB_PASSWORD = '';
 	const DB_NAME = '';
+
+	// shouldn't need to be changed in most cases
+	const DB_SERVER = 'localhost';
 }
 
 // Returns true if the database details above have been filled out, false otherwise.

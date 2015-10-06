@@ -70,7 +70,7 @@ if (! is_db_details_valid ()) {
 
 $db ['default'] = array (
 		'dsn' => '',
-		'hostname' => 'localhost',
+		'hostname' => CompSocDB::DB_SERVER,
 		'username' => CompSocDB::DB_USERNAME,
 		'password' => CompSocDB::DB_PASSWORD,
 		'database' => CompSocDB::DB_NAME,
@@ -87,5 +87,5 @@ $db ['default'] = array (
 		'compress' => FALSE,
 		'stricton' => FALSE,
 		'failover' => array (),
-		'save_queries' => TRUE 
+		'save_queries' => TRUE
 );
