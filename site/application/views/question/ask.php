@@ -1,5 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
+
+Permissions::require_logged_in ();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -35,19 +35,21 @@ $this->load->view ( 'include/head_common.php' );
 				</div>
 			</div>
 			
-			<div class="row">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div class="page-header">
-							<h2>Ask</h2>
-						</div>
+			<?php if (get_instance()->session->userdata('logged_in')): ?>
+			    <div class="row">
+				    <div class="panel panel-default">
+					    <div class="panel-body">
+						    <div class="page-header">
+							    <h2>Ask</h2>
+						    </div>
 						
-						<p>Can't find what you're looking for? Ask away!</p>
-						<a href="/question/ask" class="btn btn-primary" role="button">Ask</a>
+						    <p>Can't find what you're looking for? Ask away!</p>
+						    <a href="/question/ask" class="btn btn-primary" role="button">Ask</a>
 						
-					</div>
-				</div>
-			</div>
+					    </div>
+				    </div>
+			    </div>
+			<?php endif; ?>
 		
 		    <div class="row">
 			    <div class="panel panel-default">
