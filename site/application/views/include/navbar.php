@@ -24,7 +24,8 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li><a href="/about">About Us</a></li>
 				<li><a href="/bits">Bits</a></li>
                 <li><a href="/projects">Projects</a></li>
-                <li><a href="/calendar">Events Calendar</a></li>
+                <li><a href="/lectures">Lectures</a></li>
+                <li><a href="/calendar">Calendar</a></li>
 
 				<?php if (get_instance()->session->userdata('logged_in')): ?>
                 <li><a href="/clothing">Clothing</a></li>
