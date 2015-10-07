@@ -47,11 +47,13 @@ class Lectures extends CI_Controller {
     public function get($lecture_id = NULL){
 
         if($lecture_id == NULL || !is_numeric($lecture_id)){
+            $this->index();
             return;
         }
 
         $filename = $this->_isValidLectureID($lecture_id);
         if($filename == NULL){
+            $this->index();
             return;
         }
 
@@ -62,11 +64,13 @@ class Lectures extends CI_Controller {
 
     public function display($lecture_id = NULL, $data = array()){
         if($lecture_id == NULL || !is_numeric($lecture_id)){
+            $this->index();
             return;
         }
 
         $filename = $this->_isValidLectureID($lecture_id);
         if($filename == NULL){
+            $this->index();
             return;
         }
 
