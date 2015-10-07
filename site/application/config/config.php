@@ -520,3 +520,4 @@ if (! is_github_details_valid ()) {
 
 $config ['github_client_id'] = GithubOAUTH::CLIENT_ID;
 $config ['github_client_secret'] = GithubOAUTH::CLIENT_SECRET;
+$config ['github_webhook_secret'] = GithubOAUTH::WEBHOOK_SECRET;
