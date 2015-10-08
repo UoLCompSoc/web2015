@@ -78,33 +78,6 @@ class Lectures extends CI_Controller {
         $this->load->view('lectures/presenter', $data);
     }
 
-    public function update(){
-        $client_id = $this->config->item ( 'github_client_id' );
-        $client_secret = $this->config->item ( 'github_client_secret' );
-
-        $url = "https://api.github.com/repos/UoLCompSoc/Lectures/contents/2015-2016?client_id=" . $client_id . "&client_secret=" . $client_secret;
-
-        $decoded = json_decode ( $this->_getContent ( $url ) );
-
-        $lectures = array();
-
-        foreach($decoded as $file){
-            if($file->download_url != null && strpos($file->name, 'Lecture') == 0){
-                array_push($lectures, $file);
-
-                $filename = $file->name;
-                $filepath = Lectures::getLectureCachePath() . $filename;
-                $this->_putContent($filepath, $this->_getContent($file->download_url), 'w');
-            }
-        }
-    }
-
-    function _putContent($filepath, $content, $type){
-        if (! write_file ( $filepath, $content, $type)) {
-            log_message ( 'error', 'Cannot write to lecture cache file at ' . $filepath );
-        }
-    }
-
     function _getContent($url) {
         $ch = curl_init ();
         curl_setopt ( $ch, CURLOPT_URL, $url );
