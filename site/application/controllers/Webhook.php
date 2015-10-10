@@ -43,7 +43,7 @@ class Webhook extends CI_Controller {
                 array_push($lectures, $file);
 
                 $filename = $file->name;
-                $filepath = Lectures::getLectureCachePath() . $filename;
+                $filepath = APPPATH . 'cache/lectures/' . $filename;
                 $this->_putContent($filepath, $this->_getContent($file->download_url), 'w');
             }
         }
