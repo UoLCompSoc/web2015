@@ -17,7 +17,8 @@ Required feature checklist:
     - [x] About Us
     - [x] Social Media links
 - [ ] Some sort of game!
-- [ ] Security audit + improvements
+- [ ] Security audit (XSS) + improvements
+- [ ] Questions section
 
 There is scope to do more, but the above are the core requirements.
 
