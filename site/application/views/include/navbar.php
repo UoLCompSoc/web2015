@@ -53,7 +53,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					$(document).ready(function() {$("a.navbar-login").attr('href', '#');});
 				</script>
 
-				<li><a href="/index.php/login">Register</a></li>
+				<li><a href="/login">Register</a></li>
 				<?php endif;?>
 
 				<li><a href="http://www.leicesterunion.com/groups/computing" target="_blank">Pay Membership</a></li>
