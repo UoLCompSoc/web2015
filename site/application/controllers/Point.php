@@ -11,60 +11,62 @@ class Point extends CI_Controller {
 	}
 
 	public function index() {
+		Permissions::require_authorized(Permissions::POINTS_ADMIN);
 		$this->load->view ( 'point/dashboard' );
 	}
 
-    public function leaderboard() {
-        $data = array ();
-        $data['leaderboard'] = $this->_getPointLeaderboard()->result();
+	public function leaderboard() {
+		$data = array ();
+		$data['leaderboard'] = $this->_getPointLeaderboard()->result();
 
-        $this->load->view ( 'point/leaderboard', $data);
-    }
+		$this->load->view ( 'point/leaderboard', $data);
+	}
 
 	public function view($userid = -1) {
+		Permissions::require_authorized(Permissions::POINTS_ADMIN);
 		// Check if the view has been given a id to lookup
 		if ($userid == - 1) {
 			redirect ( 'user/listview' );
 			return;
 		}
-		
+
 		$query = $this->_getPointResult ( $userid );
-		
+
 		// Gets the user
 		$user = $this->db->get_where ( 'users', array (
-				'userid' => $userid 
+				'userid' => $userid
 		) );
-		
+
 		// Get the sum of all of their points
 		$this->db->select_sum ( 'amount' );
 		$total = $this->db->get_where ( 'transactions', array (
-				'userid' => $userid 
+				'userid' => $userid
 		) );
-		
+
 		$data = array ();
 		$data ['points'] = $query->result ();
 		$data ['user'] = $user->row ();
 		$data ['total'] = $total->row ()->amount;
-		
+
 		$this->load->view ( 'point/view', $data );
 	}
 
     private function _getPointLeaderboard() {
 
-        /**
-         * Query used to get a leaderboard of points
-         *
-         * SELECT fullname, users.userid, SUM(amount) as total FROM transactions
-         * JOIN users ON users.userid = transactions.userid
-         * GROUP BY userid
-         * ORDER BY total;
-         */
+		/**
+		* Query used to get a leaderboard of points
+		*
+		* SELECT fullname, users.userid, SUM(amount) as total FROM transactions
+		* JOIN users ON users.userid = transactions.userid
+		* GROUP BY userid
+		* ORDER BY total;
+		*/
 
 		// TODO Make this less horrific
 		// Gets a list of all of the points given to a user and associates the Full name of the assigner, as well as the type of the points given
 		$this->db->select ( "u.fullname, u.userid, SUM(t.amount) as total" );
 		$this->db->from ( 'transactions AS t' );
-        $this->db->group_by( 'u.userid' );
+		$this->db->group_by( 'u.userid' );
 		$this->db->order_by ( 'total' , "desc" );
 		$this->db->join ( 'users as u', 't.userid = u.userid' );
 		return $this->db->get ();
@@ -86,34 +88,36 @@ class Point extends CI_Controller {
 	 * Method that controls the entire points adding process
 	 */
 	public function add() {
+		Permissions::require_authorized(Permissions::POINTS_ADMIN);
+
 		$rules = array (
 				array (
 						'field' => 'email',
 						'label' => 'Email',
-						'rules' => 'required' 
+						'rules' => 'required'
 				),
-				
+
 				array (
 						'field' => 'amount',
 						'label' => 'Amount',
-						'rules' => 'required' 
+						'rules' => 'required'
 				),
-				
+
 				array (
 						'field' => 'pointtype',
 						'label' => 'Point Type',
-						'rules' => 'required' 
+						'rules' => 'required'
 				),
-				
+
 				array (
 						'field' => 'comment',
 						'label' => 'Comment',
-						'rules' => 'trim' 
-				) 
+						'rules' => 'trim'
+				)
 		);
-		
+
 		$this->form_validation->set_rules ( $rules );
-		
+
 		/*
 		 * If there is POST data (form has been submitted) then use that data instead blank data
 		 */
@@ -123,7 +127,7 @@ class Point extends CI_Controller {
 		$data ['pointtype'] = $this->input->post ( 'pointtype' ) != FALSE ? $this->input->post ( 'pointtype' ) : '1';
 		$data ['comment'] = $this->input->post ( 'comment' ) != FALSE ? $this->input->post ( 'comment' ) : '';
 		$data ['pointtypes'] = $this->db->get ( 'point_types' )->result ();
-		
+
 		/*
 		 * Check if the page is being visited for the first time
 		 */
@@ -133,29 +137,29 @@ class Point extends CI_Controller {
 		} else {
 			// Get the userid associated with the user getting the points
 			$query = $this->db->get_where ( 'users', array (
-					'email' => $this->input->post ( 'email' ) 
+					'email' => $this->input->post ( 'email' )
 			) );
 			$user = $query->row ();
 			$this->db->flush_cache ();
-			
+
 			// Gets the userid of the user giving the points
 			$query = $this->db->get_where ( 'users', array (
-					'email' => get_instance ()->session->userdata ( 'email' ) 
+					'email' => get_instance ()->session->userdata ( 'email' )
 			) );
 			$assigner = $query->row ();
-			
+
 			// Add the data to the array
 			$data ['userid'] = $user->userid;
 			$data ['assignerid'] = $assigner->userid;
 			$data ['timecreated'] = date ( 'Y-m-d H:i:s' );
-			
+
 			// Check that the user is not giving themselves points
 			if ($user->userid != $assigner->userid) {
 				// Attempt to insert the record into the database
 				if ($this->transaction_model->insert ( $data ) == TRUE) {
 					// Log the points being added in the database
 					$this->_logAdd ( $data );
-					
+
 					// Clear the form data
 					$data ['message'] = 'Assigned ' . $data ['amount'] . ' points to ' . $user->fullname;
 					$data ['email'] = '';
@@ -171,7 +175,7 @@ class Point extends CI_Controller {
 				$this->_logSelfAdd ( $data );
 				$data ['errormessage'] = 'You cannot assign points to yourself ' . $assigner->fullname;
 			}
-			
+
 			$this->load->view ( 'point/add', $data );
 		}
 	}
@@ -184,10 +188,10 @@ class Point extends CI_Controller {
 	 */
 	private function _logAdd($data) {
 		$filepath = APPPATH . 'logs/' . Point::LOG_FILE;
-		
+
 		// Separate the data with commas
 		$data_to_append = $data ['userid'] . ',' . $data ['assignerid'] . ',' . $data ['amount'] . ',' . date ( 'Y-m-d H:i:s' ) . "\n";
-		
+
 		if (! write_file ( $filepath, $data_to_append, 'a' )) {
 			log_message ( 'error', 'Cannot write to points log file at ' . $filepath );
 		}
@@ -201,10 +205,10 @@ class Point extends CI_Controller {
 	 */
 	private function _logSelfAdd($data) {
 		$filepath = APPPATH . 'logs/' . Point::SELF_LOG_FILE;
-		
+
 		// Separate the data with commas
 		$data_to_append = $data ['assignerid'] . ',' . $data ['amount'] . ',' . date ( 'Y-m-d H:i:s' ) . "\n";
-		
+
 		if (! write_file ( $filepath, $data_to_append, 'a' )) {
 			log_message ( 'error', 'Cannot write to self giving points log file at ' . $filepath );
 		}
