@@ -54,10 +54,10 @@ class Profile extends CI_Controller {
 			return;
 		}
 		
-		$steamID = $this->input->post ( "steamID" );
-		$linkedInID = $this->input->post ( "linkedInID" );
-		$githubID = $this->input->post ( "githubID" );
-		$twitterID = $this->input->post ( "twitterID" );
+		$steamID = $this->input->post ( "steamID", TRUE );
+		$linkedInID = $this->input->post ( "linkedInID", TRUE );
+		$githubID = $this->input->post ( "githubID", TRUE );
+		$twitterID = $this->input->post ( "twitterID", TRUE );
 		
 		if (strlen ( $twitterID ) > 0) {
 			if (substr ( $twitterID, 0, 1 ) != '@') {

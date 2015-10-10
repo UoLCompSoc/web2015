@@ -36,7 +36,7 @@ class Lectures extends CI_Controller {
     private function _isValidLectureID($lecture_id){
         $lectures = scandir(Lectures::getLectureCachePath());
         foreach($lectures as $lecture){
-            if(strpos($lecture, $lecture_id)){
+            if(strpos($lecture, $this->security->xss_clean($lecture_id))){
                 return $lecture;
             }
         }
@@ -45,6 +45,8 @@ class Lectures extends CI_Controller {
     }
 
     public function get($lecture_id = NULL){
+
+        $lecture_id = $this->security->xss_clean($lecture_id);
 
         if($lecture_id == NULL || !is_numeric($lecture_id)){
             $this->index();

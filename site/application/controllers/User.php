@@ -7,18 +7,26 @@ class User extends CI_Controller {
 	}
 
 	public function index() {
-		$this->listview ();
+        Permissions::require_authorized(Permissions::USER_ADMIN);
+
+        $this->listview ();
 	}
 
 	public function listview() {
-		$query = $this->db->query ( "SELECT users.userid,fullname,email FROM users;" );
+        Permissions::require_authorized(Permissions::USER_ADMIN);
+
+        $query = $this->db->query ( "SELECT users.userid,fullname,email FROM users;" );
 		$data ['users'] = $query->result ();
 
 		$this->load->view ( 'user/list', $data );
 	}
 
 	public function view($userid) {
-		// TODO Check the id is of the correct format
+        Permissions::require_authorized(Permissions::USER_ADMIN);
+
+        $userid = $this->security->xss_clean($userid);
+
+        // TODO Check the id is of the correct format
 		$query = $this->db->get_where ( 'users', array (
 				'userid' => $userid
 		) );
@@ -32,6 +40,8 @@ class User extends CI_Controller {
 	}
 
 	private function _getPointResult($userid) {
+        $userid = $this->security->xss_clean($userid);
+
 		// TODO Make this less horrific
 		// Gets a list of all of the points given to a user and associates the Full name of the assigner, as well as the type of the points given
 		$this->db->select ( "a.fullname AS Assigner, t.amount, t.transaction_comment AS comment, p.title AS type, t.timecreated AS date" );
@@ -55,6 +65,10 @@ class User extends CI_Controller {
 	}
 
 	public function edit($userid = -1) {
+        Permissions::require_authorized(Permissions::USER_ADMIN);
+
+        $userid = $this->security->xss_clean($userid);
+
 		// TODO add check for integer
 		if ($userid == - 1 && ($this->input->server ( 'REQUEST_METHOD' ) != 'POST')) {
 			$this->listview ();
@@ -128,22 +142,22 @@ class User extends CI_Controller {
 		} else {
 			$permissionValue = 0;
 
-			$this->input->post ( 'p_confirmed' ) == 1 ? $permissionValue += Permissions::USER_CONFIRMED : NULL;
-			$this->input->post ( 'p_user' ) == 1 ? $permissionValue += Permissions::USER_ADMIN : NULL;
-			$this->input->post ( 'p_points' ) == 1 ? $permissionValue += Permissions::POINTS_ADMIN : NULL;
-			$this->input->post ( 'p_portfolio' ) == 1 ? $permissionValue += Permissions::PORTFOLIO_ADMIN : NULL;
-			$this->input->post ( 'p_batch' ) == 1 ? $permissionValue += Permissions::BATCH_USER_CREATE : NULL;
-			$this->input->post ( 'p_clothing' ) == 1 ? $permissionValue += Permissions::CLOTHING_ADMIN : NULL;
-			$this->input->post ( 'p_mailer' ) == 1 ? $permissionValue += Permissions::MAILER_ADMIN : NULL;
+			$this->input->post ( 'p_confirmed', TRUE ) == 1 ? $permissionValue += Permissions::USER_CONFIRMED : NULL;
+			$this->input->post ( 'p_user', TRUE ) == 1 ? $permissionValue += Permissions::USER_ADMIN : NULL;
+			$this->input->post ( 'p_points', TRUE ) == 1 ? $permissionValue += Permissions::POINTS_ADMIN : NULL;
+			$this->input->post ( 'p_portfolio', TRUE ) == 1 ? $permissionValue += Permissions::PORTFOLIO_ADMIN : NULL;
+			$this->input->post ( 'p_batch', TRUE ) == 1 ? $permissionValue += Permissions::BATCH_USER_CREATE : NULL;
+			$this->input->post ( 'p_clothing', TRUE ) == 1 ? $permissionValue += Permissions::CLOTHING_ADMIN : NULL;
+			$this->input->post ( 'p_mailer', TRUE ) == 1 ? $permissionValue += Permissions::MAILER_ADMIN : NULL;
 
 			$userdata = array (
-					'userid' => $this->input->post ( 'userid' ),
-					'email' => $this->input->post ( 'email' ),
-					'fullname' => $this->input->post ( 'fullname' ),
-					'githubID' => $this->input->post ( 'githubID' ),
-					'linkedinURL' => $this->input->post ( '$linkedinURL' ),
-					'steamID' => $this->input->post ( 'steamID' ),
-					'twitterID' => $this->input->post ( 'twitterID' ),
+					'userid' => $this->input->post ( 'userid', TRUE ),
+					'email' => $this->input->post ( 'email', TRUE ),
+					'fullname' => $this->input->post ( 'fullname', TRUE ),
+					'githubID' => $this->input->post ( 'githubID', TRUE ),
+					'linkedinURL' => $this->input->post ( '$linkedinURL', TRUE ),
+					'steamID' => $this->input->post ( 'steamID', TRUE ),
+					'twitterID' => $this->input->post ( 'twitterID', TRUE ),
 					'permissions' => $permissionValue
 			);
 

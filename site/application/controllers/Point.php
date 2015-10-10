@@ -122,10 +122,10 @@ class Point extends CI_Controller {
 		 * If there is POST data (form has been submitted) then use that data instead blank data
 		 */
 		$data = array ();
-		$data ['email'] = $this->input->post ( 'email' ) != FALSE ? $this->input->post ( 'email' ) : '';
-		$data ['amount'] = $this->input->post ( 'amount' ) != FALSE ? $this->input->post ( 'amount' ) : '';
-		$data ['pointtype'] = $this->input->post ( 'pointtype' ) != FALSE ? $this->input->post ( 'pointtype' ) : '1';
-		$data ['comment'] = $this->input->post ( 'comment' ) != FALSE ? $this->input->post ( 'comment' ) : '';
+		$data ['email'] = $this->input->post ( 'email' ) != FALSE ? $this->input->post ( 'email', TRUE ) : '';
+		$data ['amount'] = $this->input->post ( 'amount' ) != FALSE ? $this->input->post ( 'amount', TRUE ) : '';
+		$data ['pointtype'] = $this->input->post ( 'pointtype' ) != FALSE ? $this->input->post ( 'pointtype', TRUE ) : '1';
+		$data ['comment'] = $this->input->post ( 'comment' ) != FALSE ? $this->input->post ( 'comment', TRUE ) : '';
 		$data ['pointtypes'] = $this->db->get ( 'point_types' )->result ();
 
 		/*
@@ -137,7 +137,7 @@ class Point extends CI_Controller {
 		} else {
 			// Get the userid associated with the user getting the points
 			$query = $this->db->get_where ( 'users', array (
-					'email' => $this->input->post ( 'email' )
+					'email' => $this->input->post ( 'email', TRUE )
 			) );
 			$user = $query->row ();
 			$this->db->flush_cache ();
