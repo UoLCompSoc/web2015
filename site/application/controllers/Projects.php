@@ -7,7 +7,7 @@ class Projects extends CI_Controller {
     }
 
 	public function index() {
-        $filepath = APPPATH . 'logs/repocache.json';
+        $filepath = APPPATH . 'cache/repocache.json';
         $cachefile = read_file($filepath);
         $decoded = json_decode($cachefile);
 

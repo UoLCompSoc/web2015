@@ -5,7 +5,9 @@ class Mailer extends CI_Controller {
 		$this->load->view ( 'mailer/panel.php' );
 	}
 	public function create() {
-		$output = array ();
+        Permissions::require_authorized(Permissions::MAILER_ADMIN);
+
+        $output = array ();
 		if ($this->input->post ( 'subject' ) != "" || $this->input->post ( 'body' ) != "") {
 			$rules = array (
 					array (
@@ -30,10 +32,10 @@ class Mailer extends CI_Controller {
 			$this->form_validation->set_rules ( $rules );
 			
 			if ($this->form_validation->run () === TRUE) {
-				$subject = $this->input->post ( 'subject' );
-				$title = $this->input->post ( 'title' );
-				$body = $this->input->post ( 'body' );
-				$committeeOnly = ($this->input->post ( 'committeeOnly' ) == 1);
+				$subject = $this->input->post ( 'subject', TRUE );
+				$title = $this->input->post ( 'title', TRUE );
+				$body = $this->input->post ( 'body', TRUE );
+				$committeeOnly = ($this->input->post ( 'committeeOnly', TRUE ) == 1);
 				$senderEmail = $this->session->userdata ( 'email' );
 				$maxRecipientCount = - 1;
 				
@@ -64,7 +66,9 @@ class Mailer extends CI_Controller {
 		$this->load->view ( 'mailer/create.php', $output );
 	}
 	public function view($mailID = -1) {
-		if ($mailID > 0) {
+        Permissions::require_authorized(Permissions::MAILER_ADMIN);
+
+        if ($mailID > 0) {
 			$result = $this->db->query ( "select batch_mails.*, users.email FROM batch_mails,users WHERE batch_mails.senderID=users.userid AND batch_mails.id=?;
 					", array (
 					$mailID 
@@ -94,7 +98,9 @@ class Mailer extends CI_Controller {
 		}
 	}
 	public function viewRaw($mailID = -1) {
-		if ($mailID > 0) {
+        Permissions::require_authorized(Permissions::MAILER_ADMIN);
+
+        if ($mailID > 0) {
 			$result = $this->db->get_where('batch_mails', array('id' => $mailID))->row_array();
 			
 			$subject = $result["subject"];
@@ -109,7 +115,9 @@ class Mailer extends CI_Controller {
 		}
 	}
 	private function _doBatchMail($subject, $title, $body, $committeeOnly = FALSE) {
-		$this->load->library ( 'email' );
+        Permissions::require_authorized(Permissions::MAILER_ADMIN);
+
+        $this->load->library ( 'email' );
 		
 		$config = array (
 				'protocol' => 'sendmail',

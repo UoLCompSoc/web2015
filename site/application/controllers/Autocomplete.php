@@ -7,7 +7,7 @@ class Autocomplete extends CI_Controller {
 	}
 
 	public function email() {
-		$queryString = $this->input->post_get ( 'emailQuery' );
+		$queryString = $this->input->post_get ( 'emailQuery', TRUE );
 		
 		if (! Permissions::is_authorized ( Permissions::USER_ADMIN )) {
 			echo "{}";

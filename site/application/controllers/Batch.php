@@ -7,11 +7,15 @@ class Batch extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view ( 'batch/create' );
+        Permissions::require_authorized(Permissions::BATCH_USER_CREATE);
+
+        $this->load->view ( 'batch/create' );
 	}
 
 	public function batch_register_process() {
-		$rules = array (
+        Permissions::require_authorized(Permissions::BATCH_USER_CREATE);
+
+        $rules = array (
 				array (
 						'field' => 'reg_emailone',
 						'label' => 'e-mail 1',
@@ -73,20 +77,20 @@ class Batch extends CI_Controller {
 			// verify
 			$passwordlength = 12;
 			$batchuserdata = array (
-					'emailone' => $this->input->post ( 'reg_emailone' ),
-					'fullnameone' => $this->input->post ( 'reg_fullnameone' ),
+					'emailone' => $this->input->post ( 'reg_emailone', TRUE ),
+					'fullnameone' => $this->input->post ( 'reg_fullnameone', TRUE ),
 					'passwordone' => substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () ) ), 0, $passwordlength ),
-					'emailtwo' => $this->input->post ( 'reg_emailtwo' ),
-					'fullnametwo' => $this->input->post ( 'reg_fullnametwo' ),
+					'emailtwo' => $this->input->post ( 'reg_emailtwo', TRUE ),
+					'fullnametwo' => $this->input->post ( 'reg_fullnametwo', TRUE ),
 					'passwordtwo' => substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () - 1 ) ), 0, $passwordlength ),
-					'emailthree' => $this->input->post ( 'reg_emailthree' ),
-					'fullnamethree' => $this->input->post ( 'reg_fullnamethree' ),
+					'emailthree' => $this->input->post ( 'reg_emailthree', TRUE ),
+					'fullnamethree' => $this->input->post ( 'reg_fullnamethree', TRUE ),
 					'passwordthree' => substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () - 2 ) ), 0, $passwordlength ),
-					'emailfour' => $this->input->post ( 'reg_emailfour' ),
-					'fullnamefour' => $this->input->post ( 'reg_fullnamefour' ),
+					'emailfour' => $this->input->post ( 'reg_emailfour', TRUE ),
+					'fullnamefour' => $this->input->post ( 'reg_fullnamefour', TRUE ),
 					'passwordfour' => substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () - 3 ) ), 0, $passwordlength ),
-					'emailfive' => $this->input->post ( 'reg_emailfive' ),
-					'fullnamefive' => $this->input->post ( 'reg_fullnamefive' ),
+					'emailfive' => $this->input->post ( 'reg_emailfive', TRUE ),
+					'fullnamefive' => $this->input->post ( 'reg_fullnamefive', TRUE ),
 					'passwordfive' => substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () - 4 ) ), 0, $passwordlength ) 
 			);
 			
