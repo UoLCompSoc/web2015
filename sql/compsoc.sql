@@ -138,3 +138,65 @@ CREATE TABLE batch_mails (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
+
+CREATE TABLE tags (
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
+    
+    tag VARCHAR(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
+
+CREATE TABLE questions (
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
+    
+    submitterID INT NOT NULL,
+    dateAsked DATETIME NOT NULL,
+    question VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL, 
+    answered BOOLEAN NOT NULL,
+    
+    PRIMARY KEY (id),
+    
+    FOREIGN KEY (submitterID)
+        REFERENCES users(userid)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
+
+CREATE TABLE question_tags (
+    questionID INT NOT NULL,
+    tagID INT NOT NULL,
+    
+    PRIMARY KEY (questionID, tagID),
+    
+    FOREIGN KEY (questionID)
+        REFERENCES questions(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+        
+    FOREIGN KEY (tagID)
+        REFERENCES tags(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        
+
+CREATE TABLE answers (
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
+    
+    submitterID INT NOT NULL,
+    questionID INT NOT NULL,
+    dateAnswered DATETIME NOT NULL,
+    body TEXT NOT NULL,
+    
+    PRIMARY KEY (id),
+    
+    FOREIGN KEY (questionID)
+        REFERENCES questions(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    
+    FOREIGN KEY (submitterID)
+        REFERENCES users(userid)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
