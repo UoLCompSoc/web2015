@@ -187,6 +187,7 @@ CREATE TABLE answers (
     questionID INT NOT NULL,
     dateAnswered DATETIME NOT NULL,
     body TEXT NOT NULL,
+    helpfulCounter INT NOT NULL,
     
     PRIMARY KEY (id),
     

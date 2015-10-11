@@ -52,9 +52,3 @@ class Question extends CI_Controller {
 	    }
 	}
 }
-
-//Yeah someone asks a question and it's put up to be answered, potentially by anyone. I'd say a question should have tags hinting what it's about, a title and a description
-
-//Then users can list open questions, search for relevant stuff including searching by tags
-
-//Question has a submitter, a list of tags, a date asked, title and body. Answer has date, body, submitter, and parent question
