@@ -65,6 +65,10 @@ $this->load->view ( 'include/head_common.php' );
 						        <input type="search" name="srch_phrase" id="srch_phrase" class="form-control" placeholder="Question" value="<?php echo set_value('srch_phrase');?>">
 						    </div>
 						    
+						    <div class="checkbox">
+						        <label for="srch_answered"><input type="checkbox" name="srch_answered" id="srch_answered">Answered</label>
+						    </div>
+						    
 						    <input type="submit" value="Search" name="srch_submit" id="srch_submit" class="btn btn-primary" style="margin-right: 6px">
 						    <input type="reset" value="Reset" name="srch_reset" id="srch_reset" class="btn btn-secondary">
 						<?php echo form_close(); ?>

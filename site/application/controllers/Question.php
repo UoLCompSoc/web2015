@@ -14,6 +14,10 @@ class Question extends CI_Controller {
 	    $this->load->view ( 'question/ask' );
 	}
 	
+	public function details() {
+	    $this->load->view ( 'question/details' );
+	}
+	
 	public function search_phrase() {
 	    $rules = array (
 	                        'field' => 'srch_phrase',
@@ -25,20 +29,22 @@ class Question extends CI_Controller {
 	    
 	    if ($this->form_validation->run () === TRUE) {
 	        $phrase = $this->input->post ( 'srch_phrase' );
-	    }
+	        $answered = $this->input->post ( 'srch_answered' );
 	    
+	        if ((int) $answered == 0) {
+	            $results = $this->get_by_phrase($phrase);
+	        } else {
+	            $results = $this->get_by_answered($phrase, $answered);
+	        }
+	    }
 	}
 	
 	public function search_tag() {
 	
 	}
 	
-	public function search_answered() {
-	
-	}
-	
 	public function search_all() {
-	
+	    $results = $this->get_all();
 	}
 	
 	public function ask_question() {
@@ -59,9 +65,21 @@ class Question extends CI_Controller {
 	    $this->form_validation->set_rules ( $rules );
 	    
 	    if ($this->form_validation->run () === TRUE) {
-	        $title = $this->input->post ( 'qstn_title' );
-	        $body = $this->input->post ( 'qstn_body' );
-	    }
+	        $questiondata = array (
+	            'title' => $this->input->post ( 'qstn_title' ),
+	            'body' => $this->input->post ( 'qstn_body' )
+	        );
+	        
+	        $result = $this->insert_question($questiondata);
+	        $arr ["notification_message"] = "";
+	        
+	        if ($result === TRUE) {
+	            $arr ["notification_message"] .= "Success! Your question has been submitted.";
+	        } else if ($result === FALSE) {
+	            $arr ["notification_message"] .= "Something went wrong, please try again.";
+	        }
+	    }  
+	    
 	}
 	
 }

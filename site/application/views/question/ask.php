@@ -44,9 +44,6 @@ $this->load->view ( 'include/head_common.php' );
 							    <textarea rows="10" cols="10" name="qstn_body" id="qstn_body" class="form-control"></textarea>
 						    </div>
 						    
-						    <div class="form-group">
-						    </div>
-						    
 						    <input type="submit" value="Submit" name="qstn_submit" id="qstn_submit" class="btn btn-primary" style="margin-right: 6px">
 						    <input type="reset" value="Reset" name="qstn_reset" id="qstn_reset" class="btn btn-secondary">
 						<?php echo form_close(); ?>

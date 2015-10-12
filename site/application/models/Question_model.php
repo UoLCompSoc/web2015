@@ -21,7 +21,7 @@ class Question_model extends CI_Model {
 				'dateAsked' => date ( 'Y-m-d' ),
 				'title' => $questiondata ['title'],
 				'body' => $questiondata ['body'],
-				'answered' => FALSE
+				'answered' => 0
 		);
 
 		if (! $this->db->insert ( 'questions', $insertdata )) {
@@ -34,9 +34,9 @@ class Question_model extends CI_Model {
 	}
 	
 	public function get_by_phrase($phrase_to_fetch) {
-	    $this->db->select('*');
 	    $this->db->like('title', $phrase_to_fetch);
 	    $this->db->or_like('body', $phrase_to_fetch);
+	    $this->db->order_by('dateAsked', 'desc');
 		$query = $this->db->get ( 'questions' );
 		
 		if ($query->num_rows() > 0) {
@@ -50,7 +50,9 @@ class Question_model extends CI_Model {
 	
 	}
 	
-	public function get_by_answered($answered) {
+	public function get_by_answered($phrase_to_fetch, $answered) {
+	    $this->db->like('title', $phrase_to_fetch);
+	    $this->db->or_like('body', $phrase_to_fetch);
 	    $this->db->order_by('dateAsked', 'desc');
 		$query = $this->db->get_where ( 'questions', array (
 				'answered' => $answered
@@ -64,7 +66,6 @@ class Question_model extends CI_Model {
 	}
 	
 	public function get_all() {
-	    $this->db->select('*');
 	    $this->db->order_by('dateAsked', 'desc');
 		$query = $this->db->get ( 'questions' );
 		
