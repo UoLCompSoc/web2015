@@ -15,8 +15,8 @@ class Size_model extends CI_Model {
 	public function insert($sizedata) {
 		$insertdata = array (
 				'name' => $sizedata ['name'],
-				'description' => $sizedata ['desc']
-        );
+				'description' => $sizedata ['desc'] 
+		);
 		
 		if (! $this->db->insert ( 'clothing_sizes', $insertdata )) {
 			log_message ( 'error', "Insert failed on database when creating order: " . $this->db->error () ['message'] );
@@ -28,12 +28,12 @@ class Size_model extends CI_Model {
 	}
 
 	public function update($sizedata) {
-        $updatedata = array (
+		$updatedata = array (
 				'name' => $sizedata ['name'],
-				'description' => $sizedata ['desc']
-        );
-
-        $this->db->where ( 'id', $sizedata ['size_id'] );
+				'description' => $sizedata ['desc'] 
+		);
+		
+		$this->db->where ( 'id', $sizedata ['size_id'] );
 		if (! $this->db->update ( 'clothing_sizes', $updatedata )) {
 			log_message ( 'error', "Update failed on database when updating size: " . $this->db->error () ['message'] );
 			return FALSE;
@@ -42,5 +42,4 @@ class Size_model extends CI_Model {
 			return TRUE;
 		}
 	}
-
 }

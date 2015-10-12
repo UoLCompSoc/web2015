@@ -27,25 +27,25 @@ $this->load->view ( 'include/head_common.php' );
 		<?php $this->load->view('include/sitewide_banner.php'); ?>
 
         <?php
-        if (isset ( $errormessage )) :
-            ?>
+								if (isset ( $errormessage )) :
+									?>
             <div class="row">
-                <div class="col-lg-12 text-center alert alert-danger">
+			<div class="col-lg-12 text-center alert alert-danger">
                     <?php
-                    echo (isset ( $errormessage ) ? $errormessage : '');
-                    ?>
+									echo (isset ( $errormessage ) ? $errormessage : '');
+									?>
                 </div>
-            </div>
+		</div>
         <?php endif; ?>
 
         <?php if(isset($message)): ?>
             <div class="row">
-                <div class="col-lg-12 text-center alert alert-success">
+			<div class="col-lg-12 text-center alert alert-success">
                     <?php
-                    echo (isset ( $message ) ? $message : '');
-                    ?>
+									echo (isset ( $message ) ? $message : '');
+									?>
                 </div>
-            </div>
+		</div>
         <?php endif; ?>
 
 		<div class="row">
@@ -53,42 +53,47 @@ $this->load->view ( 'include/head_common.php' );
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="page-header">
-                            <h2><?php echo $campaign->name; ?></h2>
-                            <p><a href="/clothing/edit/<?php echo $campaign->id ?>"> Edit Campaign</a></p>
+							<h2><?php echo $campaign->name; ?></h2>
+							<p>
+								<a href="/clothing/edit/<?php echo $campaign->id ?>"> Edit Campaign</a>
+							</p>
 						</div>
-                        <p><strong>Campaign description:</strong> <?php echo $campaign->description; ?></p>
-                        <p>Orders:</p>
+						<p>
+							<strong>Campaign description:</strong> <?php echo $campaign->description; ?></p>
+						<p>Orders:</p>
 
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Type:</th>
-                                <th>Number:</th>
-                            </tr>
+						<table class="table table-striped">
+							<tr>
+								<th>Type:</th>
+								<th>Number:</th>
+							</tr>
                             <?php
-                            foreach($aggregate as $size){ ?>
+																												foreach ( $aggregate as $size ) {
+																													?>
                                 <tr>
-                                    <td><?php echo $size->name . " (" . $size->description .")"; ?></td>
-                                    <td><?php echo $size->total; ?></td>
-                                </tr>
+								<td><?php echo $size->name . " (" . $size->description .")"; ?></td>
+								<td><?php echo $size->total; ?></td>
+							</tr>
                             <?php } ?>
 
                         </table>
 
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Name:</th>
-                                <th>Size:</th>
-                                <th>Paid:</th>
-                                <th>Toggle:</th>
-                            </tr>
+						<table class="table table-striped">
+							<tr>
+								<th>Name:</th>
+								<th>Size:</th>
+								<th>Paid:</th>
+								<th>Toggle:</th>
+							</tr>
                             <?php
-                            foreach($orders as $order){ ?>
+																												foreach ( $orders as $order ) {
+																													?>
                                 <tr>
-                                    <td><?php echo $order->fullname; ?></td>
-                                    <td><?php echo $order->name; ?></td>
-                                    <td><?php echo ($order->paid == 0)? "No": "Yes"; ?></td>
-                                    <td><a href="/clothing/paid/<?php echo $order->id;?>">Toggle</a></td>
-                                </tr>
+								<td><?php echo $order->fullname; ?></td>
+								<td><?php echo $order->name; ?></td>
+								<td><?php echo ($order->paid == 0)? "No": "Yes"; ?></td>
+								<td><a href="/clothing/paid/<?php echo $order->id;?>">Toggle</a></td>
+							</tr>
                             <?php } ?>
 
                         </table>

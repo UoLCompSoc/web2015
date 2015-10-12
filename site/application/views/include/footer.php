@@ -1,10 +1,12 @@
 <div class="navbar navbar-default hidden-xs hidden-sm">
 	<div class="container">
 		<p class="pull-left">
-			<img src="<?=base_url();?>assets/img/ulsulogo.png" style="padding-bottom:-10px;padding-top:10px;" alt="Student's Union Logo">
+			<img src="<?=base_url();?>assets/img/ulsulogo.png" style="padding-bottom: -10px; padding-top: 10px;"
+				alt="Student's Union Logo">
 		</p>
 
-		<p class="navbar-text pull-right" style="padding-right:15px;padding-top:12px">University of Leicester Computing Society &copy; 2015</p>
+		<p class="navbar-text pull-right" style="padding-right: 15px; padding-top: 12px">University of Leicester Computing
+			Society &copy; 2015</p>
 
 		<p class="pull-right" style="margin-top: 20px;">
 			<a href="<?php echo Social::FACEBOOK_URL; ?>" target="_blank" class="btn btn-social-icon btn-md btn-facebook"> <i

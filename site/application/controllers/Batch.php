@@ -7,15 +7,15 @@ class Batch extends CI_Controller {
 	}
 
 	public function index() {
-        Permissions::require_authorized(Permissions::BATCH_USER_CREATE);
-
-        $this->load->view ( 'batch/create' );
+		Permissions::require_authorized ( Permissions::BATCH_USER_CREATE );
+		
+		$this->load->view ( 'batch/create' );
 	}
 
 	public function batch_register_process() {
-        Permissions::require_authorized(Permissions::BATCH_USER_CREATE);
-
-        $rules = array (
+		Permissions::require_authorized ( Permissions::BATCH_USER_CREATE );
+		
+		$rules = array (
 				array (
 						'field' => 'reg_emailone',
 						'label' => 'e-mail 1',

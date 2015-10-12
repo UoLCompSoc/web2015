@@ -16,8 +16,8 @@ class Campaign_model extends CI_Model {
 		$insertdata = array (
 				'name' => $campaigndata ['name'],
 				'description' => $campaigndata ['desc'],
-				'expiry_date' => $campaigndata ['date']
-        );
+				'expiry_date' => $campaigndata ['date'] 
+		);
 		
 		if (! $this->db->insert ( 'campaigns', $insertdata )) {
 			log_message ( 'error', "Insert failed on database when creating campaign: " . $this->db->error () ['message'] );
@@ -29,13 +29,13 @@ class Campaign_model extends CI_Model {
 	}
 
 	public function update($campaigndata) {
-        $updatedata = array (
-            'name' => $campaigndata ['name'],
-            'description' => $campaigndata ['desc'],
-            'expiry_date' => $campaigndata ['date']
-        );
-
-        $this->db->where ( 'id', $campaigndata['campaign_id'] );
+		$updatedata = array (
+				'name' => $campaigndata ['name'],
+				'description' => $campaigndata ['desc'],
+				'expiry_date' => $campaigndata ['date'] 
+		);
+		
+		$this->db->where ( 'id', $campaigndata ['campaign_id'] );
 		if (! $this->db->update ( 'campaigns', $updatedata )) {
 			log_message ( 'error', "Update failed on database when updating campaign: " . $this->db->error () ['message'] );
 			return FALSE;
@@ -44,5 +44,4 @@ class Campaign_model extends CI_Model {
 			return TRUE;
 		}
 	}
-
 }

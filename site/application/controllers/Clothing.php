@@ -9,7 +9,7 @@ class Clothing extends CI_Controller {
 	public function index() {
 		$data = array ();
 		$data ['campaigns'] = $this->_getActiveCampaigns ()->result ();
-
+		
 		$this->load->view ( 'clothing/clothing', $data );
 	}
 
@@ -21,44 +21,44 @@ class Clothing extends CI_Controller {
 	}
 
 	public function paid($order_id = -1) {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
-        if ($this->_getOrder ( $order_id )->first_row () == NULL) {
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
+		if ($this->_getOrder ( $order_id )->first_row () == NULL) {
 			$this->listview ();
 			return;
 		} else {
 			$order = $this->_getOrder ( $order_id )->first_row ();
-
+			
 			$data = array ();
 			$data ['userid'] = $order->userid;
 			$data ['campaign_id'] = $order->campaign_id;
 			$data ['paid'] = ! $order->paid;
 			$update = $this->order_model->update ( $data );
-
+			
 			if ($update !== FALSE) {
 				$data ['message'] = "Successfully updated paid status";
 			} else {
 				$data ['errormessage'] = "Couldn't update paid status: " . $this->db->_error_message ();
 			}
-
+			
 			$this->listview ( $order->campaign_id, $data );
 		}
 	}
 
 	public function add() {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
-        $data = array ();
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
+		$data = array ();
 		$data ['name'] = '';
 		$data ['desc'] = '';
 		$data ['date'] = '';
-
+		
 		if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST') {
-
+			
 			$data ['name'] = $this->input->post ( 'name', TRUE );
 			$data ['desc'] = $this->input->post ( 'desc', TRUE );
 			$data ['date'] = $this->input->post ( 'date', TRUE );
-
+			
 			if ($this->input->post ( 'name' ) == '') {
 				$data ['errormessage'] = 'Please fill out the campaign name';
 			} else if ($this->input->post ( 'desc' ) == '') {
@@ -78,22 +78,22 @@ class Clothing extends CI_Controller {
 				}
 			}
 		}
-
+		
 		$this->load->view ( 'clothing/add', $data );
 	}
 
 	public function addsize() {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
-        $data = array ();
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
+		$data = array ();
 		$data ['name'] = '';
 		$data ['desc'] = '';
-
+		
 		if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST') {
-
+			
 			$data ['name'] = $this->input->post ( 'name', TRUE );
 			$data ['desc'] = $this->input->post ( 'desc', TRUE );
-
+			
 			if ($this->input->post ( 'name' ) == '') {
 				$data ['errormessage'] = 'Please fill out the size name';
 			} else if ($this->input->post ( 'desc' ) == '') {
@@ -102,7 +102,7 @@ class Clothing extends CI_Controller {
 				$insert = $this->size_model->insert ( $data );
 				if ($insert !== FALSE) {
 					$data ['message'] = "Successfully added new size";
-
+					
 					// Clear the form
 					$data ['name'] = '';
 					$data ['desc'] = '';
@@ -111,23 +111,23 @@ class Clothing extends CI_Controller {
 				}
 			}
 		}
-
+		
 		$this->load->view ( 'clothing/addsize', $data );
 	}
 
 	public function editsize($size_id = -1) {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
-        $data = array ();
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
+		$data = array ();
 		$data ['size_id'] = '';
 		$data ['name'] = '';
 		$data ['desc'] = '';
-
+		
 		if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST') {
 			$data ['size_id'] = $this->input->post ( 'size_id', TRUE );
 			$data ['name'] = $this->input->post ( 'name', TRUE );
 			$data ['desc'] = $this->input->post ( 'desc', TRUE );
-
+			
 			if ($this->input->post ( 'name' ) == '') {
 				$data ['errormessage'] = 'Please fill out the size name';
 			} else if ($this->input->post ( 'desc' ) == '') {
@@ -146,39 +146,39 @@ class Clothing extends CI_Controller {
 				return;
 			} else {
 				$size = $this->_getSize ( $size_id )->first_row ();
-
+				
 				$data ['size_id'] = $size->id;
 				$data ['name'] = $size->name;
 				$data ['desc'] = $size->description;
 			}
 		}
-
+		
 		$this->load->view ( 'clothing/editsize', $data );
 	}
 
 	public function sizelistview() {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
 		$data = array ();
 		$data ['sizes'] = $this->_getSizes ()->result ();
 		$this->load->view ( 'clothing/sizelistview', $data );
 	}
 
 	public function edit($campaign_id = -1) {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
-        $data = array ();
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
+		$data = array ();
 		$data ['campaign_id'] = '';
 		$data ['name'] = '';
 		$data ['desc'] = '';
 		$data ['date'] = '';
-
+		
 		if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST') {
 			$data ['campaign_id'] = $this->input->post ( 'campaign_id', TRUE );
 			$data ['name'] = $this->input->post ( 'name', TRUE );
 			$data ['desc'] = $this->input->post ( 'desc', TRUE );
 			$data ['date'] = $this->input->post ( 'date', TRUE );
-
+			
 			if ($this->input->post ( 'name' ) == '') {
 				$data ['errormessage'] = 'Please fill out the campaign name';
 			} else if ($this->input->post ( 'desc' ) == '') {
@@ -199,7 +199,7 @@ class Clothing extends CI_Controller {
 				return;
 			} else {
 				$campaign = $this->_getCampaign ( $campaign_id )->first_row ();
-
+				
 				$data ['campaign_id'] = $campaign->id;
 				$data ['name'] = $campaign->name;
 				$data ['desc'] = $campaign->description;
@@ -207,21 +207,21 @@ class Clothing extends CI_Controller {
 				$data ['date'] = str_replace ( ' ', 'T', $data ['date'] );
 			}
 		}
-
+		
 		$this->load->view ( 'clothing/edit', $data );
 	}
 
 	public function listview($campaign_id = -1, $data = array()) {
-        Permissions::require_authorized(Permissions::CLOTHING_ADMIN);
-
-        if ($campaign_id == - 1 || ($this->_getCampaign ( $campaign_id )->first_row () == NULL)) {
+		Permissions::require_authorized ( Permissions::CLOTHING_ADMIN );
+		
+		if ($campaign_id == - 1 || ($this->_getCampaign ( $campaign_id )->first_row () == NULL)) {
 			$data ['active'] = $this->_getActiveCampaigns ()->result ();
 			$data ['expired'] = $this->_getExpiredCampaigns ()->result ();
-
+			
 			$this->load->view ( 'clothing/listview', $data );
 			return;
 		}
-
+		
 		$data ['campaign'] = $this->_getCampaign ( $campaign_id )->first_row ();
 		$data ['aggregate'] = $this->_getAggregatedList ( $campaign_id )->result ();
 		$data ['orders'] = $this->_getList ( $campaign_id )->result ();
@@ -259,34 +259,34 @@ class Clothing extends CI_Controller {
 			$this->load->view ( 'clothing/clothing', $data );
 			return;
 		}
-
+		
 		if (($this->_getCampaign ( $campaign_id )->first_row () == NULL) && ($this->input->server ( 'REQUEST_METHOD' ) != 'POST')) {
 			// Catch a campaign id that doesn't exist
 			$data ['campaigns'] = $this->_getActiveCampaigns ()->result ();
 			$this->load->view ( 'clothing/clothing', $data );
 			return;
 		}
-
+		
 		$CI = & get_instance ();
 		$email = $CI->session->userdata ( 'email' );
 		$user_id = $this->_getUserID ( $email )->first_row ()->userid;
-
+		
 		if ($campaign_id == - 1) {
 			$campaign_id = $this->input->post ( 'campaign_id', TRUE );
 		}
-
+		
 		$data = array ();
 		$data ['campaign'] = $this->_getCampaign ( $campaign_id )->first_row ();
 		$data ['clothing_sizes'] = $this->_getSizes ()->result ();
-
+		
 		if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST' && $this->input->post ( 'size' ) != 0) {
 			// Page loaded by a POST request
 			$orderdata = array (
 					'userid' => $user_id,
 					'campaign_id' => $this->input->post ( 'campaign_id', TRUE ),
-					'size_id' => $this->input->post ( 'size', TRUE )
+					'size_id' => $this->input->post ( 'size', TRUE ) 
 			);
-
+			
 			if ($this->_getUserChoice ( $campaign_id, $user_id )->first_row () == NULL) {
 				$insert = $this->order_model->insert ( $orderdata );
 				if ($insert !== FALSE) {
@@ -304,13 +304,13 @@ class Clothing extends CI_Controller {
 			}
 		} else if ($this->input->server ( 'REQUEST_METHOD' ) == 'POST' && $this->input->post ( 'size' ) == 0) {
 			$user_choice = $this->_getUserChoice ( $campaign_id, $user_id )->first_row ();
-
+			
 			if ($user_choice != NULL) {
 				if ($user_choice->paid == TRUE) {
 					$data ['errormessage'] = "Update failed; our records show you've already paid. Please contact a committee member for help.";
 				} else {
 					$delete = $this->order_model->delete ( $user_choice->id );
-
+					
 					if ($delete !== FALSE) {
 						$data ['message'] = "Successfully removed your selection";
 					} else {
@@ -319,14 +319,14 @@ class Clothing extends CI_Controller {
 				}
 			}
 		}
-
+		
 		$data ['user_choice'] = $this->_getUserChoice ( $campaign_id, $user_id )->first_row ();
-
+		
 		if ($data ['user_choice'] == NULL) {
 			$data ['user_choice'] = new stdClass ();
 			$data ['user_choice']->size_id = 0;
 		}
-
+		
 		$this->load->view ( 'clothing/details', $data );
 	}
 

@@ -47,30 +47,26 @@ $this->load->view ( 'include/head_common.php' );
 						</div>
 						<?php echo form_open('mailer/create'); ?>
 							<div class="form-group">
-							<label for="subject">Subject</label> <input type="text"
-								id="subject" name="subject" class="form-control"
+							<label for="subject">Subject</label> <input type="text" id="subject" name="subject" class="form-control"
 								placeholder="Subject">
 						</div>
 
 						<div class="form-group">
-							<label for="title">Title</label> <input type="text" id="title"
-								name="title" class="form-control" placeholder="Title">
+							<label for="title">Title</label> <input type="text" id="title" name="title" class="form-control"
+								placeholder="Title">
 						</div>
 
 						<div class="form-group">
 							<label for="body">Body</label>
-							<textarea rows="10" cols="10" name="body" id="body"
-								class="form-control"></textarea>
+							<textarea rows="10" cols="10" name="body" id="body" class="form-control"></textarea>
 						</div>
 
 						<div class="form-group">
-							<label for="committeeOnly">Send to committee members only?:</label>
-							<input id="committeeOnly" name="committeeOnly" type="checkbox"
-								value="1" checked>
+							<label for="committeeOnly">Send to committee members only?:</label> <input id="committeeOnly"
+								name="committeeOnly" type="checkbox" value="1" checked>
 						</div>
 
-						<input type="submit" value="Send" name="send" id="send"
-							class="btn btn-primary">
+						<input type="submit" value="Send" name="send" id="send" class="btn btn-primary">
 						<?php echo form_close(); ?>
 					</div>
 				</div>

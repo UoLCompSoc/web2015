@@ -35,8 +35,7 @@ $this->load->view ( 'include/navbar.php' );
 
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2><?php echo $user->fullname; ?> <a href="/user/edit/<?php echo $user->userid; ?>"><i
-						class="fa fa-cog"></i></a>
+				<h2><?php echo $user->fullname; ?> <a href="/user/edit/<?php echo $user->userid; ?>"><i class="fa fa-cog"></i></a>
 				</h2>
 				<h4>Full User Details</h4>
 				<br>
@@ -48,12 +47,24 @@ $this->load->view ( 'include/navbar.php' );
 				<p>Steam: <?php echo $user->steamID; ?></p>
 				<p>Twitter: <?php echo $user->twitterID; ?></p>
 				<h3>Permissions</h3>
-				<p>Confirmed User: <i class="fa fa-<?php echo ($permissions['confirmed'] ? 'check': 'times'); ?>"></i></p>
-				<p>User Admin: <i class="fa fa-<?php echo ($permissions['user'] ? 'check': 'times'); ?>"></i></p>
-				<p>Points Admin: <i class="fa fa-<?php echo ($permissions['points'] ? 'check': 'times'); ?>"></i></p>
-				<p>Portfolio Admin: <i class="fa fa-<?php echo ($permissions['portfolio'] ? 'check': 'times'); ?>"></i></p>
-				<p>Batch User Admin: <i class="fa fa-<?php echo ($permissions['batch'] ? 'check': 'times'); ?>"></i></p>
-				<p>Batch Mailer: <i class="fa fa-<?php echo ($permissions['batch'] ? 'check': 'times'); ?>"></i></p>
+				<p>
+					Confirmed User: <i class="fa fa-<?php echo ($permissions['confirmed'] ? 'check': 'times'); ?>"></i>
+				</p>
+				<p>
+					User Admin: <i class="fa fa-<?php echo ($permissions['user'] ? 'check': 'times'); ?>"></i>
+				</p>
+				<p>
+					Points Admin: <i class="fa fa-<?php echo ($permissions['points'] ? 'check': 'times'); ?>"></i>
+				</p>
+				<p>
+					Portfolio Admin: <i class="fa fa-<?php echo ($permissions['portfolio'] ? 'check': 'times'); ?>"></i>
+				</p>
+				<p>
+					Batch User Admin: <i class="fa fa-<?php echo ($permissions['batch'] ? 'check': 'times'); ?>"></i>
+				</p>
+				<p>
+					Batch Mailer: <i class="fa fa-<?php echo ($permissions['batch'] ? 'check': 'times'); ?>"></i>
+				</p>
 
 				<h3>Points</h3>
 				<table class="table table-striped">

@@ -17,8 +17,8 @@ class Order_model extends CI_Model {
 				'userid' => $orderdata ['userid'],
 				'campaign_id' => $orderdata ['campaign_id'],
 				'size_id' => $orderdata ['size_id'],
-				'paid' => false
-        );
+				'paid' => false 
+		);
 		
 		if (! $this->db->insert ( 'orders', $insertdata )) {
 			log_message ( 'error', "Insert failed on database when creating order: " . $this->db->error () ['message'] );
@@ -30,8 +30,8 @@ class Order_model extends CI_Model {
 	}
 
 	public function update($orderdata) {
-        $this->db->where ( 'userid', $orderdata ['userid'] );
-        $this->db->where ( 'campaign_id', $orderdata ['campaign_id'] );
+		$this->db->where ( 'userid', $orderdata ['userid'] );
+		$this->db->where ( 'campaign_id', $orderdata ['campaign_id'] );
 		if (! $this->db->update ( 'orders', $orderdata )) {
 			log_message ( 'error', "Update failed on database when updating order: " . $this->db->error () ['message'] );
 			return FALSE;
@@ -41,14 +41,15 @@ class Order_model extends CI_Model {
 		}
 	}
 
-    public function delete ($order_id){
-        if(!$this->db->delete('orders', array('id' => $order_id))){
-            log_message ( 'error', "Delete failed on database when deleting order: " . $this->db->error () ['message'] );
-            return FALSE;
-        } else {
-            syslog ( LOG_INFO, "Successfully deleted order {$order_id}." );
-            return TRUE;
-        }
-    }
-
+	public function delete($order_id) {
+		if (! $this->db->delete ( 'orders', array (
+				'id' => $order_id 
+		) )) {
+			log_message ( 'error', "Delete failed on database when deleting order: " . $this->db->error () ['message'] );
+			return FALSE;
+		} else {
+			syslog ( LOG_INFO, "Successfully deleted order {$order_id}." );
+			return TRUE;
+		}
+	}
 }

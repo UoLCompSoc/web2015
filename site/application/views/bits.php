@@ -56,7 +56,9 @@ $this->load->view ( 'include/head_common.php' );
 								}
 								?>
 							</table>
-							<p><a href="/point/leaderboard">View Overall Leaderboard</a></p>
+							<p>
+								<a href="/point/leaderboard">View Overall Leaderboard</a>
+							</p>
 						</div>
 					</div>
 				</div>

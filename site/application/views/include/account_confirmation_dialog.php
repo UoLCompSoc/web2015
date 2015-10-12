@@ -15,6 +15,7 @@ if (! Permissions::is_authorized ( Permissions::USER_CONFIRMED )) :
 
 
 
+
 <?php 
 endif;
 ?>

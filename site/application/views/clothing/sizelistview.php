@@ -31,12 +31,17 @@ $this->load->view ( 'include/head_common.php' );
 					<div class="panel-body">
 						<div class="page-header">
 							<h2>Clothing Sizes</h2>
-                            <p><a href="/clothing/addsize">Add New Size</a></p>
+							<p>
+								<a href="/clothing/addsize">Add New Size</a>
+							</p>
 						</div>
                         <?php
-                            foreach($sizes as $size){ ?>
-                                <h3><a href="/clothing/editsize/<?php echo $size->id; ?>"><?php echo $size->name; ?></a></h3>
-                                <h4><?php echo $size->description; ?></h4>
+																								foreach ( $sizes as $size ) {
+																									?>
+                                <h3>
+							<a href="/clothing/editsize/<?php echo $size->id; ?>"><?php echo $size->name; ?></a>
+						</h3>
+						<h4><?php echo $size->description; ?></h4>
                             <?php } ?>
 						<p></p>
 					</div>

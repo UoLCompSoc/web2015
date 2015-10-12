@@ -31,8 +31,8 @@ class Login extends CI_Controller {
 		} else {
 			// verify
 			$userdata = array (
-					'email' => $this->input->post ( 'email' , TRUE ),
-					'password' => $this->input->post ( 'password' , TRUE )
+					'email' => $this->input->post ( 'email', TRUE ),
+					'password' => $this->input->post ( 'password', TRUE ) 
 			);
 			
 			$verified = $this->user_model->login_verify ( $userdata );
@@ -89,10 +89,10 @@ class Login extends CI_Controller {
 		
 		// verify
 		$userdata = array (
-				'email' => $this->input->post ( 'reg_email' , TRUE ),
-				'fname' => $this->input->post ( 'reg_fname' , TRUE ),
-				'lname' => $this->input->post ( 'reg_lname' , TRUE ),
-				'password' => $this->input->post ( 'reg_password1' , TRUE )
+				'email' => $this->input->post ( 'reg_email', TRUE ),
+				'fname' => $this->input->post ( 'reg_fname', TRUE ),
+				'lname' => $this->input->post ( 'reg_lname', TRUE ),
+				'password' => $this->input->post ( 'reg_password1', TRUE ) 
 		);
 		
 		$result = $this->user_model->insert ( $userdata );

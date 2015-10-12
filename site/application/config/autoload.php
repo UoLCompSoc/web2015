@@ -62,7 +62,7 @@ $autoload ['packages'] = array ();
 $autoload ['libraries'] = array (
 		'database',
 		'session',
-		'form_validation',
+		'form_validation' 
 );
 
 /*
@@ -95,7 +95,7 @@ $autoload ['helper'] = array (
 		'url',
 		'points',
 		'social',
-		'batch'
+		'batch' 
 );
 
 /*
@@ -148,5 +148,5 @@ $autoload ['model'] = array (
 		'order_model',
 		'campaign_model',
 		'size_model',
-		'batch_mails_model'
+		'batch_mails_model' 
 );

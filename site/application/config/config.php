@@ -440,7 +440,10 @@ $config ['csrf_token_name'] = 'csrf_test_name';
 $config ['csrf_cookie_name'] = 'csrf_cookie_name';
 $config ['csrf_expire'] = 7200;
 $config ['csrf_regenerate'] = TRUE;
-$config ['csrf_exclude_uris'] = array ('webhook/update','webhook/lecture');
+$config ['csrf_exclude_uris'] = array (
+		'webhook/update',
+		'webhook/lecture' 
+);
 
 /*
  * |--------------------------------------------------------------------------
@@ -507,7 +510,6 @@ $config ['rewrite_short_tags'] = FALSE;
  */
 $config ['proxy_ips'] = '';
 
-
 /**
  * The github client id and secret used in the Github API to gt information about the organisation
  */
@@ -515,7 +517,7 @@ $config ['proxy_ips'] = '';
 require_once ('githubdetails.php');
 
 if (! is_github_details_valid ()) {
-    die ( "Your github details are invalid; please set it to a valid state in githubdetails.php." );
+	die ( "Your github details are invalid; please set it to a valid state in githubdetails.php." );
 }
 
 $config ['github_client_id'] = GithubOAUTH::CLIENT_ID;

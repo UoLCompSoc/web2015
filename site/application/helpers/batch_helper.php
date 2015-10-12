@@ -5,16 +5,16 @@ abstract class BatchHelper {
 	public static function send_batch_creation_email($email, $password) {
 		$ci = & get_instance ();
 		$ci->load->library ( 'email' );
-
+		
 		$config = array (
 				'protocol' => 'sendmail',
 				'mailtype' => 'html',
 				'charset' => 'utf-8',
-				'wordwrap' => TRUE
+				'wordwrap' => TRUE 
 		);
-
+		
 		$ci->email->initialize ( $config );
-
+		
 		$ci->email->from ( 'webmaster@ulcompsoc.org.uk', 'CompSoc Committee' );
 		$ci->email->to ( $email );
 		$ci->email->subject ( 'Verify Your CompSoc Account' );
@@ -27,16 +27,16 @@ abstract class BatchHelper {
 		<p>Your password is "' . $password . '" and you can now log in with this e-mail address at <a href="https://ulcompsoc.org.uk">the CompSoc site</a> and change it!</p>
 		<p>Cheers,</p>
 		<p>The CompSoc Committee</p>' );
-
+		
 		$retval = $ci->email->send ();
-
+		
 		if (! $retval) {
 			log_message ( 'error', "Couldn't send confirmation e-mail to " . $email );
 		}
-
+		
 		return $retval;
 	}
-	
+
 	public static function make_batch_mail_message($subject, $title, $body) {
 		$email = <<<EOT
 <!DOCTYPE html>
@@ -106,7 +106,7 @@ abstract class BatchHelper {
 </body>
 </html>
 EOT;
-	
+		
 		return $email;
 	}
 }

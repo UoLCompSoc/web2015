@@ -26,7 +26,7 @@ $this->load->view ( 'include/navbar.php' );
 	
 	$validation_errors = validation_errors ();
 	if ($validation_errors !== '') :
-	?>
+		?>
 	<div class="row alert alert-danger">
 		<?php
 		echo $validation_errors;

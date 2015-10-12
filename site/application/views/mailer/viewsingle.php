@@ -34,12 +34,15 @@ $this->load->view ( 'include/head_common.php' );
 						<div class="page-header">
 							<h2>Past Mail #<?php echo $mail["id"]; ?>
 							-
-							<a href="/mailer/viewRaw/<?php echo $mail["id"]; ?>">View Raw</a></h2>
+							<a href="/mailer/viewRaw/<?php echo $mail["id"]; ?>">View Raw</a>
+							</h2>
 						</div>
 						<table class="table table-striped">
 							<tr>
 								<td><strong>Sent: </strong> <?php echo $mail["sentDate"]; ?>
 
+								
+								
 								<td><strong>By: </strong> <?php echo $mail["email"]; ?></td>
 
 								<td><strong>Commitee Only?</strong> <i class="fa fa-<?php echo ($mail["committeeOnly"] ? 'check': 'times'); ?>"></i></td>
@@ -48,9 +51,11 @@ $this->load->view ( 'include/head_common.php' );
 							<tr>
 								<td colspan="3"><strong>Subject: </strong> <?php echo $mail["subject"]; ?></td>
 							</tr>
-							
+
 							<tr>
 								<td colspan="3"><strong>Title: </strong> <?php echo $mail["title"]; ?>
+							
+							
 							</tr>
 
 							<tr>

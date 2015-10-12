@@ -1,13 +1,15 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 class Mailer extends CI_Controller {
+
 	public function index() {
 		$this->load->view ( 'mailer/panel.php' );
 	}
-	public function create() {
-        Permissions::require_authorized(Permissions::MAILER_ADMIN);
 
-        $output = array ();
+	public function create() {
+		Permissions::require_authorized ( Permissions::MAILER_ADMIN );
+		
+		$output = array ();
 		if ($this->input->post ( 'subject' ) != "" || $this->input->post ( 'body' ) != "") {
 			$rules = array (
 					array (
@@ -65,10 +67,11 @@ class Mailer extends CI_Controller {
 		
 		$this->load->view ( 'mailer/create.php', $output );
 	}
-	public function view($mailID = -1) {
-        Permissions::require_authorized(Permissions::MAILER_ADMIN);
 
-        if ($mailID > 0) {
+	public function view($mailID = -1) {
+		Permissions::require_authorized ( Permissions::MAILER_ADMIN );
+		
+		if ($mailID > 0) {
 			$result = $this->db->query ( "select batch_mails.*, users.email FROM batch_mails,users WHERE batch_mails.senderID=users.userid AND batch_mails.id=?;
 					", array (
 					$mailID 
@@ -97,15 +100,18 @@ class Mailer extends CI_Controller {
 			) );
 		}
 	}
-	public function viewRaw($mailID = -1) {
-        Permissions::require_authorized(Permissions::MAILER_ADMIN);
 
-        if ($mailID > 0) {
-			$result = $this->db->get_where('batch_mails', array('id' => $mailID))->row_array();
+	public function viewRaw($mailID = -1) {
+		Permissions::require_authorized ( Permissions::MAILER_ADMIN );
+		
+		if ($mailID > 0) {
+			$result = $this->db->get_where ( 'batch_mails', array (
+					'id' => $mailID 
+			) )->row_array ();
 			
-			$subject = $result["subject"];
-			$title = $result["title"];
-			$body = $result["emailText"];
+			$subject = $result ["subject"];
+			$title = $result ["title"];
+			$body = $result ["emailText"];
 			
 			$this->load->view ( 'mailer/viewraw.php', array (
 					'mailBody' => BatchHelper::make_batch_mail_message ( $subject, $title, $body ) 
@@ -114,10 +120,11 @@ class Mailer extends CI_Controller {
 			$this->load->view ( 'mailer/viewall.php' );
 		}
 	}
-	private function _doBatchMail($subject, $title, $body, $committeeOnly = FALSE) {
-        Permissions::require_authorized(Permissions::MAILER_ADMIN);
 
-        $this->load->library ( 'email' );
+	private function _doBatchMail($subject, $title, $body, $committeeOnly = FALSE) {
+		Permissions::require_authorized ( Permissions::MAILER_ADMIN );
+		
+		$this->load->library ( 'email' );
 		
 		$config = array (
 				'protocol' => 'sendmail',

@@ -13,8 +13,8 @@
 </p>
 
 <div>
-	<a href="http://www.leicesterunion.com/groups/computing" target="_blank"> <img src="<?=base_url();?>assets/img/joingroup.png"
-		alt="Join us at leicesterunion.com!">
+	<a href="http://www.leicesterunion.com/groups/computing" target="_blank"> <img
+		src="<?=base_url();?>assets/img/joingroup.png" alt="Join us at leicesterunion.com!">
 	</a>
 	<p class="pull-right">
 		<a href="https://twitter.com/UoLCompSoc" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow
