@@ -24,6 +24,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 				<li><a href="/about">About Us</a></li>
 				<li><a href="/bits">Bits</a></li>
                 <li><a href="/projects">Projects</a></li>
+                <li><a href="/question">Questions</a></li>
                 <li><a href="/lectures">Lectures</a></li>
                 <li><a href="/calendar">Calendar</a></li>
 
