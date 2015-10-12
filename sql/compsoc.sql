@@ -150,7 +150,7 @@ CREATE TABLE questions (
     
     submitterID INT NOT NULL,
     dateAsked DATETIME NOT NULL,
-    question VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     body TEXT NOT NULL, 
     answered BOOLEAN NOT NULL,
     

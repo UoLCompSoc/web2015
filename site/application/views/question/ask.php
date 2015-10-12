@@ -45,10 +45,6 @@ $this->load->view ( 'include/head_common.php' );
 						    </div>
 						    
 						    <div class="form-group">
-						        <!--
-						        <?php foreach ($tagSet as $tag) { ?>
-						            <input type="checkbox" name="<?php echo $tag?>" value="<?php echo $tag?>"> <?php echo $tag?>
-						        -->
 						    </div>
 						    
 						    <input type="submit" value="Submit" name="qstn_submit" id="qstn_submit" class="btn btn-primary" style="margin-right: 6px">
