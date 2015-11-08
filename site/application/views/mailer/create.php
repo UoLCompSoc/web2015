@@ -67,14 +67,12 @@ $this->load->view ( 'include/head_common.php' );
 						</div>
 
 						<div class="form-group">
-							<label for="specialRecipient">Send to a special recipient?<sup title="If checked, the mail will only be sent to this recipient and nobody else will receive it, even committee.">[?]</sup></label>
-							<input id="specialRecipient"
-								name="specialRecipient" type="checkbox" value="1"
-								onclick="document.getElementById('specialEmail').disabled=!this.checked;">
-
-							<label for="specialEmail">Extra
-								recipient email:</label><br>
-							<input type="text" id="specialEmail" name="specialEmail" disabled>
+							<label for="specialRecipient">Send to a special recipient?<sup
+								title="If checked, the mail will only be sent to this recipient and nobody else will receive it, even committee.">[?]</sup></label>
+							<input id="specialRecipient" name="specialRecipient" type="checkbox" value="1"
+								onclick="document.getElementById('specialEmail').disabled=!this.checked;"> <br>
+							<label for="specialEmail">Extra recipient email:</label> <input type="text" id="specialEmail" name="specialEmail"
+								disabled>
 						</div>
 
 						<input type="submit" value="Send" name="send" id="send" class="btn btn-primary">
