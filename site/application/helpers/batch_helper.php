@@ -5,16 +5,16 @@ abstract class BatchHelper {
 	public static function send_batch_creation_email($email, $password) {
 		$ci = & get_instance ();
 		$ci->load->library ( 'email' );
-		
+
 		$config = array (
 				'protocol' => 'sendmail',
 				'mailtype' => 'html',
 				'charset' => 'utf-8',
-				'wordwrap' => TRUE 
+				'wordwrap' => TRUE
 		);
-		
+
 		$ci->email->initialize ( $config );
-		
+
 		$ci->email->from ( 'webmaster@ulcompsoc.org.uk', 'CompSoc Committee' );
 		$ci->email->to ( $email );
 		$ci->email->subject ( 'Verify Your CompSoc Account' );
@@ -27,13 +27,13 @@ abstract class BatchHelper {
 		<p>Your password is "' . $password . '" and you can now log in with this e-mail address at <a href="https://ulcompsoc.org.uk">the CompSoc site</a> and change it!</p>
 		<p>Cheers,</p>
 		<p>The CompSoc Committee</p>' );
-		
+
 		$retval = $ci->email->send ();
-		
+
 		if (! $retval) {
 			log_message ( 'error', "Couldn't send confirmation e-mail to " . $email );
 		}
-		
+
 		return $retval;
 	}
 
@@ -47,7 +47,7 @@ abstract class BatchHelper {
 <title>$subject</title>
 </head>
 <body bgcolor="#f6f6f6" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; -webkit-font-smoothing: antialiased; height: 100%; -webkit-text-size-adjust: none; width: 100% !important; margin: 0; padding: 0;">
-	
+
 <table class="body-wrap" bgcolor="#f6f6f6" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; width: 100%; margin: 0; padding: 20px;">
 <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
 	<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
@@ -57,14 +57,10 @@ abstract class BatchHelper {
 			<table style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; width: 100%; margin: 0; padding: 0;">
 				<tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
 					<td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
-						<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 0 0 10px; padding: 0;">
-							CompSoc Update
-						</p>
-	
 						<h1 style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 36px; line-height: 1.2em; color: #111111; font-weight: 200; margin: 40px 0 10px; padding: 0;">
 							$title
 						</h1>
-	
+
 						<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 0 0 10px; padding: 0;">
 							$body
 						</p>
@@ -106,7 +102,7 @@ abstract class BatchHelper {
 </body>
 </html>
 EOT;
-		
+
 		return $email;
 	}
 }

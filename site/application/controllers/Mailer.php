@@ -149,12 +149,11 @@ class Mailer extends CI_Controller {
 
 		$this->email->from ( 'webmaster@ulcompsoc.org.uk', 'CompSoc Committee' );
 
-
 		$recipients = array ();
 
 		if ($specialRecipient != NULL) {
 			array_push ( $recipients, $specialRecipient );
-			log_message ( 'debug', 'Mail being sent to special recipient:' . $specialRecipient);
+			log_message ( 'debug', 'Mail being sent to special recipient:' . $specialRecipient );
 		} else {
 			$result = NULL;
 			if ($committeeOnly) {
