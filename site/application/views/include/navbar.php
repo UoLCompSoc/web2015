@@ -42,7 +42,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 						<li><a href="/webhook/update">Update Projects</a></li>
 						<li><a href="/batch">Batch User</a></li>
 						<li><a href="/clothing/listview">Clothing</a></li>
-						<li><a href="/mailer">Batch Mailing</a></li>
+						<li><a href="/mailer">Mailer</a></li>
 					</ul></li>
 				<?php endif; ?>
 				<li><a href="/login/logout">Logout</a></li>
@@ -52,7 +52,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 					// but if they don't they'll go to the regular login page.
 					$(document).ready(function() {$("a.navbar-login").attr('href', '#');});
 				</script>
-				
+
 				<li><a href="/login">Register</a></li>
 				<?php endif;?>
 

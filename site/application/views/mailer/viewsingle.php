@@ -41,12 +41,19 @@ $this->load->view ( 'include/head_common.php' );
 							<tr>
 								<td><strong>Sent: </strong> <?php echo $mail["sentDate"]; ?>
 
-								
-								
+
 								<td><strong>By: </strong> <?php echo $mail["email"]; ?></td>
 
 								<td><strong>Commitee Only?</strong> <i class="fa fa-<?php echo ($mail["committeeOnly"] ? 'check': 'times'); ?>"></i></td>
 							</tr>
+
+							<?php if ($mail["specialRecipient"] != NULL): ?>
+							<tr>
+								<td><strong>Recipient<sup
+										title="This email was sent to a 'special recipient'; they were the only person to receive it.">[?]</sup>:
+								</strong> <?php echo $mail["specialRecipient"]; ?></td>
+							</tr>
+							<?php endif; ?>
 
 							<tr>
 								<td colspan="3"><strong>Subject: </strong> <?php echo $mail["subject"]; ?></td>
@@ -54,8 +61,10 @@ $this->load->view ( 'include/head_common.php' );
 
 							<tr>
 								<td colspan="3"><strong>Title: </strong> <?php echo $mail["title"]; ?>
-							
-							
+
+
+
+
 							</tr>
 
 							<tr>

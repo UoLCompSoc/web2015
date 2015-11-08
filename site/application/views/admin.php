@@ -70,16 +70,16 @@ $this->load->view ( 'include/head_common.php' );
 			</div>
 		</div>
     <?php endif; ?>
-    
+
     <?php if(Permissions::is_authorized(Permissions::MAILER_ADMIN)): ?>
 		<div class="row">
 			<div class="col">
 				<p>
-					<a href="/mailer">Batch Mailing</a>
+					<a href="/mailer">Mailer</a>
 				</p>
 			</div>
 		</div>
-    
+
     <?php endif; ?>
 
 	</div>
