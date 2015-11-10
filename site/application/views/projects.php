@@ -32,12 +32,11 @@ $this->load->view ( 'include/head_common.php' );
 						<div class="page-header">
 							<h2>CompSoc Projects</h2>
 						</div>
-						<p>Here we're building a project portfolio, so we can show off the cool stuff we've done. A great example is the
-							portfolio itself: a CompSoc project with multiple team members taking part.</p>
+						<p>We like to show off the cool stuff we've done. A great example of that is this portfolio: a CompSoc project with multiple team members taking part to make the end product.</p>
 
 						<p>
-							Check out the progress <a href="https://github.com/UoLCompSoc/web2015" target="_blank">on <i class="fa fa-github"></i>GitHub
-							</a> and throw us a star!
+							Check out our site's repo <a href="https://github.com/UoLCompSoc/web2015" target="_blank">on <i class="fa fa-github"></i>GitHub
+							</a> and throw us a star! While you're at it, have a look at the various other projects we have, from Game Dev to our bonus lecture slides on various topics!
 						</p>
 
 						<p>

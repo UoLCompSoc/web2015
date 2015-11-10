@@ -20,4 +20,8 @@ class Projects extends CI_Controller {
 		
 		$this->load->view ( "projects", $data );
 	}
+
+	public function cpp2015() {
+		$this->load->view("projects/cpp2015.php");
+	}
 }
