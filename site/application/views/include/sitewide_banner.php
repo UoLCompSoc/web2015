@@ -4,7 +4,7 @@
 
 <div class="alert alert-info text-center">
 <strong>LATEST NEWS:</strong><br>
-We're running a C++ game development project to mimic the development of a AAA game project!<br>
-<a href="/projects/cpp2015">Read all about it!</a>
+The multi science bar crawl is coming up soon; it's always one of the best nights out of the year and is definitely not to be missed.<br>
+Keep your eyes on our Facebook group for details! You'll be able to order your t-shirts on this site when they're available.
 </div>
 
