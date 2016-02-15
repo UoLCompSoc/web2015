@@ -28,12 +28,11 @@ $this->load->view ( 'include/head_common.php' );
 						</div>
 
 						<p><strong><em>WE'RE BACK BABY!</em></strong></p>
-						<p>This time it's going to be bigger than ever! For those of you who weren't there last year it was the biggest bar crawl outside of Rockstar, this year we aim to be bigger.</p>
+						<p>This time it's going to be bigger than ever! For those of you who weren't there last year it was the biggest bar crawl outside of the Rockstar bar crawls, and this year we want to be bigger.</p>
 						<p><strong><em>Route:</em></strong> To be announced.</p>
 						<p>We are now taking pre-orders for t-shirts. T-shirts are £10 and include entry into Shabang!</p>
-						<p>Contact any committee member to register your interest!</p>
-						<p><a href="https://www.facebook.com/events/1691069531107125/">Click Here for the Facebook Event</a></p>
-						<p>Checkout the Computer Science t-shirt designs below.</p>
+						<p><a href="https://www.facebook.com/events/1691069531107125/">Click here for the Facebook event</a></p>
+						<p>Check out the Computer Science t-shirt designs below, and book yours <a href="/clothing">at our clothing page!</a></p>
 						<div class="row">
 							<div class="col-xs-12">
 								<img class="img-responsive" src="<?=base_url();?>assets/img/barcrawl-front.jpg" alt="Multiscience barcrawl tshirt design">
@@ -42,8 +41,6 @@ $this->load->view ( 'include/head_common.php' );
 								<img class="img-responsive" src="<?=base_url();?>assets/img/barcrawl-back.jpg" alt="Multiscience barcrawl tshirt design">
 							</div>
 						</div>
-
-						<p>Book yours <a href="/clothing">here!</a></p>
 					</div>
 				</div>
 			</div>
