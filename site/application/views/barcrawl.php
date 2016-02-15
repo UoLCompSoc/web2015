@@ -9,7 +9,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 $this->load->view ( 'include/head_common.php' );
 ?>
 
-<title>CompSoc :: About</title>
+<title>CompSoc :: Multi-Science Barcrawl 2016</title>
 </head>
 
 <body>
@@ -42,6 +42,8 @@ $this->load->view ( 'include/head_common.php' );
 								<img class="img-responsive" src="<?=base_url();?>assets/img/barcrawl-back.jpg" alt="Multiscience barcrawl tshirt design">
 							</div>
 						</div>
+
+						<p>Book yours <a href="/clothing">here!</a></p>
 					</div>
 				</div>
 			</div>
