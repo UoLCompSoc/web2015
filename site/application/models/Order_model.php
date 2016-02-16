@@ -17,7 +17,7 @@ class Order_model extends CI_Model {
 				'userid' => $orderdata ['userid'],
 				'campaign_id' => $orderdata ['campaign_id'],
 				'size_id' => $orderdata ['size_id'],
-				'paid' => false 
+				'paid' => isset($orderdata ['paid']) ? $orderdata ['paid'] : false
 		);
 		
 		if (! $this->db->insert ( 'orders', $insertdata )) {
