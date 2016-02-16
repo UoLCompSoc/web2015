@@ -26,6 +26,7 @@ $this->load->view ( 'include/head_common.php' );
 	<div class="container">
 		<?php $this->load->view('include/sitewide_banner.php'); ?>
 
+
         <?php
 								if (isset ( $errormessage )) :
 									?>
@@ -48,66 +49,73 @@ $this->load->view ( 'include/head_common.php' );
 		</div>
         <?php endif; ?>
 
+
 		<div class="row">
 			<div class="col-lg-9">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="page-header">
-							<h2><?php echo $campaign->name; ?></h2>
-							<p>
-								<a href="/clothing/edit/<?php echo $campaign->id ?>"> Edit Campaign</a>
-							</p>
+							<h2>Add Order for User</h2>
 						</div>
-						<p>
-							<strong>Campaign description:</strong> <?php echo $campaign->description; ?></p>
-						<p>Orders:</p>
+                        <?php echo form_open('clothing/addorder/' . $campaign_id); ?>
+                        <div class="form-group">
+							<label for="email" class="sr-only">User Email:</label>
+							<input id="email" name="email" type="text" class="form-control" placeholder="Email" value="<?php echo set_value('email', $email); ?>" />
+						</div>
 
-						<table class="table table-striped">
-							<tr>
-								<th>Type:</th>
-								<th>Number:</th>
-							</tr>
-                            <?php
-																												foreach ( $aggregate as $size ) {
-																													?>
-                                <tr>
-								<td><?php echo $size->name . " (" . $size->description .")"; ?></td>
-								<td><?php echo $size->total; ?></td>
-							</tr>
-                            <?php } ?>
+						<div class="form-group">
+							<?php foreach($sizes as $row) { ?>
+								<div class="radio">
+									<label>
+										<?php echo form_radio('size_id', $row->id, ($row->id == $size_id)); // Check if the selected type is this one ?>
+									</label>
+									<?php echo $row->name . ' - ' . $row->description; ?>
+								</div>
+							<?php } ?>
 
-                        </table>
+						</div>
 
-						<table class="table table-striped">
-							<tr>
-								<th>Name:</th>
-								<th>Size:</th>
-								<th>Paid:</th>
-								<th>Toggle:</th>
-							</tr>
-                            <?php
-																												foreach ( $orders as $order ) {
-																													?>
-                                <tr>
-								<td><?php echo $order->fullname; ?></td>
-								<td><?php echo $order->name; ?></td>
-								<td><?php echo ($order->paid == 0)? "No": "Yes"; ?></td>
-								<td><a href="/clothing/paid/<?php echo $order->id;?>">Toggle</a></td>
-							</tr>
-                            <?php } ?>
-                        </table>
-						<p><a href="/clothing/addorder/<?php echo $campaign->id;?>">Add Order for User</a></p>
+						<div class="form-group">
+							<label for="paid" class="sr-only">Paid:</label>
+							<div class="radio">
+								<label><?php echo form_radio('paid', true, $paid == true); ?> Paid </label>
+							</div>
+							<div class="radio">
+								<label><?php echo form_radio('paid', false, $paid == false); ?> Not Paid</label>
+							</div>
+						</div>
+
+						<button type="submit" class="btn btn-default">Add Order</button>
+
+                        <?php echo form_close(); ?>
 					</div>
 				</div>
 			</div>
-
+			
 			<?php $this->load->view('include/social_sidebar.php'); ?>
 		</div>
 	</div>
-
+	
 	<?php
 	$this->load->view ( 'include/footer.php' );
 	$this->load->view ( 'include/bootstrapjs.php' );
 	?>
+
+	<script>
+		$("#email").autocomplete({
+			source: function(request, response) {
+				$.ajax({
+					url: "/compsoc/autocomplete/email",
+					data: {
+						emailQuery: request.term
+					},
+					success: function(data) {
+						response(data);
+					},
+					dataType: "json"
+				});
+			}
+		});
+	</script>
 </body>
 </html>
