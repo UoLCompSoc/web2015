@@ -105,7 +105,7 @@ $this->load->view ( 'include/head_common.php' );
 		$("#email").autocomplete({
 			source: function(request, response) {
 				$.ajax({
-					url: "/compsoc/autocomplete/email",
+					url: "/autocomplete/email",
 					data: {
 						emailQuery: request.term
 					},
