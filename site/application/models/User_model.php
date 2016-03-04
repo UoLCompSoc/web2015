@@ -157,4 +157,11 @@ class User_model extends CI_Model {
 		$user ["passwordhash"] = password_hash ( $newPassword, PASSWORD_BCRYPT );
 		return $this->update ( $user );
 	}
+
+	public function change_password_for_user($userID, $newPassword) {
+		$user = ( array ) $this->get_by_userid ( $userID );
+
+		$user ["passwordhash"] = password_hash ( $newPassword, PASSWORD_BCRYPT );
+		return $this->update ( $user );
+	}
 }

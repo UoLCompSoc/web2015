@@ -175,6 +175,35 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function reset($userid = -1) {
+	public function reset($userID = -1) {
+		Permissions::require_authorized ( Permissions::USER_ADMIN );
+
+		if($userID == -1) {
+			$userdata ['message'] = "No userID specified";
+			$this->load->view ( 'user', $userdata );
+			return;
+		}
+
+		$user = (array) $this->user_model->get_by_userid ( $userID );
+
+		if($user == null) {
+			$userdata ['message'] = "No user with that userID found";
+			$this->load->view ( 'user', $userdata );
+			return;
+		}
+
+		$newPassword = substr ( preg_replace ( "/[^A-Za-z0-9 ]/", '', hash ( 'md5', time () - 3 ) ), 0, 12 );
+
+		$this->user_model->change_password_for_user ( $userID, $newPassword );
+
+		if (! UserHelper::send_password_change_email ( $user['email'], $newPassword )) {
+			syslog ( LOG_ERR, "Couldn't send batch creation email, user {$user['email']} is lost forever." );
+			$userdata ['message'] = "Update Failed";
+			$this->load->view ( 'user', $userdata );
+			return;
+		}
+
+		$userdata ['message'] = "Update Successful";
+		$this->load->view ( 'user', $userdata );
 	}
 }
