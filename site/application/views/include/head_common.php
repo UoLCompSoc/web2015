@@ -21,3 +21,17 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@UoLCompSoc" />
+<meta name="twitter:title" content="CompSoc @ UoL" />
+<meta name="twitter:description" content="The official website of the Computing Society of the University of Leicester" />
+<meta name="twitter:creator" content="@UoLCompSoc" />
+<meta name="twitter:image" content="https://ulcompsoc.org.uk/assets/img/logo.png" />
+
+<meta property="og:title" content="CompSoc" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ulcompsoc.org.uk" />
+<meta property="og:image" content="https://ulcompsoc.org.uk/assets/img/logo.png" />
+<meta property="og:description" content="The official website of the Computing Society of the University of Leicester" />
+<meta property="og:site_name" content="CompSoc @ UoL" />
